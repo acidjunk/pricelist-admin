@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.0",
+    "@material-ui/icons": "^4.2.1",
+    "ra-data-simple-rest": "^2.9.6",
     "react": "^16.9.0",
     "react-admin": "^2.9.6",
     "react-dom": "^16.9.0",
@@ -12,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1",
+    "prettier": "^1.18.2"
   }
 }

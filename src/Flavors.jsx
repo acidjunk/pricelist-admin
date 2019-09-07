@@ -1,7 +1,7 @@
 import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'admin-on-rest';
-import BookIcon from 'material-ui/svg-icons/action/book';
-export const FlavorIcon = BookIcon;
+import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
+import {Camera} from "@material-ui/icons";
+export const FlavorIcon = Camera;
 
 export const FlavorList = (props) => (
     <List {...props}>
