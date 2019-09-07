@@ -43,8 +43,7 @@ render() {
 
 
     return (
-        <Admin dataProvider={simpleRestProvider('http://localhost:5000/v1')}>
-            {/*<Admin dataProvider={simpleRestProvider('https://api.prijslijst.info/v1')}>*/}
+        <Admin dataProvider={simpleRestProvider('https://api.prijslijst.info/v1')}>
             <Resource name="flavors" list={FlavorList} edit={FlavorEdit} create={FlavorCreate} icon={FlavorIcon}/>
             <Resource name="tags" list={TagList} edit={TagEdit} create={TagCreate} icon={TagIcon}/>
             <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon}/>
