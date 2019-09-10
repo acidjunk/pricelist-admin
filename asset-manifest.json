@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.34de6062.chunk.css",
-    "main.js": "/static/js/main.51af5ef9.chunk.js",
-    "main.js.map": "/static/js/main.51af5ef9.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.2a283978.js",
-    "runtime~main.js.map": "/static/js/runtime~main.2a283978.js.map",
-    "static/js/2.fd3a0c70.chunk.js": "/static/js/2.fd3a0c70.chunk.js",
-    "static/js/2.fd3a0c70.chunk.js.map": "/static/js/2.fd3a0c70.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.609ac73057d00f0b08032008ad4e48d7.js": "/precache-manifest.609ac73057d00f0b08032008ad4e48d7.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.34de6062.chunk.css.map": "/static/css/main.34de6062.chunk.css.map"
+    "main.css": "/pricelist-admin/static/css/main.34de6062.chunk.css",
+    "main.js": "/pricelist-admin/static/js/main.9eda472a.chunk.js",
+    "main.js.map": "/pricelist-admin/static/js/main.9eda472a.chunk.js.map",
+    "runtime~main.js": "/pricelist-admin/static/js/runtime~main.8821af71.js",
+    "runtime~main.js.map": "/pricelist-admin/static/js/runtime~main.8821af71.js.map",
+    "static/js/2.bdcbacb2.chunk.js": "/pricelist-admin/static/js/2.bdcbacb2.chunk.js",
+    "static/js/2.bdcbacb2.chunk.js.map": "/pricelist-admin/static/js/2.bdcbacb2.chunk.js.map",
+    "index.html": "/pricelist-admin/index.html",
+    "precache-manifest.cd7e7b622f19d55cd493f83b6c04ae2a.js": "/pricelist-admin/precache-manifest.cd7e7b622f19d55cd493f83b6c04ae2a.js",
+    "service-worker.js": "/pricelist-admin/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/pricelist-admin/static/css/main.34de6062.chunk.css.map"
   }
 }
