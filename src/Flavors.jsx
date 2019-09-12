@@ -1,14 +1,26 @@
 import React from 'react';
 import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {Camera} from "@material-ui/icons";
-export const FlavorIcon = Camera;
+import {Fastfood} from "@material-ui/icons";
+import Typography from "@material-ui/core/Typography";
+export const FlavorIcon = Fastfood;
+
+
+const FlovorListSidePanel = () => (
+    <div style={{ width: 200, margin: '1em' }}>
+        <Typography variant="title">Post details</Typography>
+        <Typography variant="body1">
+            Posts will only be published one an editor approves them
+        </Typography>
+    </div>
+);
+
 
 export const FlavorList = (props) => (
-    <List {...props}>
+    <List aside={<FlovorListSidePanel/>}{...props}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="name" />
-            <DateField source="icon" />
+            <TextField source="icon" />
             <TextField source="color" />
             <EditButton basePath="/flavors" />
         </Datagrid>

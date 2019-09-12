@@ -8,7 +8,7 @@ export const TagList = (props) => (
         <Datagrid>
             <TextField source="id" />
             <TextField source="name" />
-            <EditButton basePath="/flavors" />
+            <EditButton basePath="/tags" />
         </Datagrid>
     </List>
 );
