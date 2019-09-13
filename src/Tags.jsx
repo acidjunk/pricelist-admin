@@ -6,7 +6,6 @@ export const TagIcon = Mood;
 export const TagList = (props) => (
     <List {...props}>
         <Datagrid>
-            <TextField source="id" />
             <TextField source="name" />
             <EditButton basePath="/tags" />
         </Datagrid>
@@ -14,7 +13,7 @@ export const TagList = (props) => (
 );
 
 const TagTitle = ({ record }) => {
-    return <span>Tag {record ? `"${record.title}"` : ''}</span>;
+    return <span>Effect {record ? `"${record.title}"` : ''}</span>;
 };
 
 export const TagEdit = (props) => (
@@ -27,7 +26,7 @@ export const TagEdit = (props) => (
 );
 
 export const TagCreate = (props) => (
-    <Create title="Create a Tag" {...props}>
+    <Create title="Create a Effect" {...props}>
         <SimpleForm>
             <TextInput source="name" />
         </SimpleForm>

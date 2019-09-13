@@ -68,7 +68,7 @@ const NewUsers = ({ users = [], nb, translate, classes }) => (
                             {/*className={classes.avatar}*/}
                         {/*/>*/}
                         <ListItemText
-                            primary={`${record.name}`}
+                            primary={`${record.email}`}
                             className={classes.listItemText}
                         />
                     </ListItem>

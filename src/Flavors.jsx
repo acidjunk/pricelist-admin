@@ -18,7 +18,6 @@ const FlovorListSidePanel = () => (
 export const FlavorList = (props) => (
     <List aside={<FlovorListSidePanel/>}{...props}>
         <Datagrid>
-            <TextField source="id" />
             <TextField source="name" />
             <TextField source="icon" />
             <TextField source="color" />

@@ -1,17 +1,14 @@
 import React from 'react';
 import { List, Datagrid, Edit, Create, SimpleForm, ArrayField, SingleFieldList, ChipField, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {CollectionsBookmark} from "@material-ui/icons";
-export const KindIcon = CollectionsBookmark;
+import {SmokingRooms} from "@material-ui/icons";
+export const KindIcon = SmokingRooms;
 
 export const KindList = (props) => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
             <TextField source="name" />
             <TextField source="short_description_nl" />
-            <TextField source="description_nl" />
             <TextField source="short_description_en" />
-            <TextField source="description_en" />
             <ArrayField source="tags"><SingleFieldList><ChipField source="name" /></SingleFieldList></ArrayField>
             <ArrayField source="flavors"><SingleFieldList><ChipField source="name" /></SingleFieldList></ArrayField>
         </Datagrid>

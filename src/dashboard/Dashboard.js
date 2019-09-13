@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Welcome from './Welcome';
 import NewKinds from './NewKinds';
 import NewUsers from './NewUsers';
+import Shops from "./Shops";
 
 const styles = {
     flex: { display: 'flex' },
@@ -30,11 +31,29 @@ class Dashboard extends Component {
     }
 
     fetchData() {
+        this.fetchShops();
         this.fetchKinds();
         this.fetchUsers();
     }
 
-
+    async fetchShops() {
+        const { dataProvider } = this.props;
+        const aMonthAgo = new Date();
+        aMonthAgo.setDate(aMonthAgo.getDate() - 30);
+        const { data: shops } = await dataProvider(
+            GET_LIST,
+            'shops',
+            {
+                filter: {},
+                sort: { field: 'name', order: 'DESC' },
+                pagination: { page: 1, perPage: 100 },
+            }
+        );
+        this.setState({
+            shops,
+            nbShops: shops.reduce(nb => ++nb, 0),
+        });
+    }
     async fetchKinds() {
         const { dataProvider } = this.props;
         const aMonthAgo = new Date();
@@ -81,56 +100,35 @@ class Dashboard extends Component {
 
     render() {
         const {
+            shops,
+            nbShops,
             nbNewKinds,
             newKinds,
             nbNewUsers,
             newUsers,
         } = this.state;
         return (
-            <Responsive
-                small={
-                    <div>
-                        <div style={styles.flexColumn}>
-                            <div style={{ marginBottom: '2em' }}>
-                                <Welcome />
-                            </div>
-                            <div style={styles.singleCol}>
-                                <NewKinds
-                                    nb={nbNewKinds}
-                                    visitors={newKinds}
-                                />
-                                <NewUsers
-                                    nb={nbNewUsers}
-                                    visitors={newUsers}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                }
-                medium={
-                    <div style={styles.flex}>
-                        <div style={styles.leftCol}>
-                            <div style={styles.singleCol}>
-                                <Welcome />
-                            </div>
-                            <div style={styles.singleCol}>
-                                <NewKinds
-                                    nb={nbNewKinds}
-                                    visitors={newKinds}
-                                />
-                            </div>
-                        </div>
-                        <div style={styles.rightCol}>
-                            <div style={styles.flex}>
-                                <NewUsers
-                                    nb={nbNewUsers}
-                                    visitors={newUsers}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                }
-            />
+            <div style={styles.flexColumn}>
+                <div style={styles.singleCol}>
+                    <Shops
+                        nb={nbShops}
+                        shops={shops}
+                    />
+                    {/*<Welcome />*/}
+                </div>
+                <div style={styles.flex}>
+                    <NewKinds
+                        nb={nbNewKinds}
+                        kinds={newKinds}
+                    />
+                </div>
+                <div style={styles.singleCol}>
+                    <NewUsers
+                        nb={nbNewUsers}
+                        users={newUsers}
+                    />
+                </div>
+            </div>
         );
     }
 }

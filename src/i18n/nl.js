@@ -12,9 +12,9 @@ export default {
             dark: 'Dark',
         },
         dashboard: {
-            new_users: 'New Users',
-            new_kinds: 'New Product Kinds',
-            shops: 'Shops',
+            new_users: 'Nieuwe gebruikers',
+            new_kinds: 'Nieuwe product types',
+            shops: 'Winkels',
 
         },
         menu: {
