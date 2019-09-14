@@ -43,8 +43,8 @@ class App extends Component {
     // }
 
 render() {
-   // const apiUrl = "https://api.prijslijst.info/v1"
-     const apiUrl = "http://localhost:5000/v1"
+   const apiUrl = "https://api.prijslijst.info/v1"
+   //  const apiUrl = "http://localhost:5000/v1"
 
     // const { dataProvider } = this.state;
     //
