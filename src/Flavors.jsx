@@ -1,8 +1,8 @@
 import React from 'react';
 import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {Fastfood} from "@material-ui/icons";
+import {Kitchen} from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
-export const FlavorIcon = Fastfood;
+export const FlavorIcon = Kitchen;
 
 
 const FlovorListSidePanel = () => (
