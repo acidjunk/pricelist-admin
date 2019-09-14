@@ -1,10 +1,10 @@
-// in src/authProvider.js
 import { AUTH_LOGIN } from 'react-admin';
+import apiUrl from "./Constants";
 
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        const request = new Request('https://mydomain.com/authenticate', {
+        const request = new Request(`${apiUrl}/login`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
