@@ -27,7 +27,7 @@ export const FlavorList = (props) => (
 );
 
 const FlavorTitle = ({ record }) => {
-    return <span>Flavor {record ? `"${record.title}"` : ''}</span>;
+    return <span>Flavor {record ? `"${record.name}"` : ''}</span>;
 };
 
 export const FlavorEdit = (props) => (

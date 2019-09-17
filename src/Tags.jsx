@@ -13,7 +13,7 @@ export const TagList = (props) => (
 );
 
 const TagTitle = ({ record }) => {
-    return <span>Effect {record ? `"${record.title}"` : ''}</span>;
+    return <span>Effect {record ? `"${record.name}"` : ''}</span>;
 };
 
 export const TagEdit = (props) => (

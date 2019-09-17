@@ -26,7 +26,7 @@ export const ShopList = (props) => (
 );
 
 const ShopTitle = ({ record }) => {
-    return <span>Shop {record ? `"${record.title}"` : ''}</span>;
+    return <span>Shop {record ? `"${record.name}"` : ''}</span>;
 };
 
 export const ShopEdit = (props) => (

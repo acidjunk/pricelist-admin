@@ -16,7 +16,7 @@ export const KindList = (props) => (
 );
 
 const KindTitle = ({ record }) => {
-    return <span>Kind {record ? `"${record.title}"` : ''}</span>;
+    return <span>Kind {record ? `"${record.name}"` : ''}</span>;
 };
 
 export const KindEdit = (props) => (
