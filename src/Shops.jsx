@@ -1,22 +1,26 @@
-import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {StoreMallDirectory} from "@material-ui/icons";
+import React from "react";
+import {
+    List,
+    Datagrid,
+    Edit,
+    Create,
+    SimpleForm,
+    Show,
+    SimpleShowLayout,
+    DateField,
+    TextField,
+    EditButton,
+    DisabledInput,
+    TextInput,
+    LongTextInput,
+    DateInput
+} from "react-admin";
+import { StoreMallDirectory } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 export const ShopIcon = StoreMallDirectory;
 
-
-const ShopSidePanel = () => (
-    <div style={{ width: 200, margin: '1em' }}>
-        <Typography variant="title">Todo quick menu to prices in shops</Typography>
-        <Typography variant="body1">
-            WIP WIP WIP
-        </Typography>
-    </div>
-);
-
-
-export const ShopList = (props) => (
-    <List aside={<ShopSidePanel/>}{...props}>
+export const ShopList = props => (
+    <List {...props}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="description" />
@@ -26,10 +30,19 @@ export const ShopList = (props) => (
 );
 
 const ShopTitle = ({ record }) => {
-    return <span>Shop {record ? `"${record.name}"` : ''}</span>;
+    return <span>Shop {record ? `"${record.name}"` : ""}</span>;
 };
 
-export const ShopEdit = (props) => (
+export const ShopShow = props => (
+    <Show title={<ShopTitle />} {...props}>
+        <SimpleShowLayout>
+            <TextField source="name" />
+            <TextField source="description" />
+        </SimpleShowLayout>
+    </Show>
+);
+
+export const ShopEdit = props => (
     <Edit title={<ShopTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
@@ -39,7 +52,7 @@ export const ShopEdit = (props) => (
     </Edit>
 );
 
-export const ShopCreate = (props) => (
+export const ShopCreate = props => (
     <Create title="Create a Shop" {...props}>
         <SimpleForm>
             <TextInput source="name" />

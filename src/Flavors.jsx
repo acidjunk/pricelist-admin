@@ -1,52 +1,67 @@
-import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {Kitchen} from "@material-ui/icons";
+import React from "react";
+import {
+    List,
+    Datagrid,
+    Edit,
+    Create,
+    SimpleForm,
+    DateField,
+    TextField,
+    EditButton,
+    ShowButton,
+    DisabledInput,
+    TextInput,
+    LongTextInput,
+    DateInput
+} from "react-admin";
+import { Kitchen } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
+import {ColorField, ColorInput} from "react-admin-color-input";
 export const FlavorIcon = Kitchen;
 
-
-const FlovorListSidePanel = () => (
-    <div style={{ width: 200, margin: '1em' }}>
-        <Typography variant="title">Post details</Typography>
+const FlavorListSidePanel = () => (
+    <div style={{ width: 200, margin: "1em" }}>
+        <Typography variant="title">Using icons?</Typography>
         <Typography variant="body1">
-            Posts will only be published one an editor approves them
+            Flavors will need a matching semantic-ui icon. A list can be found{" "}
+            <a href="https://semantic-ui.com/elements/icon.html">here</a>.
         </Typography>
     </div>
 );
 
-
-export const FlavorList = (props) => (
-    <List aside={<FlovorListSidePanel/>}{...props}>
+export const FlavorList = props => (
+    <List aside={<FlavorListSidePanel />} {...props}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />
-            <TextField source="color" />
+            <ColorField source="color" />
             <EditButton basePath="/flavors" />
+            <ShowButton basePath="/flavors" />
         </Datagrid>
     </List>
 );
 
 const FlavorTitle = ({ record }) => {
-    return <span>Flavor {record ? `"${record.name}"` : ''}</span>;
+    return <span>Flavor {record ? `"${record.name}"` : ""}</span>;
 };
 
-export const FlavorEdit = (props) => (
+export const FlavorEdit = props => (
     <Edit title={<FlavorTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <TextInput source="name" />
             <TextInput source="icon" />
-            <TextInput source="color" />
+            <ColorInput source="color" />
         </SimpleForm>
     </Edit>
 );
 
-export const FlavorCreate = (props) => (
+export const FlavorCreate = props => (
     <Create title="Create a Flavor" {...props}>
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="icon" />
-            <TextInput source="color" />
+            <ColorInput source="color" />
         </SimpleForm>
     </Create>
 );
