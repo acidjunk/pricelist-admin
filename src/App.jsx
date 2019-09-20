@@ -13,6 +13,7 @@ import { ShopCreate, ShopEdit, ShopIcon, ShopList, ShopShow } from "./Shops";
 import apiUrl from "./Constants";
 import { PriceCreate, PriceEdit, PriceIcon, PriceList } from "./Prices";
 import {KindsToTagsCreate, KindsToTagsEdit, KindsToTagsList} from "./KindsToTags";
+import {KindsToFlavorsCreate, KindsToFlavorsEdit} from "./KindsToFlavors";
 
 const i18nProvider = locale => {
     if (locale === "nl") {
@@ -68,6 +69,7 @@ class App extends Component {
                 />
                 <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
                 <Resource name="kinds-to-tags" edit={KindsToTagsEdit} create={KindsToTagsCreate} icon={UserIcon} />
+                <Resource name="kinds-to-flavors" edit={KindsToFlavorsEdit} create={KindsToFlavorsCreate} icon={UserIcon} />
             </Admin>
         );
     }

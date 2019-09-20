@@ -30,7 +30,7 @@ const FlavorListSidePanel = () => (
 );
 
 export const FlavorList = props => (
-    <List aside={<FlavorListSidePanel />} {...props}>
+    <List aside={<FlavorListSidePanel />} {...props} perPage="100">
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />

@@ -9,7 +9,7 @@ import {RichTextInput} from "ra-input-rich-text";
 export const KindIcon = SmokingRooms;
 
 export const KindList = (props) => (
-    <List {...props}>
+    <List {...props}  sort={{field: "name", order: "ASC"}}>
         <Datagrid rowClick="show">
             <TextField source="name" />
             <TextField source="short_description_nl" />

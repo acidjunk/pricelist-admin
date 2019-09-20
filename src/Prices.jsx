@@ -6,7 +6,7 @@ export const PriceIcon = Toc;
 
 
 export const PriceList = (props) => (
-    <List {...props}>
+    <List {...props} perPage="25" sort={{field: "internal_product_id", order: "ASC"}}>
         <Datagrid>
             <NumberField source="internal_product_id" />
             <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>

@@ -4,7 +4,7 @@ import {Mood} from "@material-ui/icons";
 export const TagIcon = Mood;
 
 export const TagList = (props) => (
-    <List {...props}>
+    <List {...props} perPage="25">
         <Datagrid>
             <TextField source="name" />
             <EditButton basePath="/tags" />
