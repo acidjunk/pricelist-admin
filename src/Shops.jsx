@@ -7,16 +7,25 @@ import {
     SimpleForm,
     Show,
     SimpleShowLayout,
+    TabbedShowLayout,
+    ArrayField,
+    Tab,
     DateField,
+    NumberField,
     TextField,
     EditButton,
+    ShowButton,
     DisabledInput,
+    ReferenceField,
     TextInput,
     LongTextInput,
+    ReferenceManyField,
     DateInput
 } from "react-admin";
 import { StoreMallDirectory } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
+import MaterialList from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem";
 export const ShopIcon = StoreMallDirectory;
 
 export const ShopList = props => (
@@ -24,6 +33,7 @@ export const ShopList = props => (
         <Datagrid>
             <TextField source="name" />
             <TextField source="description" />
+            <ShowButton basePath="/shops" />
             <EditButton basePath="/shops" />
         </Datagrid>
     </List>
@@ -35,10 +45,35 @@ const ShopTitle = ({ record }) => {
 
 export const ShopShow = props => (
     <Show title={<ShopTitle />} {...props}>
-        <SimpleShowLayout>
-            <TextField source="name" />
-            <TextField source="description" />
-        </SimpleShowLayout>
+        <TabbedShowLayout>
+            <Tab label="Prices">
+                <ArrayField source="prices">
+                    <Datagrid>
+                        <NumberField source="internal_product_id" />
+                        <ReferenceField source="kind_id" reference="kinds">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="one" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="two_five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="joint" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="piece" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                    </Datagrid>
+                </ArrayField>
+                {/*<ReferenceManyField reference="prices" target="price_id" addLabel={false}>*/}
+                {/*    <Datagrid>*/}
+                {/*        <TextField source="id" />*/}
+                {/*        <DateField source="joint" />*/}
+                {/*        <EditButton />*/}
+                {/*    </Datagrid>*/}
+                {/*</ReferenceManyField>*/}
+            </Tab>
+            <Tab label="Shop Info" path="info">
+                <TextField source="name" />
+                <TextField source="description" />
+            </Tab>
+        </TabbedShowLayout>
     </Show>
 );
 
