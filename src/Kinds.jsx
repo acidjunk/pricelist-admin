@@ -1,34 +1,31 @@
 import React from "react";
 import {
-    Button,
-    List,
-    Link,
-    ListButton,
-    RefreshButton,
-    Datagrid,
-    Edit,
-    Create,
-    CreateButton,
-    SimpleForm,
     ArrayField,
-    SingleFieldList,
+    Button,
     ChipField,
-    DateField,
-    TextField,
-    EditButton,
+    Create,
+    Datagrid,
     DisabledInput,
-    TextInput,
-    Show,
-    SimpleShowLayout,
+    Edit,
+    EditButton,
+    Link,
+    List,
+    ListButton,
     LongTextInput,
-    DateInput
+    required,
+    Show,
+    SimpleForm,
+    SimpleShowLayout,
+    SingleFieldList,
+    TextField,
+    TextInput
 } from "react-admin";
-import { SmokingRooms, Add } from "@material-ui/icons";
+import {Add, SmokingRooms} from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import MaterialList from "@material-ui/core/List";
 import CardActions from "@material-ui/core/CardActions";
-import { RichTextInput } from "ra-input-rich-text";
+
 export const KindIcon = SmokingRooms;
 
 export const KindList = props => (
@@ -135,9 +132,7 @@ export const KindEdit = props => (
     <Edit title={<KindTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            {/*<RichTextInput source="description_nl" />*/}
-            {/*<RichTextInput source="description_en" />*/}
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="short_description_nl" />
             <LongTextInput source="description_nl" />
             <TextInput source="short_description_en" />
@@ -149,7 +144,7 @@ export const KindEdit = props => (
 export const KindCreate = props => (
     <Create title="Create a Kind" {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="short_description_nl" />
             <LongTextInput source="description_nl" />
             <TextInput source="short_description_en" />

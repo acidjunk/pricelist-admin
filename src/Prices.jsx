@@ -1,7 +1,18 @@
 import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput, NumberField, NumberInput } from 'react-admin';
+import {
+    required,
+    Create,
+    Datagrid,
+    DisabledInput,
+    Edit,
+    EditButton,
+    List,
+    NumberField,
+    NumberInput,
+    SimpleForm
+} from 'react-admin';
 import {Toc} from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography";
+
 export const PriceIcon = Toc;
 
 
@@ -28,7 +39,7 @@ export const PriceEdit = (props) => (
     <Edit title={<PriceTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <NumberInput source="internal_product_id" />
+            <NumberInput source="internal_product_id" validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />
@@ -42,7 +53,7 @@ export const PriceEdit = (props) => (
 export const PriceCreate = (props) => (
     <Create title="Create a Price" {...props}>
         <SimpleForm>
-            <NumberInput source="internal_product_id" />
+            <NumberInput source="internal_product_id" validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />

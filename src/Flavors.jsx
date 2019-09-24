@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    required,
     List,
     Datagrid,
     Edit,
@@ -16,7 +17,7 @@ import {
 } from "react-admin";
 import { Kitchen } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
-import {ColorField, ColorInput} from "react-admin-color-input";
+import { ColorField, ColorInput } from "react-admin-color-input";
 export const FlavorIcon = Kitchen;
 
 const FlavorListSidePanel = () => (
@@ -49,7 +50,7 @@ export const FlavorEdit = props => (
     <Edit title={<FlavorTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />
         </SimpleForm>
@@ -59,7 +60,7 @@ export const FlavorEdit = props => (
 export const FlavorCreate = props => (
     <Create title="Create a Flavor" {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />
         </SimpleForm>

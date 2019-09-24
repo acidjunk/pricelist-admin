@@ -1,12 +1,12 @@
 import React from 'react';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
+import { required, List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
 import {Mood} from "@material-ui/icons";
 export const TagIcon = Mood;
 
 export const TagList = (props) => (
     <List {...props} perPage="25">
         <Datagrid>
-            <TextField source="name" />
+            <TextField source="name" validate={required()} />
             <EditButton basePath="/tags" />
         </Datagrid>
     </List>
@@ -20,7 +20,7 @@ export const TagEdit = (props) => (
     <Edit title={<TagTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
         </SimpleForm>
     </Edit>
 );
@@ -28,7 +28,7 @@ export const TagEdit = (props) => (
 export const TagCreate = (props) => (
     <Create title="Create a Effect" {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
         </SimpleForm>
     </Create>
 );

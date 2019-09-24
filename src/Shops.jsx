@@ -1,31 +1,30 @@
 import React from "react";
 import {
-    List,
-    Datagrid,
-    Edit,
-    Create,
-    SimpleForm,
-    Show,
-    SimpleShowLayout,
-    TabbedShowLayout,
     ArrayField,
-    Tab,
-    DateField,
-    NumberField,
-    TextField,
-    EditButton,
-    ShowButton,
+    BooleanField,
+    Button,
+    Create,
+    Datagrid,
     DisabledInput,
-    ReferenceField,
-    TextInput,
-    LongTextInput,
-    ReferenceManyField,
-    DateInput
+    Edit,
+    EditButton,
+    Labeled,
+    Link,
+    List,
+    ListButton,
+    NumberField,
+    required,
+    Show,
+    ShowButton,
+    SimpleForm,
+    Tab,
+    TabbedShowLayout,
+    TextField,
+    TextInput
 } from "react-admin";
-import { StoreMallDirectory } from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography";
-import MaterialList from "@material-ui/core/List/List";
-import ListItem from "@material-ui/core/ListItem";
+import {Add, StoreMallDirectory} from "@material-ui/icons";
+import CardActions from "@material-ui/core/CardActions";
+
 export const ShopIcon = StoreMallDirectory;
 
 export const ShopList = props => (
@@ -43,35 +42,56 @@ const ShopTitle = ({ record }) => {
     return <span>Shop {record ? `"${record.name}"` : ""}</span>;
 };
 
+const AddPriceButton = ({ record }) => (
+    <Button
+        component={Link}
+        to={{
+            pathname: "/shops-to-prices/create",
+            search: `?shop_id=${record ? record.id : ""}`
+        }}
+        label="Add a price"
+    >
+        <Add />
+    </Button>
+);
+
+const ShopShowActions = ({ basePath, data }) => (
+    <CardActions>
+        <ListButton basePath={basePath} />
+        <EditButton basePath="/shops" record={data} />
+        <AddPriceButton record={data} />
+    </CardActions>
+);
+
+
 export const ShopShow = props => (
-    <Show title={<ShopTitle />} {...props}>
+    <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
         <TabbedShowLayout>
             <Tab label="Prices">
-                <ArrayField source="prices">
+                <ArrayField source="prices" label="">
                     <Datagrid>
-                        <NumberField source="internal_product_id" />
-                        <ReferenceField source="kind_id" reference="kinds">
-                            <TextField source="name" />
-                        </ReferenceField>
-                        <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-                        <NumberField source="one" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-                        <NumberField source="two_five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-                        <NumberField source="five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-                        <NumberField source="joint" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-                        <NumberField source="piece" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
+                        <NumberField source="internal_product_id" sortable={false}/>
+                        <TextField source="category_name" sortable={false}/>
+                        <TextField source="kind_name" sortable={false}/>
+                        <BooleanField source="active" sortable={false}/>
+                        <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="one" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="two_five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="joint" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="piece" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <EditButton basePath="/shops-to-prices" />
                     </Datagrid>
                 </ArrayField>
-                {/*<ReferenceManyField reference="prices" target="price_id" addLabel={false}>*/}
-                {/*    <Datagrid>*/}
-                {/*        <TextField source="id" />*/}
-                {/*        <DateField source="joint" />*/}
-                {/*        <EditButton />*/}
-                {/*    </Datagrid>*/}
-                {/*</ReferenceManyField>*/}
             </Tab>
             <Tab label="Shop Info" path="info">
                 <TextField source="name" />
                 <TextField source="description" />
+                <Labeled label="Logo">
+                    <img src={`https://www.prijslijst.info/static/uploaded/shops/${props.id}.png`}/>
+                </Labeled>
+                {console.log(props)}
+
             </Tab>
         </TabbedShowLayout>
     </Show>
@@ -81,8 +101,9 @@ export const ShopEdit = props => (
     <Edit title={<ShopTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="description" />
+
         </SimpleForm>
     </Edit>
 );
@@ -90,7 +111,7 @@ export const ShopEdit = props => (
 export const ShopCreate = props => (
     <Create title="Create a Shop" {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name" validate={required()} />
             <TextInput source="description" />
         </SimpleForm>
     </Create>

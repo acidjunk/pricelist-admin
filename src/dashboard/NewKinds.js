@@ -60,7 +60,7 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
             <Divider />
             <List>
                 {kinds.map(record => (
-                    <React.Fragment>
+                    <React.Fragment key={record.id}>
                     <ListItem
                         button
                         to={`/kinds/${record.id}`}

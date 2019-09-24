@@ -1,39 +1,11 @@
 import React from "react";
-import { parse } from "query-string";
+import {parse} from "query-string";
 
-import {
-    List,
-    Datagrid,
-    Edit,
-    Create,
-    SimpleForm,
-    ArrayField,
-    SingleFieldList,
-    ChipField,
-    DateField,
-    TextField,
-    EditButton,
-    DisabledInput,
-    TextInput,
-    ReferenceInput,
-    SelectInput,
-    Show,
-    SimpleShowLayout,
-    LongTextInput,
-    DateInput
-} from "react-admin";
-import { Link } from "@material-ui/icons";
+import {required, Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm} from "react-admin";
+import {Link} from "@material-ui/icons";
+
 export const KindsToFlavorsIcon = Link;
 
-export const KindsToFlavorsList = props => (
-    <List {...props}>
-        <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="kind_id" />
-            <TextField source="flavor_id" />
-        </Datagrid>
-    </List>
-);
 
 const KindsToFlavorsTitle = ({ record }) => {
     return <span>KindsToFlavors {record ? `"${record.id}"` : ""}</span>;
@@ -45,7 +17,7 @@ export const KindsToFlavorsEdit = props => (
     <Edit title={<KindsToFlavorsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
-            <ReferenceInput source="flavor_id" reference="flavors" perPage={100}>
+            <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
         </SimpleForm>
@@ -59,10 +31,10 @@ export const KindsToFlavorsCreate = props => {
     return (
     <Create title="Create a KindsToFlavors" {...props}>
         <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
-            <ReferenceInput source="kind_id" reference="kinds" perPage={100}>
+            <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <ReferenceInput source="flavor_id" reference="flavors" perPage={100}>
+            <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
         </SimpleForm>
