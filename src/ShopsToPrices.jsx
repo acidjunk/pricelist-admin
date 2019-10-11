@@ -8,6 +8,7 @@ import {
     Edit,
     ReferenceInput,
     required,
+    AutocompleteInput,
     SelectInput,
     SimpleForm,
     TextField
@@ -30,17 +31,17 @@ export const ShopsToPricesEdit = props => (
             <ReferenceInput
                 source="price_id"
                 reference="prices"
-                perPage={100}
-                label="Internal Product ID"
+                // label="Internal Product ID"
                 validate={required()}
             >
-                <SelectInput optionText="internal_product_id" />
+                <AutocompleteInput optionText="internal_product_id" translateChoice={false} />
+                {/*<SelectInput optionText="internal_product_id" />*/}
             </ReferenceInput>
             <ReferenceInput source="category_id" reference="categories" perPage={100} label="Product Category">
                 <SelectInput optionText="category_and_shop" />
             </ReferenceInput>
-            <ReferenceInput source="kind_id" reference="kinds" perPage={100} label="Product Kind" validate={required()}>
-                <SelectInput optionText="name" />
+            <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
+                <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
             <TextField source="half" label={"Configured price for 0,5 gram"} />
             <BooleanInput source="use_half" label="Use price for 0,5 gram?" />

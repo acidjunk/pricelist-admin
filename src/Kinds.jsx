@@ -12,6 +12,8 @@ import {
     List,
     ListButton,
     LongTextInput,
+    BooleanField,
+    BooleanInput,
     required,
     Show,
     SimpleForm,
@@ -124,6 +126,10 @@ export const KindShow = props => (
             <TextField source="description_nl" />
             <TextField source="short_description_en" />
             <TextField source="description_en" />
+            <BooleanField source="c" />
+            <BooleanField source="h" />
+            <BooleanField source="c" />
+            <BooleanField source="s" />
         </SimpleShowLayout>
     </Show>
 );
@@ -137,6 +143,10 @@ export const KindEdit = props => (
             <LongTextInput source="description_nl" />
             <TextInput source="short_description_en" />
             <LongTextInput source="description_en" />
+            <BooleanInput source="c" />
+            <BooleanInput source="h" />
+            <BooleanInput source="c" />
+            <BooleanInput source="s" />
         </SimpleForm>
     </Edit>
 );
