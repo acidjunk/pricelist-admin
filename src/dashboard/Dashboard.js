@@ -63,8 +63,8 @@ class Dashboard extends Component {
             'kinds',
             {
                 filter: {
-                    has_ordered: true,
-                    created_at_gte: aMonthAgo.toISOString(),
+                    // has_ordered: true,
+                    // created_at_gte: aMonthAgo.toISOString(),
                 },
                 sort: { field: 'created_at', order: 'DESC' },
                 pagination: { page: 1, perPage: 100 },
