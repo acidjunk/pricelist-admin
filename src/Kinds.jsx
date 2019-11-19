@@ -36,12 +36,12 @@ export const KindList = props => (
             <TextField source="name" />
             <TextField source="short_description_nl" />
             <TextField source="short_description_en" />
-            <ArrayField source="tags">
+            <ArrayField source="tags" sortable={false}>
                 <SingleFieldList>
                     <ChipField source="name" />
                 </SingleFieldList>
             </ArrayField>
-            <ArrayField source="flavors">
+            <ArrayField source="flavors" sortable={false}>
                 <SingleFieldList>
                     <ChipField source="name" />
                 </SingleFieldList>
@@ -128,7 +128,7 @@ export const KindShow = props => (
             <TextField source="description_en" />
             <BooleanField source="c" />
             <BooleanField source="h" />
-            <BooleanField source="c" />
+            <BooleanField source="i" />
             <BooleanField source="s" />
         </SimpleShowLayout>
     </Show>
@@ -145,7 +145,7 @@ export const KindEdit = props => (
             <LongTextInput source="description_en" />
             <BooleanInput source="c" />
             <BooleanInput source="h" />
-            <BooleanInput source="c" />
+            <BooleanInput source="i" />
             <BooleanInput source="s" />
         </SimpleForm>
     </Edit>
@@ -159,6 +159,10 @@ export const KindCreate = props => (
             <LongTextInput source="description_nl" />
             <TextInput source="short_description_en" />
             <LongTextInput source="description_en" />
+            <BooleanInput source="c" />
+            <BooleanInput source="h" />
+            <BooleanInput source="i" />
+            <BooleanInput source="s" />
         </SimpleForm>
     </Create>
 );

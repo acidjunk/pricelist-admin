@@ -24,7 +24,7 @@ export const CategoryList = props => (
     <List {...props} perPage="100">
         <Datagrid>
             <TextField source="name" />
-            <TextField source="shop_name" />
+            <TextField source="shop_name" sortable={false}/>
             <EditButton basePath="/categories" />
             <ShowButton basePath="/categories" />
         </Datagrid>
