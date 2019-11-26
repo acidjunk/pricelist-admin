@@ -1,4 +1,6 @@
 import React from "react";
+import { parse } from "query-string";
+
 import {
     ArrayField,
     BooleanField,
@@ -8,12 +10,15 @@ import {
     DisabledInput,
     Edit,
     EditButton,
+    Filter,
     Labeled,
     Link,
     List,
     ListButton,
     NumberField,
     required,
+    ReferenceInput,
+    SelectInput,
     Show,
     ShowButton,
     SimpleForm,
@@ -22,13 +27,19 @@ import {
     TextField,
     TextInput
 } from "react-admin";
-import {Add, StoreMallDirectory} from "@material-ui/icons";
+import { Add, StoreMallDirectory } from "@material-ui/icons";
 import CardActions from "@material-ui/core/CardActions";
 
 export const ShopIcon = StoreMallDirectory;
 
+const ShopFilter = props => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
 export const ShopList = props => (
-    <List {...props}>
+    <List {...props} filters={<ShopFilter/>}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="description" />
@@ -63,23 +74,52 @@ const ShopShowActions = ({ basePath, data }) => (
     </CardActions>
 );
 
-
 export const ShopShow = props => (
     <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
         <TabbedShowLayout>
             <Tab label="Prices">
                 <ArrayField source="prices" label="">
                     <Datagrid>
-                        <NumberField source="internal_product_id" sortable={false}/>
-                        <TextField source="category_name" sortable={false}/>
-                        <TextField source="kind_name" sortable={false}/>
-                        <BooleanField source="active" sortable={false}/>
-                        <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
-                        <NumberField source="one" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
-                        <NumberField source="two_five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
-                        <NumberField source="five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
-                        <NumberField source="joint" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
-                        <NumberField source="piece" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }} sortable={false}/>
+                        <NumberField source="internal_product_id" sortable={false} />
+                        <TextField source="category_name" sortable={false} />
+                        <TextField source="kind_name" sortable={false} />
+                        <BooleanField source="active" sortable={false} />
+                        <NumberField
+                            source="half"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
+                        <NumberField
+                            source="one"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
+                        <NumberField
+                            source="two_five"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
+                        <NumberField
+                            source="five"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
+                        <NumberField
+                            source="joint"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
+                        <NumberField
+                            source="piece"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />
                         <EditButton basePath="/shops-to-prices" />
                     </Datagrid>
                 </ArrayField>
@@ -88,10 +128,9 @@ export const ShopShow = props => (
                 <TextField source="name" />
                 <TextField source="description" />
                 <Labeled label="Logo">
-                    <img src={`https://www.prijslijst.info/static/uploaded/shops/${props.id}.png`}/>
+                    <img src={`https://www.prijslijst.info/static/uploaded/shops/${props.id}.png`} />
                 </Labeled>
                 {console.log(props)}
-
             </Tab>
         </TabbedShowLayout>
     </Show>
@@ -103,7 +142,6 @@ export const ShopEdit = props => (
             <DisabledInput source="id" />
             <TextInput source="name" validate={required()} />
             <TextInput source="description" />
-
         </SimpleForm>
     </Edit>
 );

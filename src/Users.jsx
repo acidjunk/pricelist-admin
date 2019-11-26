@@ -7,6 +7,7 @@ import {
     Create,
     SimpleForm,
     DateField,
+    Filter,
     TextField,
     EditButton,
     DisabledInput,
@@ -17,8 +18,14 @@ import {
 import { AccountCircle } from "@material-ui/icons";
 export const UserIcon = AccountCircle;
 
+const UserFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
 export const UserList = props => (
-    <List {...props}>
+    <List {...props} filters={<UserFilter/>}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="username" />

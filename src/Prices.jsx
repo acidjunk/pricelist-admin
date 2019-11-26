@@ -6,18 +6,25 @@ import {
     DisabledInput,
     Edit,
     EditButton,
+    Filter,
     List,
     NumberField,
     NumberInput,
-    SimpleForm
+    SimpleForm,
+    TextInput
 } from 'react-admin';
 import {Toc} from "@material-ui/icons";
 
 export const PriceIcon = Toc;
 
+const PriceFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
 
 export const PriceList = (props) => (
-    <List {...props} perPage="25" sort={{field: "internal_product_id", order: "ASC"}}>
+    <List {...props} perPage="25" sort={{field: "internal_product_id", order: "ASC"}} filters={<PriceFilter/>}>
         <Datagrid>
             <NumberField source="internal_product_id" />
             <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>

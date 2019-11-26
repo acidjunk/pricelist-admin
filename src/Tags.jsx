@@ -1,10 +1,28 @@
-import React from 'react';
-import { required, List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, DisabledInput, TextInput, LongTextInput, DateInput } from 'react-admin';
-import {Mood} from "@material-ui/icons";
+import React from "react";
+import {
+    required,
+    List,
+    Datagrid,
+    Edit,
+    Create,
+    SimpleForm,
+    Filter,
+    TextField,
+    EditButton,
+    DisabledInput,
+    TextInput
+} from "react-admin";
+import { Mood } from "@material-ui/icons";
 export const TagIcon = Mood;
 
-export const TagList = (props) => (
-    <List {...props} perPage="25">
+const TagFilter = props => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
+export const TagList = props => (
+    <List {...props} perPage="25" filters={<TagFilter />}>
         <Datagrid>
             <TextField source="name" validate={required()} />
             <EditButton basePath="/tags" />
@@ -13,10 +31,10 @@ export const TagList = (props) => (
 );
 
 const TagTitle = ({ record }) => {
-    return <span>Effect {record ? `"${record.name}"` : ''}</span>;
+    return <span>Effect {record ? `"${record.name}"` : ""}</span>;
 };
 
-export const TagEdit = (props) => (
+export const TagEdit = props => (
     <Edit title={<TagTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
@@ -25,7 +43,7 @@ export const TagEdit = (props) => (
     </Edit>
 );
 
-export const TagCreate = (props) => (
+export const TagCreate = props => (
     <Create title="Create a Effect" {...props}>
         <SimpleForm>
             <TextInput source="name" validate={required()} />

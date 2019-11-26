@@ -5,9 +5,11 @@ import {
     ChipField,
     Create,
     Datagrid,
+    DateField,
     DisabledInput,
     Edit,
     EditButton,
+    Filter,
     Link,
     List,
     ListButton,
@@ -30,8 +32,16 @@ import CardActions from "@material-ui/core/CardActions";
 
 export const KindIcon = SmokingRooms;
 
+
+const KindFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
+
 export const KindList = props => (
-    <List {...props} sort={{ field: "name", order: "ASC" }}>
+    <List {...props} sort={{ field: "name", order: "ASC" }} filters={<KindFilter/>}>
         <Datagrid rowClick="show">
             <TextField source="name" />
             <TextField source="short_description_nl" />
@@ -46,6 +56,8 @@ export const KindList = props => (
                     <ChipField source="name" />
                 </SingleFieldList>
             </ArrayField>
+            <DateField source="modified_at"/>
+            <DateField source="approved_at"/>
         </Datagrid>
     </List>
 );
@@ -130,6 +142,8 @@ export const KindShow = props => (
             <BooleanField source="h" />
             <BooleanField source="i" />
             <BooleanField source="s" />
+            <DateField source="modified_at"/>
+            <DateField source="approved_at"/>
         </SimpleShowLayout>
     </Show>
 );

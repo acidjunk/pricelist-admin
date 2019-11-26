@@ -6,22 +6,29 @@ import {
     Edit,
     Create,
     SimpleForm,
-    DateField,
+    Filter,
     TextField,
     EditButton,
     ShowButton,
     DisabledInput,
     TextInput,
-    LongTextInput,
     ReferenceInput,
     SelectInput,
-    DateInput
 } from "react-admin";
 import { ChromeReaderMode } from "@material-ui/icons";
 export const CategoryIcon = ChromeReaderMode;
 
+const CategoryFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+        <ReferenceInput label="Shop" source="shop_id" reference="shops" allowEmpty alwaysOn>
+            <SelectInput optionText="name" />
+        </ReferenceInput>
+    </Filter>
+);
+
 export const CategoryList = props => (
-    <List {...props} perPage="100">
+    <List {...props} filters={<CategoryFilter/>} perPage="100">
         <Datagrid>
             <TextField source="name" />
             <TextField source="shop_name" sortable={false}/>

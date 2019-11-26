@@ -1,5 +1,5 @@
 import React from "react";
-import {parse} from "query-string";
+import { parse } from "query-string";
 
 import {
     BooleanInput,
@@ -13,7 +13,7 @@ import {
     SimpleForm,
     TextField
 } from "react-admin";
-import {Link} from "@material-ui/icons";
+import { Link } from "@material-ui/icons";
 
 export const ShopsToPricesIcon = Link;
 
@@ -23,7 +23,7 @@ const ShopsToPricesTitle = ({ record }) => {
 
 const redirect = (basePath, id, data) => `/shops/${data.shop_id}/show`;
 
-export const ShopsToPricesEdit = props => (
+export const ShopsToPricesEdit = (props) => (
     <Edit title={<ShopsToPricesTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
@@ -37,9 +37,15 @@ export const ShopsToPricesEdit = props => (
                 <AutocompleteInput optionText="internal_product_id" translateChoice={false} />
                 {/*<SelectInput optionText="internal_product_id" />*/}
             </ReferenceInput>
-            <ReferenceInput source="category_id" reference="categories" perPage={100} label="Product Category">
-                <SelectInput optionText="category_and_shop" />
-            </ReferenceInput>
+            {/*<ReferenceInput*/}
+            {/*    source="category_id"*/}
+            {/*    reference="categories"*/}
+            {/*    perPage={100}*/}
+            {/*    label="Product Category"*/}
+            {/*    // filter={{ shop_id: shop_id }}*/}
+            {/*>*/}
+            {/*    <SelectInput optionText="category_and_shop" />*/}
+            {/*</ReferenceInput>*/}
             <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
                 <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
@@ -74,7 +80,13 @@ export const ShopsToPricesCreate = props => {
                     <AutocompleteInput optionText="internal_product_id" translateChoice={false} />
                     {/*<SelectInput optionText="internal_product_id" />*/}
                 </ReferenceInput>
-                <ReferenceInput source="category_id" reference="categories" perPage={100} label="Product Category">
+                <ReferenceInput
+                    source="category_id"
+                    reference="categories"
+                    perPage={100}
+                    label="Product Category"
+                    filter={{ shop_id: shop_id }}
+                >
                     <SelectInput optionText="category_and_shop" />
                 </ReferenceInput>
                 <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>

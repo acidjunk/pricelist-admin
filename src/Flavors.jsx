@@ -6,32 +6,33 @@ import {
     Edit,
     Create,
     SimpleForm,
-    DateField,
+    Filter,
     TextField,
     EditButton,
     ShowButton,
     DisabledInput,
-    TextInput,
-    LongTextInput,
-    DateInput
+    TextInput
 } from "react-admin";
 import { Kitchen } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const FlavorIcon = Kitchen;
 
+const FlavorFilter = props => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
 const FlavorListSidePanel = () => (
     <div style={{ width: 200, margin: "1em" }}>
         <Typography variant="title">Using icons?</Typography>
-        <Typography variant="body1">
-            Flavors will need a matching semantic-ui icon. A list can be found{" "}
-            <a href="https://semantic-ui.com/elements/icon.html">here</a>.
-        </Typography>
+        <Typography variant="body1">Flavors will need a matching image. Not all flavors have an image yet.</Typography>
     </div>
 );
 
 export const FlavorList = props => (
-    <List aside={<FlavorListSidePanel />} {...props} perPage="100">
+    <List aside={<FlavorListSidePanel />} {...props} perPage="100" filters={<FlavorFilter/>}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />
