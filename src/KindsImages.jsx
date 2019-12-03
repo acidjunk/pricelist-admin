@@ -50,6 +50,9 @@ export const KindImageEdit = props => (
             <ImageInput source="image_1" label="Image 1" accept="image/*">
                 <ImageField source="src" title="title" />
             </ImageInput>
+            <ImageInput source="image_2" label="Image 2" accept="image/*">
+                <ImageField source="src" title="title" />
+            </ImageInput>
         </SimpleForm>
     </Edit>
 );

@@ -1,7 +1,7 @@
 import simpleRestProvider from "ra-data-simple-rest";
 
 const pricelistDataProvider = {
-    ...simpleRestProvider(),
+    ...simpleRestProvider,
     update: (resource, params) => {
         if (resource !== 'kind-images' || !params.data.image_1) {
             // fallback to the default implementation
