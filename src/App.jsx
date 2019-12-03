@@ -17,7 +17,9 @@ import {KindsToFlavorsCreate, KindsToFlavorsEdit} from "./KindsToFlavors";
 import {ShopsToPricesCreate, ShopsToPricesEdit} from "./ShopsToPrices";
 import {CategoryCreate, CategoryEdit, CategoryIcon, CategoryList} from "./Categories";
 import {KindImageEdit, KindImageIcon, KindImageList} from "./KindsImages";
-// import pricelistDataProvider from "./PricelistDataProvider";
+import addUploadFeature from "./dataProvider/decorator";
+
+
 
 const i18nProvider = locale => {
     if (locale === "nl") {
@@ -42,11 +44,14 @@ const httpClient = (url, options = {}) => {
 };
 const dataProvider = simpleRestProvider(`${apiUrl}/v1`, httpClient);
 
+const uploadDataProvider = addUploadFeature(dataProvider);
+
+
 class App extends Component {
     render() {
         return (
             <Admin
-                dataProvider={dataProvider}
+                dataProvider={uploadDataProvider}
                 title="Shop Admin"
                 authProvider={AuthProvider}
                 dashboard={Dashboard}

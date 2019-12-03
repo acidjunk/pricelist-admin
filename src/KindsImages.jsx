@@ -1,20 +1,14 @@
 import React from "react";
 import {
-    required,
     List,
     Datagrid,
     Edit,
-    Create,
-    SimpleForm,
+    FormTab,
+    TabbedForm,
     Filter,
     ImageField,
     ImageInput,
     TextField,
-    EditButton,
-    ReferenceInput,
-    SelectInput,
-    ShowButton,
-    DisabledInput,
     TextInput
 } from "react-admin";
 import { Image } from "@material-ui/icons";
@@ -27,7 +21,7 @@ const KindImageFilter = props => (
 );
 
 export const KindImageList = props => (
-    <List {...props} perPage="100" filters={<KindImageFilter/>}>
+    <List {...props} perPage="100" filters={<KindImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
             <TextField source="image_1" />
@@ -45,14 +39,44 @@ const KindImageTitle = ({ record }) => {
 };
 
 export const KindImageEdit = props => (
-    <Edit {...props}>
-        <SimpleForm>
-            <ImageInput source="image_1" label="Image 1" accept="image/*">
-                <ImageField source="src" title="title" />
-            </ImageInput>
-            <ImageInput source="image_2" label="Image 2" accept="image/*">
-                <ImageField source="src" title="title" />
-            </ImageInput>
-        </SimpleForm>
+    <Edit {...props} undoable={false}>
+        <TabbedForm>
+            <FormTab label="lister image">
+                <TextField source="image_1" />
+                <ImageInput source="image_1" label="Image 1" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="image 2">
+                <TextField source="image_2" />
+                <ImageInput source="image_2" label="Image 2" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="image 3">
+                <TextField source="image_3" />
+                <ImageInput source="image_3" label="Image 3" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="image 4">
+                <TextField source="image_4" />
+                <ImageInput source="image_4" label="Image 4" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="image 5">
+                <TextField source="image_5" />
+                <ImageInput source="image_5" label="Image 5" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+            <FormTab label="image 6">
+                <TextField source="image_6" />
+                <ImageInput source="image_6" label="Image 6" accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+            </FormTab>
+        </TabbedForm>
     </Edit>
 );
