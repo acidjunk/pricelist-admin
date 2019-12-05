@@ -20,11 +20,11 @@ import {
     Show,
     SimpleForm,
     SimpleShowLayout,
-    SingleFieldList,
+    Pagination,
     TextField,
     TextInput
 } from "react-admin";
-import {Add, SmokingRooms} from "@material-ui/icons";
+import { Add, SmokingRooms } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import MaterialList from "@material-ui/core/List";
@@ -32,32 +32,47 @@ import CardActions from "@material-ui/core/CardActions";
 
 export const KindIcon = SmokingRooms;
 
-
-const KindFilter = (props) => (
+const KindFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
     </Filter>
 );
 
+const KindPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 export const KindList = props => (
-    <List {...props} sort={{ field: "name", order: "ASC" }} filters={<KindFilter/>}>
+    <List
+        {...props}
+        sort={{ field: "name", order: "ASC" }}
+        filters={<KindFilter />}
+        pagination={<KindPagination />}
+        perPage={50}
+    >
         <Datagrid rowClick="show">
             <TextField source="name" />
             <TextField source="short_description_nl" />
             <TextField source="short_description_en" />
-            <ArrayField source="tags" sortable={false}>
-                <SingleFieldList>
-                    <ChipField source="name" />
-                </SingleFieldList>
-            </ArrayField>
-            <ArrayField source="flavors" sortable={false}>
-                <SingleFieldList>
-                    <ChipField source="name" />
-                </SingleFieldList>
-            </ArrayField>
-            <DateField source="modified_at"/>
-            <DateField source="approved_at"/>
+            <BooleanField source="c" />
+            <BooleanField source="h" />
+            <BooleanField source="i" />
+            <BooleanField source="s" />
+            <TextField source="tags_amount" sortable={false} />
+            <TextField source="flavors_amount" sortable={false} />
+            <TextField source="images_amount" sortable={false} />
+            <BooleanField source="complete" sortable={false} />
+            {/*<ArrayField source="tags" sortable={false}>*/}
+            {/*    <SingleFieldList>*/}
+            {/*        <ChipField source="name" />*/}
+            {/*    </SingleFieldList>*/}
+            {/*</ArrayField>*/}
+            {/*<ArrayField source="flavors" sortable={false}>*/}
+            {/*    <SingleFieldList>*/}
+            {/*        <ChipField source="name" />*/}
+            {/*    </SingleFieldList>*/}
+            {/*</ArrayField>*/}
+            <DateField source="created_at" />
+            <DateField source="modified_at" />
+            <DateField source="approved_at" />
         </Datagrid>
     </List>
 );
@@ -142,8 +157,8 @@ export const KindShow = props => (
             <BooleanField source="h" />
             <BooleanField source="i" />
             <BooleanField source="s" />
-            <DateField source="modified_at"/>
-            <DateField source="approved_at"/>
+            <DateField source="modified_at" />
+            <DateField source="approved_at" />
         </SimpleShowLayout>
     </Show>
 );
