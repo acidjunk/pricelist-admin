@@ -32,9 +32,21 @@ import CardActions from "@material-ui/core/CardActions";
 
 export const KindIcon = SmokingRooms;
 
+
+const kindRowStyle = (record, index) => ({
+    backgroundColor: record.approved === true ? '#55ff55' : record.complete === true ? '#ffcc55': 'white',
+
+});
+
 const KindFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
+        <BooleanInput source="complete" />
+        <BooleanInput source="approved" />
+        <BooleanInput source="c" />
+        <BooleanInput source="h" />
+        <BooleanInput source="i" />
+        <BooleanInput source="s" />
     </Filter>
 );
 
@@ -48,7 +60,7 @@ export const KindList = props => (
         pagination={<KindPagination />}
         perPage={50}
     >
-        <Datagrid rowClick="show">
+        <Datagrid rowClick="show" rowStyle={kindRowStyle}>
             <TextField source="name" />
             <TextField source="short_description_nl" />
             <TextField source="short_description_en" />
@@ -59,7 +71,8 @@ export const KindList = props => (
             <TextField source="tags_amount" sortable={false} />
             <TextField source="flavors_amount" sortable={false} />
             <TextField source="images_amount" sortable={false} />
-            <BooleanField source="complete" sortable={false} />
+            <BooleanField source="complete" />
+            <BooleanField source="approved" />
             {/*<ArrayField source="tags" sortable={false}>*/}
             {/*    <SingleFieldList>*/}
             {/*        <ChipField source="name" />*/}
@@ -70,9 +83,8 @@ export const KindList = props => (
             {/*        <ChipField source="name" />*/}
             {/*    </SingleFieldList>*/}
             {/*</ArrayField>*/}
-            <DateField source="created_at" />
             <DateField source="modified_at" />
-            <DateField source="approved_at" />
+            {/*<DateField source="approved_at" />*/}
         </Datagrid>
     </List>
 );
@@ -157,7 +169,11 @@ export const KindShow = props => (
             <BooleanField source="h" />
             <BooleanField source="i" />
             <BooleanField source="s" />
+            <BooleanField source="complete" />
+            <TextField source="images_amount" sortable={false} />
+            <DateField source="created_at" />
             <DateField source="modified_at" />
+            <BooleanField source="approved" />
             <DateField source="approved_at" />
         </SimpleShowLayout>
     </Show>
@@ -176,6 +192,7 @@ export const KindEdit = props => (
             <BooleanInput source="h" />
             <BooleanInput source="i" />
             <BooleanInput source="s" />
+            <BooleanInput source="approved" />
         </SimpleForm>
     </Edit>
 );
