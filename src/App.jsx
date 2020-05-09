@@ -4,8 +4,8 @@ import {Admin, fetchUtils, Resource} from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
 import AuthProvider from "./AuthProvider";
 import englishMessages from "./i18n/en";
-import {FlavorCreate, FlavorEdit, FlavorIcon, FlavorList} from "./Flavors";
-import {TagCreate, TagEdit, TagIcon, TagList} from "./Tags";
+import {FlavorCreate, FlavorEdit, FlavorIcon, FlavorList, FlavorShow} from "./Flavors";
+import {TagCreate, TagEdit, TagIcon, TagList, TagShow} from "./Tags";
 import { adminTheme } from "./Theme";
 import {UserCreate, UserEdit, UserIcon, UserList} from "./Users";
 import Dashboard from "./dashboard/Dashboard";
@@ -69,12 +69,13 @@ class App extends Component {
                 />
                 <Resource name="prices" list={PriceList} edit={PriceEdit} create={PriceCreate} icon={PriceIcon} />
                 <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} icon={CategoryIcon} />
-                <Resource name="kinds" list={KindList} edit={KindEdit} create={KindCreate} show={KindShow} icon={KindIcon} />
-                <Resource name="kinds-images" list={KindImageList} edit={KindImageEdit} icon={KindImageIcon} />
-                <Resource name="flavors" list={FlavorList} edit={FlavorEdit} create={FlavorCreate} icon={FlavorIcon} />
+                <Resource name="kinds" options={{ label: "Product Kinds" }} list={KindList} edit={KindEdit} create={KindCreate} show={KindShow} icon={KindIcon} />
+                <Resource name="kinds-images" options={{ label: "Product Images" }} list={KindImageList} edit={KindImageEdit} icon={KindImageIcon} />
+                <Resource name="flavors" show={FlavorShow} list={FlavorList} edit={FlavorEdit} create={FlavorCreate} icon={FlavorIcon} />
                 <Resource
                     name="tags"
                     options={{ label: "Effects" }}
+                    show={TagShow}
                     list={TagList}
                     edit={TagEdit}
                     create={TagCreate}

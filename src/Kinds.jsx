@@ -6,6 +6,7 @@ import {
     Create,
     Datagrid,
     DateField,
+    DeleteButton,
     DisabledInput,
     Edit,
     EditButton,
@@ -34,7 +35,7 @@ export const KindIcon = SmokingRooms;
 
 
 const kindRowStyle = (record, index) => ({
-    backgroundColor: record.approved === true ? '#55ff55' : record.complete === true ? '#ffcc55': 'white',
+    backgroundColor: record.approved === true ? '#eeffee' : record.complete === true ? '#fff9df': 'white',
 
 });
 
@@ -129,14 +130,15 @@ const KindShowActions = ({ basePath, data }) => (
 );
 
 const ShowSide = ({ record }) => (
-    <div style={{ width: 350, margin: "1em" }}>
+    <div style={{ flex: '0 0 17em', marginLeft: "20px", order: 1, }}>
         <Typography variant="title">Effects</Typography>
         {record && (
             <MaterialList>
                 {record.tags.map(tag => (
                     <ListItem>
-                        {tag.name}
+                        <div>{tag.name}: <i>{tag.amount}%</i></div>
                         <EditButton basePath="/kinds-to-tags" record={tag} />
+
                     </ListItem>
                 ))}
             </MaterialList>

@@ -11,7 +11,7 @@ import {
     EditButton,
     ShowButton,
     DisabledInput,
-    TextInput
+    TextInput, Show, TabbedShowLayout, Tab, ReferenceManyField, ReferenceField, DeleteButton
 } from "react-admin";
 import { Kitchen } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
@@ -31,14 +31,34 @@ const FlavorListSidePanel = () => (
     </div>
 );
 
+export const FlavorShow = props => (
+    <Show title={<FlavorTitle />} {...props}>
+        <TabbedShowLayout>
+            <Tab label="info">
+                <h2>Product kinds with tag</h2>
+                <ReferenceManyField reference="kinds-to-tags" target="flavor_id" addLabel={false}>
+                    <Datagrid>
+                        <ReferenceField source="kind_id" reference="kinds">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <EditButton />
+                        <DeleteButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+        </TabbedShowLayout>
+    </Show>
+);
+
 export const FlavorList = props => (
     <List aside={<FlavorListSidePanel />} {...props} perPage="100" filters={<FlavorFilter/>}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />
             <ColorField source="color" />
-            <EditButton basePath="/flavors" />
-            <ShowButton basePath="/flavors" />
+            <ShowButton />
+            <EditButton />
+            <DeleteButton />
         </Datagrid>
     </List>
 );

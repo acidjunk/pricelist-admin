@@ -4,13 +4,20 @@ import {
     List,
     Datagrid,
     Edit,
+    Show,
     Create,
     SimpleForm,
+    ReferenceManyField,
+    ReferenceField,
+    DeleteButton,
     Filter,
     TextField,
     EditButton,
     DisabledInput,
-    TextInput
+    ShowButton,
+    TextInput,
+    TabbedShowLayout,
+    Tab
 } from "react-admin";
 import { Mood } from "@material-ui/icons";
 export const TagIcon = Mood;
@@ -21,11 +28,34 @@ const TagFilter = props => (
     </Filter>
 );
 
+export const TagShow = props => (
+    <Show title={<TagTitle />} {...props}>
+        <TabbedShowLayout>
+            <Tab label="info">
+                <h2>Product kinds with tag</h2>
+                <ReferenceManyField reference="kinds-to-tags" target="tag_id" addLabel={false}>
+                    <Datagrid>
+                        <ReferenceField source="kind_id" reference="kinds">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <EditButton />
+                        <DeleteButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+        </TabbedShowLayout>
+    </Show>
+);
+
+
+
 export const TagList = props => (
     <List {...props} perPage="25" filters={<TagFilter />}>
         <Datagrid>
             <TextField source="name" validate={required()} />
-            <EditButton basePath="/tags" />
+            <ShowButton />
+            <EditButton />
+            <DeleteButton />
         </Datagrid>
     </List>
 );
