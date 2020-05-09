@@ -6,6 +6,7 @@ import AuthProvider from "./AuthProvider";
 import englishMessages from "./i18n/en";
 import {FlavorCreate, FlavorEdit, FlavorIcon, FlavorList} from "./Flavors";
 import {TagCreate, TagEdit, TagIcon, TagList} from "./Tags";
+import { adminTheme } from "./Theme";
 import {UserCreate, UserEdit, UserIcon, UserList} from "./Users";
 import Dashboard from "./dashboard/Dashboard";
 import {KindCreate, KindEdit, KindIcon, KindList, KindShow} from "./Kinds";
@@ -56,6 +57,7 @@ class App extends Component {
                 authProvider={AuthProvider}
                 dashboard={Dashboard}
                 i18nProvider={i18nProvider}
+                theme={adminTheme}
             >
                 <Resource
                     name="shops"
