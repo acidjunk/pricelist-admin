@@ -78,28 +78,26 @@ const ShopShowActions = ({ basePath, data }) => (
     </CardActions>
 );
 
+const ShopPricePagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+
+
 export const ShopShow = props => (
     <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
         <TabbedShowLayout>
             <Tab label="Prices">
                 <ReferenceManyField
                     reference="shops-to-prices"
-                    target="shops_id"
+                    target="shop_id"
                     addLabel={false}
-                    pagination={<Pagination />}
-                    perPage={10}
-                    sort={{ field: "id", order: "ASC" }}
+                    pagination={<ShopPricePagination />}
+                    perPage={20}
+                    sort={{ field: "category_id", order: "ASC" }}
                 >
                     <Datagrid>
-                        <NumberField source="internal_product_id" sortable={false} />
-                        <TextField source="category_name" sortable={false} />
-                        <ReferenceField source="shop_id" reference="shops" label="Shop">
-                            <TextField source="name" />
+                        <ReferenceField source="price_id" reference="prices" label="Price template">
+                            <TextField source="internal_product_id" />
                         </ReferenceField>
                         <ReferenceField source="kind_id" reference="kinds" label="Product Kind">
-                            <TextField source="name" />
-                        </ReferenceField>
-                        <ReferenceField source="price_id" reference="prices" label="Price template">
                             <TextField source="name" />
                         </ReferenceField>
                         <ReferenceField source="category_id" reference="categories" label="Category">
@@ -144,7 +142,6 @@ export const ShopShow = props => (
                         />
                         <EditButton basePath="/shops-to-prices" />
                         <DeleteButton basePath={`/shops/${props.id}/show`}/>
-                        {console.log(props)}
                     </Datagrid>
                 </ReferenceManyField>
             </Tab>

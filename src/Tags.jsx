@@ -17,7 +17,7 @@ import {
     ShowButton,
     TextInput,
     TabbedShowLayout,
-    Tab
+    Tab, Pagination
 } from "react-admin";
 import { Mood } from "@material-ui/icons";
 export const TagIcon = Mood;
@@ -27,13 +27,15 @@ const TagFilter = props => (
         <TextInput label="Search" source="q" alwaysOn />
     </Filter>
 );
+const TagPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
 
 export const TagShow = props => (
     <Show title={<TagTitle />} {...props}>
         <TabbedShowLayout>
             <Tab label="info">
-                <h2>Product kinds with tag</h2>
-                <ReferenceManyField reference="kinds-to-tags" target="tag_id" addLabel={false}>
+                <h2>Product kinds with this tag</h2>
+                <ReferenceManyField reference="kinds-to-tags" target="tag_id" addLabel={false} pagination={<TagPagination />}
+                                    perPage={20}>
                     <Datagrid>
                         <ReferenceField source="kind_id" reference="kinds">
                             <TextField source="name" />
