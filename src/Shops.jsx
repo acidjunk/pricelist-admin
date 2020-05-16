@@ -8,6 +8,7 @@ import {
     Create,
     Datagrid,
     DisabledInput,
+    DeleteButton,
     Edit,
     EditButton,
     Filter,
@@ -17,6 +18,9 @@ import {
     ListButton,
     NumberField,
     required,
+    ReferenceManyField,
+    Pagination,
+    ReferenceField,
     ReferenceInput,
     SelectInput,
     Show,
@@ -25,7 +29,7 @@ import {
     Tab,
     TabbedShowLayout,
     TextField,
-    TextInput
+    TextInput, AutocompleteInput
 } from "react-admin";
 import { Add, StoreMallDirectory } from "@material-ui/icons";
 import CardActions from "@material-ui/core/CardActions";
@@ -74,15 +78,31 @@ const ShopShowActions = ({ basePath, data }) => (
     </CardActions>
 );
 
+const ShopPricePagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+
+
 export const ShopShow = props => (
     <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
         <TabbedShowLayout>
             <Tab label="Prices">
-                <ArrayField source="prices" label="">
+                <ReferenceManyField
+                    reference="shops-to-prices"
+                    target="shop_id"
+                    addLabel={false}
+                    pagination={<ShopPricePagination />}
+                    perPage={20}
+                    sort={{ field: "category_id", order: "ASC" }}
+                >
                     <Datagrid>
-                        <NumberField source="internal_product_id" sortable={false} />
-                        <TextField source="category_name" sortable={false} />
-                        <TextField source="kind_name" sortable={false} />
+                        <ReferenceField source="price_id" reference="prices" label="Price template">
+                            <TextField source="internal_product_id" />
+                        </ReferenceField>
+                        <ReferenceField source="kind_id" reference="kinds" label="Product Kind">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <ReferenceField source="category_id" reference="categories" label="Category">
+                            <TextField source="name" />
+                        </ReferenceField>
                         <BooleanField source="active" sortable={false} />
                         <NumberField
                             source="half"
@@ -121,8 +141,9 @@ export const ShopShow = props => (
                             sortable={false}
                         />
                         <EditButton basePath="/shops-to-prices" />
+                        <DeleteButton basePath={`/shops/${props.id}/show`}/>
                     </Datagrid>
-                </ArrayField>
+                </ReferenceManyField>
             </Tab>
             <Tab label="Shop Info" path="info">
                 <TextField source="name" />
@@ -130,7 +151,6 @@ export const ShopShow = props => (
                 <Labeled label="Logo">
                     <img src={`https://www.prijslijst.info/static/uploaded/shops/${props.id}.png`} />
                 </Labeled>
-                {console.log(props)}
             </Tab>
         </TabbedShowLayout>
     </Show>

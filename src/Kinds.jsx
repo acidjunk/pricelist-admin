@@ -185,10 +185,10 @@ export const KindEdit = props => (
     <Edit title={<KindTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
-            <TextInput source="short_description_nl" />
+            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="short_description_nl" fullWidth />
             <LongTextInput source="description_nl" />
-            <TextInput source="short_description_en" />
+            <TextInput source="short_description_en" fullWidth />
             <LongTextInput source="description_en" />
             <BooleanInput source="c" />
             <BooleanInput source="h" />
@@ -202,10 +202,10 @@ export const KindEdit = props => (
 export const KindCreate = props => (
     <Create title="Create a Kind" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
-            <TextInput source="short_description_nl" />
+            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="short_description_nl" fullWidth />
             <LongTextInput source="description_nl" />
-            <TextInput source="short_description_en" />
+            <TextInput source="short_description_en" fullWidth />
             <LongTextInput source="description_en" />
             <BooleanInput source="c" />
             <BooleanInput source="h" />

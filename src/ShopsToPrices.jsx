@@ -46,6 +46,7 @@ export const ShopsToPricesEdit = (props) => (
             {/*>*/}
             {/*    <SelectInput optionText="category_and_shop" />*/}
             {/*</ReferenceInput>*/}
+
             <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
                 <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>

@@ -11,7 +11,7 @@ import {
     EditButton,
     ShowButton,
     DisabledInput,
-    TextInput, Show, TabbedShowLayout, Tab, ReferenceManyField, ReferenceField, DeleteButton
+    TextInput, Show, TabbedShowLayout, Tab, ReferenceManyField, ReferenceField, DeleteButton, Pagination
 } from "react-admin";
 import { Kitchen } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
@@ -24,6 +24,8 @@ const FlavorFilter = props => (
     </Filter>
 );
 
+const FlavorPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+
 const FlavorListSidePanel = () => (
     <div style={{ width: 200, margin: "1em" }}>
         <Typography variant="title">Using icons?</Typography>
@@ -35,8 +37,9 @@ export const FlavorShow = props => (
     <Show title={<FlavorTitle />} {...props}>
         <TabbedShowLayout>
             <Tab label="info">
-                <h2>Product kinds with tag</h2>
-                <ReferenceManyField reference="kinds-to-tags" target="flavor_id" addLabel={false}>
+                <h2>Product kinds with this Flavor</h2>
+                <ReferenceManyField reference="kinds-to-flavors" target="flavor_id" addLabel={false}                     pagination={<FlavorPagination />}
+                                    perPage={20}>
                     <Datagrid>
                         <ReferenceField source="kind_id" reference="kinds">
                             <TextField source="name" />

@@ -48,7 +48,7 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
         <CardIcon Icon={KindIcon} bgColor="#4caf50" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.new_kinds')}
+                {translate('pos.dashboard.modified_kinds')}
             </Typography>
             <Typography
                 variant="headline"
