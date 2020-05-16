@@ -12,8 +12,8 @@ export default {
             dark: 'Dark',
         },
         dashboard: {
-            new_users: 'New Users',
-            new_kinds: 'New Product Kinds',
+            users: 'Users',
+            modified_kinds: 'Modified Product Kinds',
             shops: 'Shops',
 
         },

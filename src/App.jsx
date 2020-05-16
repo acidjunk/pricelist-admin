@@ -67,7 +67,7 @@ class App extends Component {
                     show={ShopShow}
                     icon={ShopIcon}
                 />
-                <Resource name="prices" list={PriceList} edit={PriceEdit} create={PriceCreate} icon={PriceIcon} />
+                <Resource name="prices" options={{ label: "Price templates" }} list={PriceList} edit={PriceEdit} create={PriceCreate} icon={PriceIcon} />
                 <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} icon={CategoryIcon} />
                 <Resource name="kinds" options={{ label: "Product Kinds" }} list={KindList} edit={KindEdit} create={KindCreate} show={KindShow} icon={KindIcon} />
                 <Resource name="kinds-images" options={{ label: "Product Images" }} list={KindImageList} edit={KindImageEdit} icon={KindImageIcon} />

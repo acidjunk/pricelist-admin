@@ -64,10 +64,10 @@ class Dashboard extends Component {
             {
                 filter: {
                     // has_ordered: true,
-                    // created_at_gte: aMonthAgo.toISOString(),
+                    modified_at_gte: aMonthAgo.toISOString(),
                 },
                 sort: { field: 'created_at', order: 'DESC' },
-                pagination: { page: 1, perPage: 100 },
+                pagination: { page: 1, perPage: 20 },
             }
         );
         this.setState({
@@ -85,8 +85,8 @@ class Dashboard extends Component {
             'users',
             {
                 filter: {
-                    has_ordered: true,
-                    created_at_gte: aMonthAgo.toISOString(),
+                    // has_ordered: true,
+                    // created_at_gte: aMonthAgo.toISOString(),
                 },
                 sort: { field: 'created_at', order: 'DESC' },
                 pagination: { page: 1, perPage: 100 },

@@ -45,7 +45,7 @@ const NewUsers = ({ users = [], nb, translate, classes }) => (
         <CardIcon Icon={CustomerIcon} bgColor="#4caf50" />
         <Card className={classes.card}>
             <Typography className={classes.title} color="textSecondary">
-                {translate('pos.dashboard.new_users')}
+                {translate('pos.dashboard.users')}
             </Typography>
             <Typography
                 variant="headline"
@@ -64,11 +64,12 @@ const NewUsers = ({ users = [], nb, translate, classes }) => (
                         key={record.id}
                     >
                         {/*<Avatar*/}
-                            {/*src={`${record.avatar}?size=32x32`}*/}
-                            {/*className={classes.avatar}*/}
+                        {/*    src={`${record.avatar}?size=32x32`}*/}
+                        {/*    className={classes.avatar}*/}
                         {/*/>*/}
                         <ListItemText
-                            primary={`${record.email}`}
+                            primary={`${record.first_name} ${record.last_name}`}
+                            secondary={`${record.email}`}
                             className={classes.listItemText}
                         />
                     </ListItem>
