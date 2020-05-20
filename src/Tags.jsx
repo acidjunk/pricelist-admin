@@ -37,7 +37,7 @@ export const TagShow = props => (
                 <ReferenceManyField reference="kinds-to-tags" target="tag_id" addLabel={false} pagination={<TagPagination />}
                                     perPage={20}>
                     <Datagrid>
-                        <ReferenceField source="kind_id" reference="kinds">
+                        <ReferenceField label="Product Kind" source="kind_id" reference="kinds" link="show">
                             <TextField source="name" />
                         </ReferenceField>
                         <EditButton />

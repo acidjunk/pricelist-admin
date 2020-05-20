@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* Style markdown text from Markdown field */
+p {
+  margin-top: 5px;
+}
+

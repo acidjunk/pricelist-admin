@@ -41,7 +41,7 @@ export const FlavorShow = props => (
                 <ReferenceManyField reference="kinds-to-flavors" target="flavor_id" addLabel={false}                     pagination={<FlavorPagination />}
                                     perPage={20}>
                     <Datagrid>
-                        <ReferenceField source="kind_id" reference="kinds">
+                        <ReferenceField label="Product Kind" source="kind_id" reference="kinds" link="show">
                             <TextField source="name" />
                         </ReferenceField>
                         <EditButton />

@@ -63,7 +63,7 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
                     <React.Fragment key={record.id}>
                     <ListItem
                         button
-                        to={`/kinds/${record.id}`}
+                        to={`/kinds/${record.id}/show`}
                         component={Link}
                         key={record.id}
                     >

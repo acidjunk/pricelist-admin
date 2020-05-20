@@ -30,6 +30,8 @@ import Typography from "@material-ui/core/Typography";
 import ListItem from "@material-ui/core/ListItem";
 import MaterialList from "@material-ui/core/List";
 import CardActions from "@material-ui/core/CardActions";
+import MarkdownInput from 'ra-input-markdown';
+import ReactMarkdown  from 'react-markdown/with-html';
 
 export const KindIcon = SmokingRooms;
 
@@ -38,6 +40,18 @@ const kindRowStyle = (record, index) => ({
     backgroundColor: record.approved === true ? '#eeffee' : record.complete === true ? '#fff9df': 'white',
 
 });
+
+const MarkDownField = ({ record, source }) => {
+    if (!record[source]) {
+        return null;
+    }
+    console.log(record[source]);
+
+    return <ReactMarkdown source={record[source]} />
+};
+MarkDownField.defaultProps = { addLabel: true };
+
+
 
 const KindFilter = props => (
     <Filter {...props}>
@@ -164,9 +178,9 @@ export const KindShow = props => (
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="short_description_nl" />
-            <TextField source="description_nl" />
+            <MarkDownField source="description_nl" />
             <TextField source="short_description_en" />
-            <TextField source="description_en" />
+            <MarkDownField source="description_en" />
             <BooleanField source="c" />
             <BooleanField source="h" />
             <BooleanField source="i" />
@@ -187,9 +201,9 @@ export const KindEdit = props => (
             <DisabledInput source="id" />
             <TextInput source="name" fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
-            <LongTextInput source="description_nl" />
+            <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
-            <LongTextInput source="description_en" />
+            <MarkdownInput source="description_en" />
             <BooleanInput source="c" />
             <BooleanInput source="h" />
             <BooleanInput source="i" />
