@@ -1,7 +1,10 @@
-0.9.2 (unreleased)
+0.9.3
 - Inline edit for Product Kinds
 - Bulk actions for approve
+
+0.9.2 
 - Admin for Orders and Strains tables
+- Markdown support in description fields (unactivated, test for myself)
 
 0.9.1
 - Refactored Shops-To-Prices admin functionality: easier delete and navigation to Product Kinds + Categories

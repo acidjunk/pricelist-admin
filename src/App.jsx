@@ -19,6 +19,7 @@ import {ShopsToPricesCreate, ShopsToPricesEdit} from "./ShopsToPrices";
 import {CategoryCreate, CategoryEdit, CategoryIcon, CategoryList} from "./Categories";
 import {KindImageEdit, KindImageIcon, KindImageList} from "./KindsImages";
 import addUploadFeature from "./dataProvider/decorator";
+import {StrainCreate, StrainEdit, StrainIcon, StrainList, StrainShow} from "./Strains";
 
 
 
@@ -71,6 +72,7 @@ class App extends Component {
                 <Resource name="categories" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} icon={CategoryIcon} />
                 <Resource name="kinds" options={{ label: "Product Kinds" }} list={KindList} edit={KindEdit} create={KindCreate} show={KindShow} icon={KindIcon} />
                 <Resource name="kinds-images" options={{ label: "Product Images" }} list={KindImageList} edit={KindImageEdit} icon={KindImageIcon} />
+                <Resource name="strains" show={StrainShow} list={StrainList} edit={StrainEdit} create={StrainCreate} icon={StrainIcon} />
                 <Resource name="flavors" show={FlavorShow} list={FlavorList} edit={FlavorEdit} create={FlavorCreate} icon={FlavorIcon} />
                 <Resource
                     name="tags"
