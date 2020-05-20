@@ -1,20 +1,27 @@
+import Typography from "@material-ui/core/Typography";
+import { CallSplit } from "@material-ui/icons";
 import React from "react";
 import {
-    required,
-    List,
-    Datagrid,
-    Edit,
     Create,
-    SimpleForm,
-    Filter,
-    TextField,
-    EditButton,
-    ShowButton,
+    Datagrid,
+    DeleteButton,
     DisabledInput,
-    TextInput, Show, TabbedShowLayout, Tab, ReferenceManyField, ReferenceField, DeleteButton, Pagination
+    Edit,
+    EditButton,
+    Filter,
+    List,
+    Pagination,
+    ReferenceField,
+    ReferenceManyField,
+    Show,
+    ShowButton,
+    SimpleForm,
+    Tab,
+    TabbedShowLayout,
+    TextField,
+    TextInput,
+    required
 } from "react-admin";
-import { CallSplit } from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography";
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const StrainIcon = CallSplit;
 
@@ -47,7 +54,7 @@ export const StrainShow = props => (
 );
 
 export const StrainList = props => (
-    <List {...props} perPage="100" filters={<StrainFilter/>}>
+    <List {...props} perPage="100" filters={<StrainFilter />}>
         <Datagrid>
             <TextField source="name" />
             <ShowButton />

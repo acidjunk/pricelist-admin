@@ -1,25 +1,26 @@
+import { Mood } from "@material-ui/icons";
 import React from "react";
 import {
-    required,
-    List,
-    Datagrid,
-    Edit,
-    Show,
     Create,
-    SimpleForm,
-    ReferenceManyField,
-    ReferenceField,
+    Datagrid,
     DeleteButton,
-    Filter,
-    TextField,
-    EditButton,
     DisabledInput,
+    Edit,
+    EditButton,
+    Filter,
+    List,
+    Pagination,
+    ReferenceField,
+    ReferenceManyField,
+    Show,
     ShowButton,
-    TextInput,
+    SimpleForm,
+    Tab,
     TabbedShowLayout,
-    Tab, Pagination
+    TextField,
+    TextInput,
+    required
 } from "react-admin";
-import { Mood } from "@material-ui/icons";
 export const TagIcon = Mood;
 
 const TagFilter = props => (
@@ -34,10 +35,15 @@ export const TagShow = props => (
         <TabbedShowLayout>
             <Tab label="info">
                 <h2>Product kinds with this tag</h2>
-                <ReferenceManyField reference="kinds-to-tags" target="tag_id" addLabel={false} pagination={<TagPagination />}
-                                    perPage={20}>
+                <ReferenceManyField
+                    reference="kinds-to-tags"
+                    target="tag_id"
+                    addLabel={false}
+                    pagination={<TagPagination />}
+                    perPage={20}
+                >
                     <Datagrid>
-                        <ReferenceField label="Product Kind" source="kind_id" reference="kinds" link="show">
+                        <ReferenceField label="Product Kind" source="kind_id" reference="kinds" linkType="show">
                             <TextField source="name" />
                         </ReferenceField>
                         <EditButton />
@@ -48,8 +54,6 @@ export const TagShow = props => (
         </TabbedShowLayout>
     </Show>
 );
-
-
 
 export const TagList = props => (
     <List {...props} perPage="25" filters={<TagFilter />}>

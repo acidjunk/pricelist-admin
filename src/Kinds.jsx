@@ -1,6 +1,14 @@
+import CardActions from "@material-ui/core/CardActions";
+import MaterialList from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Typography from "@material-ui/core/Typography";
+import { Add, SmokingRooms } from "@material-ui/icons";
+import MarkdownInput from "ra-input-markdown";
 import React from "react";
 import {
     ArrayField,
+    BooleanField,
+    BooleanInput,
     Button,
     ChipField,
     Create,
@@ -15,43 +23,31 @@ import {
     List,
     ListButton,
     LongTextInput,
-    BooleanField,
-    BooleanInput,
-    required,
+    Pagination,
     Show,
     SimpleForm,
     SimpleShowLayout,
-    Pagination,
     TextField,
-    TextInput
+    TextInput,
+    required
 } from "react-admin";
-import { Add, SmokingRooms } from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography";
-import ListItem from "@material-ui/core/ListItem";
-import MaterialList from "@material-ui/core/List";
-import CardActions from "@material-ui/core/CardActions";
-import MarkdownInput from 'ra-input-markdown';
-import ReactMarkdown  from 'react-markdown/with-html';
+import ReactMarkdown from "react-markdown/with-html";
 
 export const KindIcon = SmokingRooms;
 
-
 const kindRowStyle = (record, index) => ({
-    backgroundColor: record.approved === true ? '#eeffee' : record.complete === true ? '#fff9df': 'white',
-
+    backgroundColor: record.approved === true ? "#eeffee" : record.complete === true ? "#fff9df" : "white"
 });
 
-const MarkDownField = ({ record, source }) => {
+export const MarkDownField = ({ record, source }) => {
     if (!record[source]) {
         return null;
     }
     console.log(record[source]);
 
-    return <ReactMarkdown source={record[source]} />
+    return <ReactMarkdown source={record[source]} />;
 };
 MarkDownField.defaultProps = { addLabel: true };
-
-
 
 const KindFilter = props => (
     <Filter {...props}>
@@ -144,22 +140,23 @@ const KindShowActions = ({ basePath, data }) => (
 );
 
 const ShowSide = ({ record }) => (
-    <div style={{ flex: '0 0 17em', marginLeft: "20px", order: 1, }}>
+    <div style={{ flex: "0 0 17em", marginLeft: "20px", order: 1 }}>
         <Typography variant="title">Effects</Typography>
-        {record && (
+        {record && record.tags && (
             <MaterialList>
                 {record.tags.map(tag => (
                     <ListItem>
-                        <div>{tag.name}: <i>{tag.amount}%</i></div>
+                        <div>
+                            {tag.name}: <i>{tag.amount}%</i>
+                        </div>
                         <EditButton basePath="/kinds-to-tags" record={tag} />
-
                     </ListItem>
                 ))}
             </MaterialList>
         )}
         {/*<CreateButton basePath="/kinds-to-tags" record={tag}/>*/}
         <Typography variant="title">Flavors</Typography>
-        {record && (
+        {record && record.flavors && (
             <MaterialList>
                 {record.flavors.map(flavor => (
                     <ListItem>
@@ -196,8 +193,8 @@ export const KindShow = props => (
 );
 
 export const KindEdit = props => (
-    <Edit title={<KindTitle />} {...props}>
-        <SimpleForm>
+    <Edit title={<KindTitle />} {...props} redirect="show">
+        <SimpleForm redirect="show">
             <DisabledInput source="id" />
             <TextInput source="name" fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
@@ -214,13 +211,13 @@ export const KindEdit = props => (
 );
 
 export const KindCreate = props => (
-    <Create title="Create a Kind" {...props}>
-        <SimpleForm>
+    <Create title="Create a Kind" {...props} redirect="show">
+        <SimpleForm redirect="show">
             <TextInput source="name" fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
-            <LongTextInput source="description_nl" />
+            <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
-            <LongTextInput source="description_en" />
+            <MarkdownInput source="description_en" />
             <BooleanInput source="c" />
             <BooleanInput source="h" />
             <BooleanInput source="i" />

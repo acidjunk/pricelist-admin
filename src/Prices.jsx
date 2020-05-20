@@ -1,6 +1,6 @@
-import React from 'react';
+import { Toc } from "@material-ui/icons";
+import React from "react";
 import {
-    required,
     Create,
     Datagrid,
     DisabledInput,
@@ -11,38 +11,38 @@ import {
     NumberField,
     NumberInput,
     SimpleForm,
-    TextInput
-} from 'react-admin';
-import {Toc} from "@material-ui/icons";
+    TextInput,
+    required
+} from "react-admin";
 
 export const PriceIcon = Toc;
 
-const PriceFilter = (props) => (
+const PriceFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
     </Filter>
 );
 
-export const PriceList = (props) => (
-    <List {...props} perPage="25" sort={{field: "internal_product_id", order: "ASC"}} filters={<PriceFilter/>}>
+export const PriceList = props => (
+    <List {...props} perPage="25" sort={{ field: "internal_product_id", order: "ASC" }} filters={<PriceFilter />}>
         <Datagrid>
             <NumberField source="internal_product_id" />
-            <NumberField source="half" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <NumberField source="one" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <NumberField source="two_five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <NumberField source="five" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <NumberField source="joint" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <NumberField source="piece" locales="nl-NL" options={{ style: 'currency', currency: 'EUR' }}/>
-            <EditButton basePath="/prices"/>
+            <NumberField source="half" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <NumberField source="one" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <NumberField source="two_five" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <NumberField source="five" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <NumberField source="joint" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <NumberField source="piece" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
+            <EditButton basePath="/prices" />
         </Datagrid>
     </List>
 );
 
 const PriceTitle = ({ record }) => {
-    return <span>Price Nr: {record ? `"${record.internal_product_id}"` : ''}</span>;
+    return <span>Price Nr: {record ? `"${record.internal_product_id}"` : ""}</span>;
 };
 
-export const PriceEdit = (props) => (
+export const PriceEdit = props => (
     <Edit title={<PriceTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
@@ -57,7 +57,7 @@ export const PriceEdit = (props) => (
     </Edit>
 );
 
-export const PriceCreate = (props) => (
+export const PriceCreate = props => (
     <Create title="Create a Price" {...props}>
         <SimpleForm>
             <NumberInput source="internal_product_id" validate={required()} />

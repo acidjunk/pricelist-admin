@@ -26,7 +26,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy_github": "gh-pages -d build",
-    "deploy": "yarn build && aws s3 sync build/ s3://admin.prijslijst.info --delete"
+    "deploy": "yarn build && aws s3 sync build/ s3://admin.prijslijst.info --delete",
+    "prettier": "prettier -c '{**/*.{js,jsx,scss,md},public/**/*.html}'",
+    "prettier-fix": "prettier --write '{**/*.{js,jsx,scss,md},public/**/*.html}'"
   },
   "eslintConfig": {
     "extends": "react-app"

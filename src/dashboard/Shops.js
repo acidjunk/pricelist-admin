@@ -1,26 +1,26 @@
-import React from "react";
-import compose from "recompose/compose";
+import { makeStyles } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
+import Divider from "@material-ui/core/Divider";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
+import ListSubheader from "@material-ui/core/ListSubheader";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import CustomerIcon from "@material-ui/icons/PersonAdd";
-import Divider from "@material-ui/core/Divider";
-import { Link } from "react-router-dom";
-import { translate } from "react-admin";
-
-import CardIcon from "./CardIcon";
-import { makeStyles } from "@material-ui/core";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
+import CustomerIcon from "@material-ui/icons/PersonAdd";
+import React from "react";
+import { translate } from "react-admin";
+import { Link } from "react-router-dom";
+import compose from "recompose/compose";
+
 import { ShopIcon } from "../Shops";
+import CardIcon from "./CardIcon";
 
 const styles = theme => ({
     main: {
@@ -86,9 +86,6 @@ const Shops = ({ shops = [], nb, translate, classes }) => (
     </div>
 );
 
-const enhance = compose(
-    withStyles(styles),
-    translate
-);
+const enhance = compose(withStyles(styles), translate);
 
 export default enhance(Shops);

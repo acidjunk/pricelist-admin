@@ -1,19 +1,18 @@
-import React from "react";
+import { Link } from "@material-ui/icons";
 import { parse } from "query-string";
-
+import React from "react";
 import {
+    AutocompleteInput,
     BooleanInput,
     Create,
     DisabledInput,
     Edit,
     ReferenceInput,
-    required,
-    AutocompleteInput,
     SelectInput,
     SimpleForm,
-    TextField
+    TextField,
+    required
 } from "react-admin";
-import { Link } from "@material-ui/icons";
 
 export const ShopsToPricesIcon = Link;
 
@@ -23,7 +22,7 @@ const ShopsToPricesTitle = ({ record }) => {
 
 const redirect = (basePath, id, data) => `/shops/${data.shop_id}/show`;
 
-export const ShopsToPricesEdit = (props) => (
+export const ShopsToPricesEdit = props => (
     <Edit title={<ShopsToPricesTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
