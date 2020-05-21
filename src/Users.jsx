@@ -1,31 +1,31 @@
+import { AccountCircle } from "@material-ui/icons";
 import React from "react";
 import {
-    required,
-    List,
-    Datagrid,
-    Edit,
     Create,
-    SimpleForm,
+    Datagrid,
     DateField,
-    Filter,
-    TextField,
-    EditButton,
+    DateInput,
     DisabledInput,
-    TextInput,
+    Edit,
+    EditButton,
+    Filter,
+    List,
     LongTextInput,
-    DateInput
+    SimpleForm,
+    TextField,
+    TextInput,
+    required
 } from "react-admin";
-import { AccountCircle } from "@material-ui/icons";
 export const UserIcon = AccountCircle;
 
-const UserFilter = (props) => (
+const UserFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
     </Filter>
 );
 
 export const UserList = props => (
-    <List {...props} filters={<UserFilter/>}>
+    <List {...props} filters={<UserFilter />}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="username" />

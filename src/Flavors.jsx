@@ -1,20 +1,27 @@
+import Typography from "@material-ui/core/Typography";
+import { Kitchen } from "@material-ui/icons";
 import React from "react";
 import {
-    required,
-    List,
-    Datagrid,
-    Edit,
     Create,
-    SimpleForm,
-    Filter,
-    TextField,
-    EditButton,
-    ShowButton,
+    Datagrid,
+    DeleteButton,
     DisabledInput,
-    TextInput, Show, TabbedShowLayout, Tab, ReferenceManyField, ReferenceField, DeleteButton, Pagination
+    Edit,
+    EditButton,
+    Filter,
+    List,
+    Pagination,
+    ReferenceField,
+    ReferenceManyField,
+    Show,
+    ShowButton,
+    SimpleForm,
+    Tab,
+    TabbedShowLayout,
+    TextField,
+    TextInput,
+    required
 } from "react-admin";
-import { Kitchen } from "@material-ui/icons";
-import Typography from "@material-ui/core/Typography";
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const FlavorIcon = Kitchen;
 
@@ -38,10 +45,15 @@ export const FlavorShow = props => (
         <TabbedShowLayout>
             <Tab label="info">
                 <h2>Product kinds with this Flavor</h2>
-                <ReferenceManyField reference="kinds-to-flavors" target="flavor_id" addLabel={false}                     pagination={<FlavorPagination />}
-                                    perPage={20}>
+                <ReferenceManyField
+                    reference="kinds-to-flavors"
+                    target="flavor_id"
+                    addLabel={false}
+                    pagination={<FlavorPagination />}
+                    perPage={20}
+                >
                     <Datagrid>
-                        <ReferenceField source="kind_id" reference="kinds">
+                        <ReferenceField label="Product Kind" source="kind_id" reference="kinds" linkType="show">
                             <TextField source="name" />
                         </ReferenceField>
                         <EditButton />
@@ -54,7 +66,7 @@ export const FlavorShow = props => (
 );
 
 export const FlavorList = props => (
-    <List aside={<FlavorListSidePanel />} {...props} perPage="100" filters={<FlavorFilter/>}>
+    <List aside={<FlavorListSidePanel />} {...props} perPage="100" filters={<FlavorFilter />}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />

@@ -1,14 +1,16 @@
-import React from "react";
+import CardActions from "@material-ui/core/CardActions";
+import { Add, StoreMallDirectory } from "@material-ui/icons";
 import { parse } from "query-string";
-
+import React from "react";
 import {
     ArrayField,
+    AutocompleteInput,
     BooleanField,
     Button,
     Create,
     Datagrid,
-    DisabledInput,
     DeleteButton,
+    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -17,11 +19,10 @@ import {
     List,
     ListButton,
     NumberField,
-    required,
-    ReferenceManyField,
     Pagination,
     ReferenceField,
     ReferenceInput,
+    ReferenceManyField,
     SelectInput,
     Show,
     ShowButton,
@@ -29,10 +30,9 @@ import {
     Tab,
     TabbedShowLayout,
     TextField,
-    TextInput, AutocompleteInput
+    TextInput,
+    required
 } from "react-admin";
-import { Add, StoreMallDirectory } from "@material-ui/icons";
-import CardActions from "@material-ui/core/CardActions";
 
 export const ShopIcon = StoreMallDirectory;
 
@@ -43,7 +43,7 @@ const ShopFilter = props => (
 );
 
 export const ShopList = props => (
-    <List {...props} filters={<ShopFilter/>}>
+    <List {...props} filters={<ShopFilter />}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="description" />
@@ -79,7 +79,6 @@ const ShopShowActions = ({ basePath, data }) => (
 );
 
 const ShopPricePagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
-
 
 export const ShopShow = props => (
     <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
@@ -141,7 +140,7 @@ export const ShopShow = props => (
                             sortable={false}
                         />
                         <EditButton basePath="/shops-to-prices" />
-                        <DeleteButton basePath={`/shops/${props.id}/show`}/>
+                        <DeleteButton basePath={`/shops/${props.id}/show`} />
                     </Datagrid>
                 </ReferenceManyField>
             </Tab>

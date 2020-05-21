@@ -3,7 +3,7 @@ import simpleRestProvider from "ra-data-simple-rest";
 const pricelistDataProvider = {
     ...simpleRestProvider,
     update: (resource, params) => {
-        if (resource !== 'kind-images' || !params.data.image_1) {
+        if (resource !== "kind-images" || !params.data.image_1) {
             // fallback to the default implementation
             return simpleRestProvider.update(resource, params);
         }
@@ -12,19 +12,15 @@ const pricelistDataProvider = {
          * the `picture` sent property, with `src` and `title` attributes.
          */
 
-            // Freshly dropped pictures are File objects and must be converted to base64 strings
-        const newPictures = params.data.image_1.filter(
-            p => p.rawFile instanceof File
-            );
-        const formerPictures = params.data.image_1.filter(
-            p => !(p.rawFile instanceof File)
-        );
+        // Freshly dropped pictures are File objects and must be converted to base64 strings
+        const newPictures = params.data.image_1.filter(p => p.rawFile instanceof File);
+        const formerPictures = params.data.image_1.filter(p => !(p.rawFile instanceof File));
 
         return Promise.all(newPictures.map(convertFileToBase64))
             .then(base64Pictures =>
                 base64Pictures.map(picture64 => ({
                     src: picture64,
-                    title: `${params.data.title}`,
+                    title: `${params.data.title}`
                 }))
             )
             .then(transformedNewPictures =>
@@ -32,16 +28,12 @@ const pricelistDataProvider = {
                     ...params,
                     data: {
                         ...params.data,
-                        image_1: [
-                            ...transformedNewPictures,
-                            ...formerPictures,
-                        ],
-                    },
+                        image_1: [...transformedNewPictures, ...formerPictures]
+                    }
                 })
             );
-    },
+    }
 };
-
 
 /**
  * Convert a `File` object returned by the upload input into a base 64 string.

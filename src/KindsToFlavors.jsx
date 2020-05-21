@@ -1,11 +1,9 @@
+import { Link } from "@material-ui/icons";
+import { parse } from "query-string";
 import React from "react";
-import {parse} from "query-string";
-
-import {required, Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm} from "react-admin";
-import {Link} from "@material-ui/icons";
+import { Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm, required } from "react-admin";
 
 export const KindsToFlavorsIcon = Link;
-
 
 const KindsToFlavorsTitle = ({ record }) => {
     return <span>KindsToFlavors {record ? `"${record.id}"` : ""}</span>;
@@ -24,20 +22,19 @@ export const KindsToFlavorsEdit = props => (
     </Edit>
 );
 
-
 export const KindsToFlavorsCreate = props => {
     const { kind_id } = parse(props.location.search);
 
     return (
-    <Create title="Create a KindsToFlavors" {...props}>
-        <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
-            <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-            <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-        </SimpleForm>
-    </Create>
-    )
+        <Create title="Create a KindsToFlavors" {...props}>
+            <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
+                <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
+                    <SelectInput optionText="name" />
+                </ReferenceInput>
+                <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
+                    <SelectInput optionText="name" />
+                </ReferenceInput>
+            </SimpleForm>
+        </Create>
+    );
 };
