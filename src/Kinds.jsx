@@ -24,6 +24,8 @@ import {
     ListButton,
     LongTextInput,
     Pagination,
+    ReferenceInput,
+    SelectInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
@@ -73,8 +75,8 @@ export const KindList = props => (
     >
         <Datagrid rowClick="show" rowStyle={kindRowStyle}>
             <TextField source="name" />
-            <TextField source="short_description_nl" />
-            <TextField source="short_description_en" />
+            <TextField source="strain1_name" label="Strain 1" />
+            <TextField source="strain2_name" label="Strain 2" />
             <BooleanField source="c" />
             <BooleanField source="h" />
             <BooleanField source="i" />
@@ -174,6 +176,8 @@ export const KindShow = props => (
         <SimpleShowLayout>
             <TextField source="id" />
             <TextField source="name" />
+            <TextField source="strain1_name" label="Strain 1" sortable={false} />
+            <TextField source="strain2_name" label="Strain 2" sortable={false} />
             <TextField source="short_description_nl" />
             <MarkDownField source="description_nl" />
             <TextField source="short_description_en" />
@@ -197,6 +201,12 @@ export const KindEdit = props => (
         <SimpleForm redirect="show">
             <DisabledInput source="id" />
             <TextInput source="name" fullWidth validate={required()} />
+            <ReferenceInput source="strain1_id" reference="strains" perPage={100}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
+            <ReferenceInput source="strain2_id" reference="strains" perPage={100}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
@@ -214,6 +224,12 @@ export const KindCreate = props => (
     <Create title="Create a Kind" {...props} redirect="show">
         <SimpleForm redirect="show">
             <TextInput source="name" fullWidth validate={required()} />
+            <ReferenceInput source="strain1_id" reference="strains" perPage={100}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
+            <ReferenceInput source="strain2_id" reference="strains" perPage={100}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />

@@ -17,3 +17,8 @@ p {
   margin-top: 5px;
 }
 
+/* Style markdown textarea / font from Markdown text editor */
+textarea {
+  font-size: 1em;
+}
+

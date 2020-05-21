@@ -1,14 +1,19 @@
-0.9.3
+0.9.3 (unreleased)
 
 -   Inline edit for Product Kinds
 -   Bulk actions for approve
+-   Admin for Orders
 
-    0.9.2
+0.9.2
 
--   Admin for Orders and Strains tables
--   Markdown support in description fields (unactivated, test for myself)
+-   Fixed redirects for ProductKind upon edit/create: always redirect to ShowView
+-   Markdown support in description fields of ProductKind and on Dashboard
+-   Styling of Form labels
+-   Navigate to ProductKind Show from Flavor/Effects views and from Dashboard
+-   Added Strain info + editor to ProductKinds
+-   Added CRUD views for Strains
 
-    0.9.1
+0.9.1
 
 -   Refactored Shops-To-Prices admin functionality: easier delete and navigation to Product Kinds + Categories
 -   Show uploaded picture via serverless image handler (re-deployed to FrankFurt)
@@ -19,7 +24,7 @@
 -   Improved navigation from Flavors and Effects to Product Kinds that use it
 -   Fixed users on Dasboard and used filters to show last 20 modified products
 
-    0.9.0
+0.9.0
 
 -   Added "Green" theme
 -   Added ability to delete: kinds, flavors, effects, shops, categories and prices from shops

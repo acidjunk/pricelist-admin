@@ -8,6 +8,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { translate } from "react-admin";
+import ReactMarkdown from "react-markdown/with-html";
 import { Link } from "react-router-dom";
 import compose from "recompose/compose";
 
@@ -66,15 +67,25 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
                                 primary={`${record.name}`}
                                 secondary={
                                     <React.Fragment>
+                                        <b>NL</b>
                                         <Typography
-                                            component="span"
+                                            component="div"
                                             variant="body2"
                                             className={classes.inline}
                                             color="textPrimary"
                                         >
-                                            {record.short_description_en}
+                                            {record.description_nl && <ReactMarkdown source={record.description_nl} />}
                                         </Typography>
-                                        {` - ${record.description_en ? record.description_en : "N/A"}`}
+
+                                        <b>EN</b>
+                                        <Typography
+                                            component="div"
+                                            variant="body2"
+                                            className={classes.inline}
+                                            color="textPrimary"
+                                        >
+                                            {record.description_en && <ReactMarkdown source={record.description_en} />}
+                                        </Typography>
                                     </React.Fragment>
                                 }
                                 className={classes.listItemText}

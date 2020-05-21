@@ -57,7 +57,6 @@ export const StrainList = props => (
     <List {...props} perPage="100" filters={<StrainFilter />}>
         <Datagrid>
             <TextField source="name" />
-            <ShowButton />
             <EditButton />
             <DeleteButton />
         </Datagrid>
@@ -69,8 +68,8 @@ const StrainTitle = ({ record }) => {
 };
 
 export const StrainEdit = props => (
-    <Edit title={<StrainTitle />} {...props}>
-        <SimpleForm>
+    <Edit title={<StrainTitle />} {...props} redirect="list">
+        <SimpleForm redirect="list">
             <DisabledInput source="id" />
             <TextInput source="name" validate={required()} />
         </SimpleForm>
@@ -78,8 +77,8 @@ export const StrainEdit = props => (
 );
 
 export const StrainCreate = props => (
-    <Create title="Create a Strain" {...props}>
-        <SimpleForm>
+    <Create title="Create a Strain" {...props} redirect="list">
+        <SimpleForm redirect="list">
             <TextInput source="name" validate={required()} />
         </SimpleForm>
     </Create>

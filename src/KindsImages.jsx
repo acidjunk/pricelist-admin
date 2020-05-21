@@ -62,8 +62,8 @@ const KindImageTitle = ({ record }) => {
 };
 
 export const KindImageEdit = props => (
-    <Edit {...props} undoable={false}>
-        <TabbedForm>
+    <Edit {...props} undoable={false} redirect="edit">
+        <TabbedForm redirect="edit">
             <FormTab label="lister image">
                 <TextField source="image_1" />
                 <ProductImageField source="image_1" />
