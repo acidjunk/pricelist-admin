@@ -2,7 +2,8 @@
 
 -   Inline edit for Product Kinds
 -   Bulk actions for approve
--   Admin for Orders
+-   Admin for Orders, showing all orders from all shops
+-   New tab for Shops that shows orders for that shop
 
 0.9.2
 

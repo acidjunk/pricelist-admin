@@ -1,4 +1,4 @@
-import { Toc } from "@material-ui/icons";
+import { AttachMoney } from "@material-ui/icons";
 import React from "react";
 import {
     Create,
@@ -15,7 +15,7 @@ import {
     required
 } from "react-admin";
 
-export const PriceIcon = Toc;
+export const PriceIcon = AttachMoney;
 
 const PriceFilter = props => (
     <Filter {...props}>

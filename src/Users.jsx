@@ -33,7 +33,7 @@ export const UserList = props => (
             <TextField source="first_name" />
             <TextField source="last_name" />
             <DateField source="created_at" />
-            <TextField source="roles" />
+            <TextField source="roles" sortable={false} />
         </Datagrid>
     </List>
 );

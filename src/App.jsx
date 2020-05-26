@@ -13,6 +13,7 @@ import { KindCreate, KindEdit, KindIcon, KindList, KindShow } from "./Kinds";
 import { KindImageEdit, KindImageIcon, KindImageList } from "./KindsImages";
 import { KindsToFlavorsCreate, KindsToFlavorsEdit } from "./KindsToFlavors";
 import { KindsToTagsCreate, KindsToTagsEdit } from "./KindsToTags";
+import { OrderCreate, OrderEdit, OrderIcon, OrderList, OrderShow } from "./Orders";
 import { PriceCreate, PriceEdit, PriceIcon, PriceList } from "./Prices";
 import { ShopCreate, ShopEdit, ShopIcon, ShopList, ShopShow } from "./Shops";
 import { ShopsToPricesCreate, ShopsToPricesEdit } from "./ShopsToPrices";
@@ -57,6 +58,14 @@ class App extends Component {
                 i18nProvider={i18nProvider}
                 theme={adminTheme}
             >
+                <Resource
+                    name="orders"
+                    list={OrderList}
+                    edit={OrderEdit}
+                    create={OrderCreate}
+                    show={OrderShow}
+                    icon={OrderIcon}
+                />
                 <Resource
                     name="shops"
                     list={ShopList}
