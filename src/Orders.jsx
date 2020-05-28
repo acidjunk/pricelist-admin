@@ -56,7 +56,15 @@ export const OrderShow = props => (
 export const OrderList = props => (
     <List {...props} perPage="100" filters={<OrderFilter />}>
         <Datagrid>
-            <TextField source="name" />
+            <TextField source="customer_order_id" />
+            <ReferenceField source="shop_id" reference="shops" label="Shop">
+                <TextField source="name" />
+            </ReferenceField>
+            <TextField source="status" />
+            <TextField source="created_at" />
+            <TextField source="order_info" />
+            <TextField source="total" />
+
             <EditButton />
             <DeleteButton />
         </Datagrid>
