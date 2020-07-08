@@ -1,7 +1,17 @@
 import { Link } from "@material-ui/icons";
 import { parse } from "query-string";
 import React from "react";
-import { Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm, TextInput, required } from "react-admin";
+import {
+    Create,
+    DisabledInput,
+    Edit,
+    ReferenceInput,
+    SelectInput,
+    SimpleForm,
+    TextInput,
+    required,
+    AutocompleteInput
+} from "react-admin";
 
 export const KindsToTagsIcon = Link;
 
@@ -15,8 +25,8 @@ export const KindsToTagsEdit = props => (
     <Edit title={<KindsToTagsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
-            <ReferenceInput source="tag_id" reference="tags" perPage={100} validate={required()}>
-                <SelectInput optionText="name" />
+            <ReferenceInput source="tag_id" reference="tags" perPage={50} validate={required()} sort={{"field": "name"}}>
+                <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
             <TextInput source="amount" />
         </SimpleForm>
@@ -29,11 +39,11 @@ export const KindsToTagsCreate = props => {
     return (
         <Create title="Add an effect" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
-                <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
+                <ReferenceInput source="kind_id" reference="kinds" perPage={50} validate={required()} sort={{"field": "name"}}>
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="tag_id" reference="tags" perPage={100} validate={required()}>
-                    <SelectInput optionText="name" />
+                <ReferenceInput source="tag_id" reference="tags" validate={required()} sort={{"field": "name"}}>
+                    <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
                 <TextInput source="amount" />
             </SimpleForm>

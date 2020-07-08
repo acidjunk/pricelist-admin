@@ -8,6 +8,8 @@
 -   Added a many-to-many relation for strains
 -   Non cannabis products admin
 -   Tabs for Cannabis product kinds
+-   Sorted Product Kindsi dropdown
+-   Show complete price
 
 0.9.3 
 

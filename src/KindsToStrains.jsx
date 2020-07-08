@@ -1,7 +1,16 @@
 import { Link } from "@material-ui/icons";
 import { parse } from "query-string";
 import React from "react";
-import { Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm, required } from "react-admin";
+import {
+    Create,
+    DisabledInput,
+    Edit,
+    ReferenceInput,
+    SelectInput,
+    SimpleForm,
+    required,
+    AutocompleteInput
+} from "react-admin";
 
 export const KindsToStrainsIcon = Link;
 
@@ -15,8 +24,8 @@ export const KindsToStrainsEdit = props => (
     <Edit title={<KindsToStrainsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
-            <ReferenceInput source="strain_id" reference="strains" perPage={100} validate={required()}>
-                <SelectInput optionText="name" />
+            <ReferenceInput source="strain_id" reference="strains" perPage={50} sort={{"field": "name"}} validate={required()}>
+                <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
         </SimpleForm>
     </Edit>
@@ -28,11 +37,11 @@ export const KindsToStrainsCreate = props => {
     return (
         <Create title="Add a Strain" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
-                <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
+                <ReferenceInput source="kind_id" reference="kinds" perPage={50} sort={{"field": "name"}} validate={required()}>
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="strain_id" reference="strains" perPage={100} validate={required()}>
-                    <SelectInput optionText="name" />
+                <ReferenceInput source="strain_id" reference="strains" perPage={50} sort={{"field": "name"}} validate={required()}>
+                    <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
             </SimpleForm>
         </Create>

@@ -1,4 +1,4 @@
-import { Image } from "@material-ui/icons";
+import { BrokenImage } from "@material-ui/icons";
 import React from "react";
 import {
     Datagrid,
@@ -12,7 +12,7 @@ import {
     TextField,
     TextInput
 } from "react-admin";
-export const KindImageIcon = Image;
+export const KindImageIcon = BrokenImage;
 
 const KindImageFilter = props => (
     <Filter {...props}>

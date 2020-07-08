@@ -22,6 +22,8 @@ const ShopsToPricesTitle = ({ record }) => {
 
 const redirect = (basePath, id, data) => `/shops/${data.shop_id}/show`;
 
+const priceRenderer = choice => `${choice.internal_product_id} 0.5g:${choice.half} 1g:${choice.one} 2.5g:${choice.two_five} 5g:${choice.five} J:${choice.joint} P:${choice.piece}` ;
+
 export const ShopsToPricesEdit = props => (
     <Edit title={<ShopsToPricesTitle />} {...props}>
         <SimpleForm redirect={redirect}>
@@ -30,21 +32,12 @@ export const ShopsToPricesEdit = props => (
             <ReferenceInput
                 source="price_id"
                 reference="prices"
-                // label="Internal Product ID"
+                perPage={100}
+                sort={{"field": "internal_product_id"}}
                 validate={required()}
             >
-                <AutocompleteInput optionText="internal_product_id" translateChoice={false} />
-                {/*<SelectInput optionText="internal_product_id" />*/}
+                <AutocompleteInput optionText={priceRenderer} translateChoice={false} />
             </ReferenceInput>
-            {/*<ReferenceInput*/}
-            {/*    source="category_id"*/}
-            {/*    reference="categories"*/}
-            {/*    perPage={100}*/}
-            {/*    label="Product Category"*/}
-            {/*    // filter={{ shop_id: shop_id }}*/}
-            {/*>*/}
-            {/*    <SelectInput optionText="category_and_shop" />*/}
-            {/*</ReferenceInput>*/}
 
             <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
                 <AutocompleteInput optionText="name" translateChoice={false} />
@@ -74,11 +67,11 @@ export const ShopsToPricesCreate = props => {
                 <ReferenceInput
                     source="price_id"
                     reference="prices"
-                    // label="Internal Product ID"
+                    perPage={100}
+                    sort={{"field": "internal_product_id"}}
                     validate={required()}
                 >
-                    <AutocompleteInput optionText="internal_product_id" translateChoice={false} />
-                    {/*<SelectInput optionText="internal_product_id" />*/}
+                    <AutocompleteInput optionText={priceRenderer} translateChoice={false} />
                 </ReferenceInput>
                 <ReferenceInput
                     source="category_id"
