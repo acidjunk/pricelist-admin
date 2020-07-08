@@ -71,14 +71,8 @@ export const ProductList = props => (
     >
         <Datagrid rowClick="show" rowStyle={productRowStyle}>
             <TextField source="name" />
-            <TextField source="strain1_name" label="Strain 1" />
-            <TextField source="strain2_name" label="Strain 2" />
-            <BooleanField source="c" />
-            <BooleanField source="h" />
-            <BooleanField source="i" />
-            <BooleanField source="s" />
-            <TextField source="tags_amount" sortable={false} />
-            <TextField source="flavors_amount" sortable={false} />
+            <TextField source="short_description_nl" />
+            <TextField source="short_description_en" />
             <TextField source="images_amount" sortable={false} />
             <BooleanField source="complete" />
             <BooleanField source="approved" />

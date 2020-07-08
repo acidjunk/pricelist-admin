@@ -8,7 +8,7 @@ const convertFileToBase64 = file =>
     });
 
 const addUploadFeature = requestHandler => (type, resource, params) => {
-    if (type === "UPDATE" && resource === "kinds-images") {
+    if (type === "UPDATE" && (resource === "kinds-images" || "products-images")) {
         if (params.data.image_1 && params.data.image_1.hasOwnProperty("src")) {
             // NEW CODE HERE (to upload just one file):
             const image_1 = params.data.image_1;
