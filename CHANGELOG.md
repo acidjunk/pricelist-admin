@@ -6,9 +6,9 @@
 0.9.4
 
 -   Added a many-to-many relation for strains
--   Non cannabis products admin
+-   Non cannabis products admin (E.g. Colai etc)
 -   Tabs for Cannabis product kinds
--   Sorted Product Kindsi dropdown
+-   Sorted and Searchable Product Kinds dropdown
 -   Show complete price
 
 0.9.3 
