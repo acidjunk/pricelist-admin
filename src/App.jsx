@@ -21,6 +21,9 @@ import { StrainCreate, StrainEdit, StrainIcon, StrainList, StrainShow } from "./
 import { TagCreate, TagEdit, TagIcon, TagList, TagShow } from "./Tags";
 import { adminTheme } from "./Theme";
 import { UserCreate, UserEdit, UserIcon, UserList } from "./Users";
+import {KindsToStrainsCreate, KindsToStrainsEdit} from "./KindsToStrains";
+import {ProductCreate, ProductEdit, ProductIcon, ProductList, ProductShow} from "./Products";
+import {ProductImageEdit, ProductImageIcon, ProductImageList} from "./ProductsImages";
 
 const i18nProvider = locale => {
     if (locale === "nl") {
@@ -91,7 +94,7 @@ class App extends Component {
                 />
                 <Resource
                     name="kinds"
-                    options={{ label: "Product Kinds" }}
+                    options={{ label: "Cannabis Kinds" }}
                     list={KindList}
                     edit={KindEdit}
                     create={KindCreate}
@@ -100,10 +103,24 @@ class App extends Component {
                 />
                 <Resource
                     name="kinds-images"
-                    options={{ label: "Product Images" }}
+                    options={{ label: "Cannabis-images" }}
                     list={KindImageList}
                     edit={KindImageEdit}
                     icon={KindImageIcon}
+                />
+                <Resource
+                    name="products"
+                    list={ProductList}
+                    edit={ProductEdit}
+                    create={ProductCreate}
+                    show={ProductShow}
+                    icon={ProductIcon}
+                />
+                <Resource
+                    name="products-images"
+                    list={ProductImageList}
+                    edit={ProductImageEdit}
+                    icon={ProductImageIcon}
                 />
                 <Resource
                     name="strains"
@@ -137,6 +154,7 @@ class App extends Component {
                     create={ShopsToPricesCreate}
                     icon={UserIcon}
                 />
+                <Resource name="kinds-to-strains" edit={KindsToStrainsEdit} create={KindsToStrainsCreate} icon={UserIcon} />
                 <Resource name="kinds-to-tags" edit={KindsToTagsEdit} create={KindsToTagsCreate} icon={UserIcon} />
                 <Resource
                     name="kinds-to-flavors"

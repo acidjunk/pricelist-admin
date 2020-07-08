@@ -24,13 +24,18 @@ import {
     ListButton,
     LongTextInput,
     Pagination,
+    ReferenceField,
     ReferenceInput,
+    ReferenceManyField,
     SelectInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
+    Tab,
+    TabbedShowLayout,
     TextField,
     TextInput,
+    SingleFieldList,
     required
 } from "react-admin";
 import ReactMarkdown from "react-markdown/with-html";
@@ -50,6 +55,7 @@ export const MarkDownField = ({ record, source }) => {
     return <ReactMarkdown source={record[source]} />;
 };
 MarkDownField.defaultProps = { addLabel: true };
+
 
 const KindFilter = props => (
     <Filter {...props}>
@@ -75,29 +81,17 @@ export const KindList = props => (
     >
         <Datagrid rowClick="show" rowStyle={kindRowStyle}>
             <TextField source="name" />
-            <TextField source="strain1_name" label="Strain 1" />
-            <TextField source="strain2_name" label="Strain 2" />
             <BooleanField source="c" />
             <BooleanField source="h" />
             <BooleanField source="i" />
             <BooleanField source="s" />
             <TextField source="tags_amount" sortable={false} />
             <TextField source="flavors_amount" sortable={false} />
+            <TextField source="strains_amount" sortable={false} />
             <TextField source="images_amount" sortable={false} />
             <BooleanField source="complete" />
             <BooleanField source="approved" />
-            {/*<ArrayField source="tags" sortable={false}>*/}
-            {/*    <SingleFieldList>*/}
-            {/*        <ChipField source="name" />*/}
-            {/*    </SingleFieldList>*/}
-            {/*</ArrayField>*/}
-            {/*<ArrayField source="flavors" sortable={false}>*/}
-            {/*    <SingleFieldList>*/}
-            {/*        <ChipField source="name" />*/}
-            {/*    </SingleFieldList>*/}
-            {/*</ArrayField>*/}
             <DateField source="modified_at" />
-            {/*<DateField source="approved_at" />*/}
         </Datagrid>
     </List>
 );
@@ -113,7 +107,7 @@ const AddTagButton = ({ record }) => (
             pathname: "/kinds-to-tags/create",
             search: `?kind_id=${record ? record.id : ""}`
         }}
-        label="Add a tag"
+        label="Add effect"
     >
         <Add />
     </Button>
@@ -126,7 +120,20 @@ const AddFlavorButton = ({ record }) => (
             pathname: "/kinds-to-flavors/create",
             search: `?kind_id=${record ? record.id : ""}`
         }}
-        label="Add a flavor"
+        label="Add flavor"
+    >
+        <Add />
+    </Button>
+);
+
+const AddStrainButton = ({ record }) => (
+    <Button
+        component={Link}
+        to={{
+            pathname: "/kinds-to-strains/create",
+            search: `?kind_id=${record ? record.id : ""}`
+        }}
+        label="Add strain"
     >
         <Add />
     </Button>
@@ -136,63 +143,89 @@ const KindShowActions = ({ basePath, data }) => (
     <CardActions>
         <ListButton basePath={basePath} />
         <EditButton basePath="/kinds" record={data} />
+        <AddStrainButton record={data} />
         <AddTagButton record={data} />
         <AddFlavorButton record={data} />
     </CardActions>
 );
 
-const ShowSide = ({ record }) => (
-    <div style={{ flex: "0 0 17em", marginLeft: "20px", order: 1 }}>
-        <Typography variant="title">Effects</Typography>
-        {record && record.tags && (
-            <MaterialList>
-                {record.tags.map(tag => (
-                    <ListItem>
-                        <div>
-                            {tag.name}: <i>{tag.amount}%</i>
-                        </div>
-                        <EditButton basePath="/kinds-to-tags" record={tag} />
-                    </ListItem>
-                ))}
-            </MaterialList>
-        )}
-        {/*<CreateButton basePath="/kinds-to-tags" record={tag}/>*/}
-        <Typography variant="title">Flavors</Typography>
-        {record && record.flavors && (
-            <MaterialList>
-                {record.flavors.map(flavor => (
-                    <ListItem>
-                        {flavor.name}
-                        <EditButton basePath="/kinds-to-flavors" record={flavor} />
-                    </ListItem>
-                ))}
-            </MaterialList>
-        )}
-    </div>
-);
-
 export const KindShow = props => (
-    <Show title={<KindTitle />} aside={<ShowSide />} actions={<KindShowActions />} {...props}>
-        <SimpleShowLayout>
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="strain1_name" label="Strain 1" sortable={false} />
-            <TextField source="strain2_name" label="Strain 2" sortable={false} />
-            <TextField source="short_description_nl" />
-            <MarkDownField source="description_nl" />
-            <TextField source="short_description_en" />
-            <MarkDownField source="description_en" />
-            <BooleanField source="c" />
-            <BooleanField source="h" />
-            <BooleanField source="i" />
-            <BooleanField source="s" />
-            <BooleanField source="complete" />
-            <TextField source="images_amount" sortable={false} />
-            <DateField source="created_at" />
-            <DateField source="modified_at" />
-            <BooleanField source="approved" />
-            <DateField source="approved_at" />
-        </SimpleShowLayout>
+    <Show title={<KindTitle />} actions={<KindShowActions />} {...props}>
+        <TabbedShowLayout>
+            <Tab label="summary">
+                <h2>Product Kind Summary</h2>
+                <TextField source="id" />
+                <TextField source="name" />
+                <ArrayField source="strains" sortable={false}>
+                    <SingleFieldList>
+                        <ChipField source="name" />
+                    </SingleFieldList>
+                </ArrayField>
+                <ArrayField source="tags" sortable={false} labels="Effects">
+                    <SingleFieldList>
+                        <ChipField source="name" />
+                    </SingleFieldList>
+                </ArrayField>
+                <ArrayField source="flavors" sortable={false}>
+                    <SingleFieldList>
+                        <ChipField source="name" />
+                    </SingleFieldList>
+                </ArrayField>
+                <MarkDownField source="description_nl" />
+                <TextField source="short_description_en" />
+                <MarkDownField source="description_en" />
+                <BooleanField source="c" />
+                <BooleanField source="h" />
+                <BooleanField source="i" />
+                <BooleanField source="s" />
+                <BooleanField source="complete" />
+                <TextField source="images_amount" sortable={false} />
+                <DateField source="created_at" />
+                <DateField source="modified_at" />
+                <BooleanField source="approved" />
+                <DateField source="approved_at" />
+            </Tab>
+            <Tab label="Strains" path="kinds-to-strains">
+                <h2>Strains</h2>
+                <TextField source="name"/>
+                <ReferenceManyField reference="kinds-to-strains" target="kind_id" addLabel={false}>
+                    <Datagrid>
+                        <ReferenceField source="strain_id" reference="strains">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <EditButton />
+                        <DeleteButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+            <Tab label="Effects" path="kinds-to-tags">
+                <h2>Effects</h2>
+                <TextField source="name"/>
+                <ReferenceManyField reference="kinds-to-tags" target="kind_id" addLabel={false}>
+                    <Datagrid>
+                        <ReferenceField source="tag_id" reference="tags">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <TextField source="amount"/>
+                        <EditButton />
+                        <DeleteButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+            <Tab label="Flavors" path="kinds-to-flavors">
+                <h2>flavors</h2>
+                <TextField source="name"/>
+                <ReferenceManyField reference="kinds-to-flavors" target="kind_id" addLabel={false}>
+                    <Datagrid>
+                        <ReferenceField source="flavor_id" reference="flavors">
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <EditButton />
+                        <DeleteButton />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+        </TabbedShowLayout>
     </Show>
 );
 
@@ -201,12 +234,6 @@ export const KindEdit = props => (
         <SimpleForm redirect="show">
             <DisabledInput source="id" />
             <TextInput source="name" fullWidth validate={required()} />
-            <ReferenceInput source="strain1_id" reference="strains" perPage={100}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-            <ReferenceInput source="strain2_id" reference="strains" perPage={100}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />

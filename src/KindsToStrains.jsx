@@ -3,35 +3,35 @@ import { parse } from "query-string";
 import React from "react";
 import { Create, DisabledInput, Edit, ReferenceInput, SelectInput, SimpleForm, required } from "react-admin";
 
-export const KindsToFlavorsIcon = Link;
+export const KindsToStrainsIcon = Link;
 
-const KindsToFlavorsTitle = ({ record }) => {
-    return <span>KindsToFlavors {record ? `"${record.id}"` : ""}</span>;
+const KindsToStrainsTitle = ({ record }) => {
+    return <span>KindsToStrains {record ? `"${record.id}"` : ""}</span>;
 };
 
 const redirect = (basePath, id, data) => `/kinds/${data.kind_id}/show`;
 
-export const KindsToFlavorsEdit = props => (
-    <Edit title={<KindsToFlavorsTitle />} {...props}>
+export const KindsToStrainsEdit = props => (
+    <Edit title={<KindsToStrainsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
-            <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
+            <ReferenceInput source="strain_id" reference="strains" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
         </SimpleForm>
     </Edit>
 );
 
-export const KindsToFlavorsCreate = props => {
+export const KindsToStrainsCreate = props => {
     const { kind_id } = parse(props.location.search);
 
     return (
-        <Create title="Add a Flavor" {...props}>
+        <Create title="Add a Strain" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
                 <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="flavor_id" reference="flavors" perPage={100} validate={required()}>
+                <ReferenceInput source="strain_id" reference="strains" perPage={100} validate={required()}>
                     <SelectInput optionText="name" />
                 </ReferenceInput>
             </SimpleForm>

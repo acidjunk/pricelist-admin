@@ -27,7 +27,7 @@ export const KindsToTagsCreate = props => {
     const { kind_id } = parse(props.location.search);
 
     return (
-        <Create title="Create a KindsToTags" {...props}>
+        <Create title="Add an effect" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
                 <ReferenceInput source="kind_id" reference="kinds" perPage={100} validate={required()}>
                     <SelectInput optionText="name" />

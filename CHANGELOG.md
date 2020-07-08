@@ -1,7 +1,16 @@
-0.9.3 (unreleased)
+0.9.5 (unreleased)
 
 -   Inline edit for Product Kinds
 -   Bulk actions for approve
+
+0.9.4
+
+-   Added a many-to-many relation for strains
+-   Non cannabis products admin
+-   Tabs for Cannabis product kinds
+
+0.9.3 
+
 -   Admin for Orders, showing all orders from all shops
 -   New tab for Shops that shows orders for that shop
 
