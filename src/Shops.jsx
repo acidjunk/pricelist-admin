@@ -96,7 +96,10 @@ export const ShopShow = props => (
                         <ReferenceField source="price_id" reference="prices" label="Price template">
                             <TextField source="internal_product_id" />
                         </ReferenceField>
-                        <ReferenceField source="kind_id" reference="kinds" label="Product Kind">
+                        <ReferenceField source="kind_id" reference="kinds" label="Cannabis Product" allowEmpty={true}>
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <ReferenceField source="product_id" reference="products" label="Horeca Product" allowEmpty={true}>
                             <TextField source="name" />
                         </ReferenceField>
                         <ReferenceField source="category_id" reference="categories" label="Category">

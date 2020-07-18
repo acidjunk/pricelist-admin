@@ -39,9 +39,14 @@ export const ShopsToPricesEdit = props => (
                 <AutocompleteInput optionText={priceRenderer} translateChoice={false} />
             </ReferenceInput>
 
-            <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
+            <ReferenceInput source="kind_id" reference="kinds" label="Cannabis Product">
                 <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
+
+            <ReferenceInput source="product_id" reference="products" label="Horeca Product">
+                <AutocompleteInput optionText="name" translateChoice={false} />
+            </ReferenceInput>
+
             <TextField source="half" label={"Configured price for 0,5 gram"} />
             <BooleanInput source="use_half" label="Use price for 0,5 gram?" />
             <TextField source="one" label={"Configured price for 1 gram"} />
@@ -82,9 +87,14 @@ export const ShopsToPricesCreate = props => {
                 >
                     <SelectInput optionText="category_and_shop" />
                 </ReferenceInput>
-                <ReferenceInput source="kind_id" reference="kinds" label="Product Kind" validate={required()}>
+                <ReferenceInput source="kind_id" reference="kinds" label="Cannabis Product">
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
+
+                <ReferenceInput source="product_id" reference="products" label="Horeca Product">
+                    <AutocompleteInput optionText="name" translateChoice={false} />
+                </ReferenceInput>
+
                 <BooleanInput source="use_half" label="Use price for 0,5 gram?" />
                 <BooleanInput source="use_one" defaultValue={true} label="Use price for 1 gram?" />
                 <BooleanInput source="use_two_five" label="Use price for 2,5 grams?" />

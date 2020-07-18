@@ -1,7 +1,12 @@
-0.9.5 (unreleased)
+0.9.6 (unreleased)
 
 -   Inline edit for Product Kinds
 -   Bulk actions for approve
+
+0.9.5 (unreleased)
+
+-   Add Horeca product to shop pricelist
+-   Delete images?
 
 0.9.4
 
