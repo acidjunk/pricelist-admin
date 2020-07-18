@@ -1,12 +1,14 @@
 0.9.6 (unreleased)
 
--   Inline edit for Product Kinds
--   Bulk actions for approve
+-   Better views for order management
+-   Inline edit for Products
+-   Approve Horeca Products and Cannabis Products with the possibility to do it in bulk
 
-0.9.5 (unreleased)
+0.9.5 
 
 -   Add Horeca product to shop pricelist
--   Delete images?
+-   Extra validation in PriceToShop editor
+-   Improved Caanabis Product / Horeca Product labels 
 
 0.9.4
 
