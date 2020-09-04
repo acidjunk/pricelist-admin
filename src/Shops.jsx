@@ -33,6 +33,7 @@ import {
     TextInput,
     required
 } from "react-admin";
+import ToggleAvailabilityButton from "./components/ToggleAvailabilityButton";
 
 export const ShopIcon = StoreMallDirectory;
 
@@ -106,6 +107,8 @@ export const ShopShow = props => (
                             <TextField source="name" />
                         </ReferenceField>
                         <BooleanField source="active" sortable={false} />
+                        <ToggleAvailabilityButton source="active" />
+
                         <NumberField
                             source="half"
                             locales="nl-NL"

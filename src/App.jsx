@@ -48,7 +48,7 @@ const httpClient = (url, options = {}) => {
 };
 const dataProvider = simpleRestProvider(`${apiUrl}/v1`, httpClient);
 
-const uploadDataProvider = addUploadFeature(dataProvider);
+export const uploadDataProvider = addUploadFeature(dataProvider);
 
 class App extends Component {
     render() {
