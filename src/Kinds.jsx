@@ -251,12 +251,6 @@ export const KindCreate = props => (
     <Create title="Create a Kind" {...props} redirect="show">
         <SimpleForm redirect="show">
             <TextInput source="name" fullWidth validate={required()} />
-            <ReferenceInput source="strain1_id" reference="strains" perPage={100}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-            <ReferenceInput source="strain2_id" reference="strains" perPage={100}>
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
