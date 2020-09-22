@@ -4,11 +4,11 @@
 -   Inline edit for Products
 -   Approve Horeca Products and Cannabis Products with the possibility to do it in bulk
 
-0.9.5 
+0.9.5
 
 -   Add Horeca product to shop pricelist
 -   Extra validation in PriceToShop editor
--   Improved Caanabis Product / Horeca Product labels 
+-   Improved Caanabis Product / Horeca Product labels
 
 0.9.4
 
@@ -18,7 +18,7 @@
 -   Sorted and Searchable Product Kinds dropdown
 -   Show complete price
 
-0.9.3 
+0.9.3
 
 -   Admin for Orders, showing all orders from all shops
 -   New tab for Shops that shows orders for that shop

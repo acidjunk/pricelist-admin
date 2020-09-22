@@ -25,17 +25,27 @@ import {
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const OrderIcon = Toc;
 
-
 export const OrderDetailField = ({ record, source }) => {
     if (!record[source]) {
         return null;
     }
     console.log(record[source]);
 
-    return <div>{record[source].map(orderLine => <table><tr><td>{orderLine.quantity} x</td><td>{orderLine.description}</td><td>{orderLine.kind_name}</td></tr></table>)}</div>;
+    return (
+        <div>
+            {record[source].map(orderLine => (
+                <table>
+                    <tr>
+                        <td>{orderLine.quantity} x</td>
+                        <td>{orderLine.description}</td>
+                        <td>{orderLine.kind_name}</td>
+                    </tr>
+                </table>
+            ))}
+        </div>
+    );
 };
 OrderDetailField.defaultProps = { addLabel: true };
-
 
 const OrderFilter = props => (
     <Filter {...props}>

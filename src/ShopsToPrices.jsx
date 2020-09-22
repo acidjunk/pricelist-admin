@@ -22,7 +22,8 @@ const ShopsToPricesTitle = ({ record }) => {
 
 const redirect = (basePath, id, data) => `/shops/${data.shop_id}/show`;
 
-const priceRenderer = choice => `${choice.internal_product_id} 0.5g:${choice.half} 1g:${choice.one} 2.5g:${choice.two_five} 5g:${choice.five} J:${choice.joint} P:${choice.piece}` ;
+const priceRenderer = choice =>
+    `${choice.internal_product_id} 0.5g:${choice.half} 1g:${choice.one} 2.5g:${choice.two_five} 5g:${choice.five} J:${choice.joint} P:${choice.piece}`;
 
 export const ShopsToPricesEdit = props => (
     <Edit title={<ShopsToPricesTitle />} {...props} undoable={false}>
@@ -33,7 +34,7 @@ export const ShopsToPricesEdit = props => (
                 source="price_id"
                 reference="prices"
                 perPage={100}
-                sort={{"field": "internal_product_id"}}
+                sort={{ field: "internal_product_id" }}
                 validate={required()}
             >
                 <AutocompleteInput optionText={priceRenderer} translateChoice={false} />
@@ -73,7 +74,7 @@ export const ShopsToPricesCreate = props => {
                     source="price_id"
                     reference="prices"
                     perPage={100}
-                    sort={{"field": "internal_product_id"}}
+                    sort={{ field: "internal_product_id" }}
                     validate={required()}
                 >
                     <AutocompleteInput optionText={priceRenderer} translateChoice={false} />

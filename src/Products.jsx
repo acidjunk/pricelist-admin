@@ -85,7 +85,6 @@ const ProductTitle = ({ record }) => {
     return <span>Product {record ? `"${record.name}"` : ""}</span>;
 };
 
-
 const ProductShowActions = ({ basePath, data }) => (
     <CardActions>
         <ListButton basePath={basePath} />
@@ -134,7 +133,6 @@ export const ProductCreate = props => (
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
             <MarkdownInput source="description_en" />
-
         </SimpleForm>
     </Create>
 );

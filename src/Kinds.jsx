@@ -31,11 +31,11 @@ import {
     Show,
     SimpleForm,
     SimpleShowLayout,
+    SingleFieldList,
     Tab,
     TabbedShowLayout,
     TextField,
     TextInput,
-    SingleFieldList,
     required
 } from "react-admin";
 import ReactMarkdown from "react-markdown/with-html";
@@ -55,7 +55,6 @@ export const MarkDownField = ({ record, source }) => {
     return <ReactMarkdown source={record[source]} />;
 };
 MarkDownField.defaultProps = { addLabel: true };
-
 
 const KindFilter = props => (
     <Filter {...props}>
@@ -187,7 +186,7 @@ export const KindShow = props => (
             </Tab>
             <Tab label="Strains" path="kinds-to-strains">
                 <h2>Strains</h2>
-                <TextField source="name"/>
+                <TextField source="name" />
                 <ReferenceManyField reference="kinds-to-strains" target="kind_id" addLabel={false}>
                     <Datagrid>
                         <ReferenceField source="strain_id" reference="strains">
@@ -200,13 +199,13 @@ export const KindShow = props => (
             </Tab>
             <Tab label="Effects" path="kinds-to-tags">
                 <h2>Effects</h2>
-                <TextField source="name"/>
+                <TextField source="name" />
                 <ReferenceManyField reference="kinds-to-tags" target="kind_id" addLabel={false}>
                     <Datagrid>
                         <ReferenceField source="tag_id" reference="tags">
                             <TextField source="name" />
                         </ReferenceField>
-                        <TextField source="amount"/>
+                        <TextField source="amount" />
                         <EditButton />
                         <DeleteButton />
                     </Datagrid>
@@ -214,7 +213,7 @@ export const KindShow = props => (
             </Tab>
             <Tab label="Flavors" path="kinds-to-flavors">
                 <h2>flavors</h2>
-                <TextField source="name"/>
+                <TextField source="name" />
                 <ReferenceManyField reference="kinds-to-flavors" target="kind_id" addLabel={false}>
                     <Datagrid>
                         <ReferenceField source="flavor_id" reference="flavors">

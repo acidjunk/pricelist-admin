@@ -2,14 +2,14 @@ import { Link } from "@material-ui/icons";
 import { parse } from "query-string";
 import React from "react";
 import {
+    AutocompleteInput,
     Create,
     DisabledInput,
     Edit,
     ReferenceInput,
     SelectInput,
     SimpleForm,
-    required,
-    AutocompleteInput
+    required
 } from "react-admin";
 
 export const KindsToFlavorsIcon = Link;
@@ -24,7 +24,13 @@ export const KindsToFlavorsEdit = props => (
     <Edit title={<KindsToFlavorsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
-            <ReferenceInput source="flavor_id" reference="flavors" perPage={50} sort={{"field": "name"}} validate={required()}>
+            <ReferenceInput
+                source="flavor_id"
+                reference="flavors"
+                perPage={50}
+                sort={{ field: "name" }}
+                validate={required()}
+            >
                 <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
         </SimpleForm>
@@ -37,10 +43,16 @@ export const KindsToFlavorsCreate = props => {
     return (
         <Create title="Add a Flavor" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ kind_id }}>
-                <ReferenceInput source="kind_id" reference="kinds" perPage={50} sort={{"field": "name"}} validate={required()}>
+                <ReferenceInput
+                    source="kind_id"
+                    reference="kinds"
+                    perPage={50}
+                    sort={{ field: "name" }}
+                    validate={required()}
+                >
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="flavor_id" reference="flavors" sort={{"field": "name"}} validate={required()}>
+                <ReferenceInput source="flavor_id" reference="flavors" sort={{ field: "name" }} validate={required()}>
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
             </SimpleForm>

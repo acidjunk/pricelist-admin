@@ -4,7 +4,7 @@ import { Admin, Resource, fetchUtils } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
-import apiUrl from "./Constants";
+import API_URL from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
 import addUploadFeature from "./dataProvider/decorator";
 import { FlavorCreate, FlavorEdit, FlavorIcon, FlavorList, FlavorShow } from "./Flavors";
@@ -12,18 +12,18 @@ import englishMessages from "./i18n/en";
 import { KindCreate, KindEdit, KindIcon, KindList, KindShow } from "./Kinds";
 import { KindImageEdit, KindImageIcon, KindImageList } from "./KindsImages";
 import { KindsToFlavorsCreate, KindsToFlavorsEdit } from "./KindsToFlavors";
+import { KindsToStrainsCreate, KindsToStrainsEdit } from "./KindsToStrains";
 import { KindsToTagsCreate, KindsToTagsEdit } from "./KindsToTags";
 import { OrderCreate, OrderEdit, OrderIcon, OrderList, OrderShow } from "./Orders";
 import { PriceCreate, PriceEdit, PriceIcon, PriceList } from "./Prices";
+import { ProductCreate, ProductEdit, ProductIcon, ProductList, ProductShow } from "./Products";
+import { ProductImageEdit, ProductImageIcon, ProductImageList } from "./ProductsImages";
 import { ShopCreate, ShopEdit, ShopIcon, ShopList, ShopShow } from "./Shops";
 import { ShopsToPricesCreate, ShopsToPricesEdit } from "./ShopsToPrices";
 import { StrainCreate, StrainEdit, StrainIcon, StrainList, StrainShow } from "./Strains";
 import { TagCreate, TagEdit, TagIcon, TagList, TagShow } from "./Tags";
 import { adminTheme } from "./Theme";
 import { UserCreate, UserEdit, UserIcon, UserList } from "./Users";
-import {KindsToStrainsCreate, KindsToStrainsEdit} from "./KindsToStrains";
-import {ProductCreate, ProductEdit, ProductIcon, ProductList, ProductShow} from "./Products";
-import {ProductImageEdit, ProductImageIcon, ProductImageList} from "./ProductsImages";
 
 const i18nProvider = locale => {
     if (locale === "nl") {
@@ -46,7 +46,7 @@ const httpClient = (url, options = {}) => {
     // options.headers.set('Authentication-Token', token);
     return fetchUtils.fetchJson(url, options);
 };
-const dataProvider = simpleRestProvider(`${apiUrl}/v1`, httpClient);
+const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
 
 export const uploadDataProvider = addUploadFeature(dataProvider);
 
@@ -154,7 +154,12 @@ class App extends Component {
                     create={ShopsToPricesCreate}
                     icon={UserIcon}
                 />
-                <Resource name="kinds-to-strains" edit={KindsToStrainsEdit} create={KindsToStrainsCreate} icon={UserIcon} />
+                <Resource
+                    name="kinds-to-strains"
+                    edit={KindsToStrainsEdit}
+                    create={KindsToStrainsCreate}
+                    icon={UserIcon}
+                />
                 <Resource name="kinds-to-tags" edit={KindsToTagsEdit} create={KindsToTagsCreate} icon={UserIcon} />
                 <Resource
                     name="kinds-to-flavors"

@@ -6,8 +6,8 @@ import { UPDATE } from "react-admin";
 import { connect } from "react-redux";
 import { push as pushAction } from "react-router-redux";
 
-import apiUrl from "../Constants";
-import {uploadDataProvider} from "../App";
+import { uploadDataProvider } from "../App";
+import API_URL from "../Constants";
 
 class ToggleAvailabilityButton extends Component {
     handleClick = () => {
