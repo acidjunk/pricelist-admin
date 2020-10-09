@@ -1,8 +1,8 @@
 0.9.6 (unreleased)
 
--   Better views for order management
--   Inline edit for Products
--   Approve Horeca Products and Cannabis Products with the possibility to do it in bulk
+-   Table support for shop orders
+-   Slightly better views for order management
+-   Toggle availability of Horeca Products and Cannabis Products
 
 0.9.5
 

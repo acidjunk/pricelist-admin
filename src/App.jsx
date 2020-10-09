@@ -21,6 +21,7 @@ import { ProductImageEdit, ProductImageIcon, ProductImageList } from "./Products
 import { ShopCreate, ShopEdit, ShopIcon, ShopList, ShopShow } from "./Shops";
 import { ShopsToPricesCreate, ShopsToPricesEdit } from "./ShopsToPrices";
 import { StrainCreate, StrainEdit, StrainIcon, StrainList, StrainShow } from "./Strains";
+import { TableCreate, TableEdit, TableIcon, TableList } from "./Tables";
 import { TagCreate, TagEdit, TagIcon, TagList, TagShow } from "./Tags";
 import { adminTheme } from "./Theme";
 import { UserCreate, UserEdit, UserIcon, UserList } from "./Users";
@@ -62,20 +63,20 @@ class App extends Component {
                 theme={adminTheme}
             >
                 <Resource
-                    name="orders"
-                    list={OrderList}
-                    edit={OrderEdit}
-                    create={OrderCreate}
-                    show={OrderShow}
-                    icon={OrderIcon}
-                />
-                <Resource
                     name="shops"
                     list={ShopList}
                     edit={ShopEdit}
                     create={ShopCreate}
                     show={ShopShow}
                     icon={ShopIcon}
+                />
+                <Resource
+                    name="orders"
+                    list={OrderList}
+                    edit={OrderEdit}
+                    create={OrderCreate}
+                    show={OrderShow}
+                    icon={OrderIcon}
                 />
                 <Resource
                     name="prices"
@@ -147,6 +148,7 @@ class App extends Component {
                     create={TagCreate}
                     icon={TagIcon}
                 />
+                <Resource name="tables" list={TableList} edit={TableEdit} create={TableCreate} icon={TableIcon} />
                 <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} icon={UserIcon} />
                 <Resource
                     name="shops-to-prices"

@@ -35,6 +35,7 @@ import {
 } from "react-admin";
 
 import ToggleAvailabilityButton from "./components/ToggleAvailabilityButton";
+import { OrderDetailField } from "./Orders";
 
 export const ShopIcon = StoreMallDirectory;
 
@@ -72,15 +73,29 @@ const AddPriceButton = ({ record }) => (
     </Button>
 );
 
+const AddTableButton = ({ record }) => (
+    <Button
+        component={Link}
+        to={{
+            pathname: "/tables/create",
+            search: `?shop_id=${record ? record.id : ""}`
+        }}
+        label="Add a table"
+    >
+        <Add />
+    </Button>
+);
+
 const ShopShowActions = ({ basePath, data }) => (
     <CardActions>
         <ListButton basePath={basePath} />
         <EditButton basePath="/shops" record={data} />
+        <AddTableButton record={data} />
         <AddPriceButton record={data} />
     </CardActions>
 );
 
-const ShopPricePagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+const ShopPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
 
 export const ShopShow = props => (
     <Show title={<ShopTitle />} actions={<ShopShowActions />} {...props}>
@@ -90,7 +105,7 @@ export const ShopShow = props => (
                     reference="shops-to-prices"
                     target="shop_id"
                     addLabel={false}
-                    pagination={<ShopPricePagination />}
+                    pagination={<ShopPagination />}
                     perPage={20}
                     sort={{ field: "category_id", order: "ASC" }}
                 >
@@ -114,7 +129,6 @@ export const ShopShow = props => (
                         </ReferenceField>
                         <BooleanField source="active" sortable={false} />
                         <ToggleAvailabilityButton source="active" />
-
                         <NumberField
                             source="half"
                             locales="nl-NL"
@@ -153,6 +167,49 @@ export const ShopShow = props => (
                         />
                         <EditButton basePath="/shops-to-prices" />
                         <DeleteButton basePath={`/shops/${props.id}/show`} />
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+            <Tab label="Orders" path="orders">
+                <ReferenceManyField
+                    reference="orders"
+                    target="shop_id"
+                    addLabel={false}
+                    pagination={<ShopPagination />}
+                    perPage={20}
+                    sort={{ field: "created_at", order: "DESC" }}
+                >
+                    <Datagrid>
+                        <TextField source="customer_order_id" />
+                        <ReferenceField source="table_id" reference="tables" label="Table" allowEmpty>
+                            <TextField source="name" />
+                        </ReferenceField>
+                        <TextField source="status" />
+                        <TextField source="completed_by_name" label="by" />
+                        <TextField source="created_at" />
+                        <OrderDetailField source="order_info" />
+                        <NumberField
+                            source="total"
+                            locales="nl-NL"
+                            options={{ style: "currency", currency: "EUR" }}
+                            sortable={false}
+                        />{" "}
+                    </Datagrid>
+                </ReferenceManyField>
+            </Tab>
+            <Tab label="Tables" path="tables">
+                <ReferenceManyField
+                    reference="tables"
+                    target="shop_id"
+                    addLabel={false}
+                    pagination={<ShopPagination />}
+                    perPage={20}
+                    sort={{ field: "name", order: "ASC" }}
+                >
+                    <Datagrid>
+                        <TextField source="name" />
+                        <EditButton basePath="/tables" />
+                        <DeleteButton basePath={`/tables/${props.id}/show`} />
                     </Datagrid>
                 </ReferenceManyField>
             </Tab>

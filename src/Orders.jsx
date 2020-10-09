@@ -10,6 +10,7 @@ import {
     EditButton,
     Filter,
     List,
+    NumberField,
     Pagination,
     ReferenceField,
     ReferenceManyField,
@@ -20,7 +21,7 @@ import {
     TabbedShowLayout,
     TextField,
     TextInput,
-    required
+    required, ReferenceInput, SelectInput
 } from "react-admin";
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const OrderIcon = Toc;
@@ -36,9 +37,10 @@ export const OrderDetailField = ({ record, source }) => {
             {record[source].map(orderLine => (
                 <table>
                     <tr>
-                        <td>{orderLine.quantity} x</td>
-                        <td>{orderLine.description}</td>
-                        <td>{orderLine.kind_name}</td>
+                        <td>
+                            {orderLine.description.replace("1 gram", `${orderLine.quantity} gram`)}{" "}
+                            {orderLine.kind_name ? orderLine.kind_name : orderLine.product_name}
+                        </td>
                     </tr>
                 </table>
             ))}
@@ -50,6 +52,9 @@ OrderDetailField.defaultProps = { addLabel: true };
 const OrderFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
+        <ReferenceInput label="Shop" source="shop_id" reference="shops" allowEmpty alwaysOn>
+            <SelectInput optionText="name" />
+        </ReferenceInput>
     </Filter>
 );
 
@@ -76,19 +81,25 @@ export const OrderShow = props => (
 );
 
 export const OrderList = props => (
-    <List {...props} perPage="100" filters={<OrderFilter />}>
+    <List {...props} perPage="100" sort={{ field: "created_at", order: "DESC" }} filters={<OrderFilter />}>
         <Datagrid>
             <TextField source="customer_order_id" />
             <ReferenceField source="shop_id" reference="shops" label="Shop">
                 <TextField source="name" />
             </ReferenceField>
+            <ReferenceField source="table_id" reference="tables" label="Table" allowEmpty>
+                <TextField source="name" />
+            </ReferenceField>
             <TextField source="status" />
+            <TextField source="completed_by_name" label="by" />
             <TextField source="created_at" />
             <OrderDetailField source="order_info" />
-            <TextField source="total" />
-
-            <EditButton />
-            <DeleteButton />
+            <NumberField
+                source="total"
+                locales="nl-NL"
+                options={{ style: "currency", currency: "EUR" }}
+                sortable={false}
+            />
         </Datagrid>
     </List>
 );
