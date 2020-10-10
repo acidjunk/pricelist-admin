@@ -18,6 +18,8 @@ import {
     TextInput,
     required
 } from "react-admin";
+
+import API_URL from "./Constants";
 export const TableIcon = RestaurantMenu;
 
 const TableFilter = props => (
@@ -29,11 +31,21 @@ const TableFilter = props => (
     </Filter>
 );
 
+export const QrImageField = ({ record, source }) => {
+    if (!record[source]) {
+        return null;
+    }
+    console.log(record);
+    return <img width="200" src={`${API_URL}/qr/shop/${record.shop_id}/${record.id}`} />;
+};
+QrImageField.defaultProps = { addLabel: true };
+
 export const TableList = props => (
     <List {...props} filters={<TableFilter />} perPage="100">
         <Datagrid>
             <TextField source="name" />
             <TextField source="shop_name" sortable={false} />
+            <QrImageField source="id" sortable={false} />
             <EditButton basePath="/tables" />
             <ShowButton basePath="/tables" />
         </Datagrid>

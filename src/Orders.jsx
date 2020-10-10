@@ -13,7 +13,9 @@ import {
     NumberField,
     Pagination,
     ReferenceField,
+    ReferenceInput,
     ReferenceManyField,
+    SelectInput,
     Show,
     ShowButton,
     SimpleForm,
@@ -21,7 +23,7 @@ import {
     TabbedShowLayout,
     TextField,
     TextInput,
-    required, ReferenceInput, SelectInput
+    required
 } from "react-admin";
 import { ColorField, ColorInput } from "react-admin-color-input";
 export const OrderIcon = Toc;

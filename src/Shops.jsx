@@ -36,6 +36,7 @@ import {
 
 import ToggleAvailabilityButton from "./components/ToggleAvailabilityButton";
 import { OrderDetailField } from "./Orders";
+import { QrImageField } from "./Tables";
 
 export const ShopIcon = StoreMallDirectory;
 
@@ -208,6 +209,7 @@ export const ShopShow = props => (
                 >
                     <Datagrid>
                         <TextField source="name" />
+                        <QrImageField source="id" sortable={false} label="QR code" />
                         <EditButton basePath="/tables" />
                         <DeleteButton basePath={`/tables/${props.id}/show`} />
                     </Datagrid>
