@@ -45,7 +45,7 @@ export const TableList = props => (
         <Datagrid>
             <TextField source="name" />
             <TextField source="shop_name" sortable={false} />
-            <QrImageField source="id" sortable={false} />
+            <QrImageField source="id" sortable={false} label="QR code" />
             <EditButton basePath="/tables" />
             <ShowButton basePath="/tables" />
         </Datagrid>
