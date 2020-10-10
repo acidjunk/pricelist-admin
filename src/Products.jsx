@@ -6,11 +6,8 @@ import { Add, LocalDrink } from "@material-ui/icons";
 import MarkdownInput from "ra-input-markdown";
 import React from "react";
 import {
-    ArrayField,
     BooleanField,
     BooleanInput,
-    Button,
-    ChipField,
     Create,
     Datagrid,
     DateField,
@@ -19,13 +16,9 @@ import {
     Edit,
     EditButton,
     Filter,
-    Link,
     List,
     ListButton,
-    LongTextInput,
     Pagination,
-    ReferenceInput,
-    SelectInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
