@@ -49,7 +49,6 @@ const ProductImageListField = ({ record, source }) => {
             }
         }
     };
-    console.log(source);
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
@@ -71,7 +70,6 @@ const ProductImageField = ({ record, source }) => {
             }
         }
     };
-    console.log(source);
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
