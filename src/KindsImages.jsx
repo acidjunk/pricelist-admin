@@ -24,15 +24,37 @@ export const KindImageList = props => (
     <List {...props} perPage="100" filters={<KindImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
-            <ProductImageField source="image_1" />
-            <ProductImageField source="image_2" />
-            <ProductImageField source="image_3" />
-            <ProductImageField source="image_4" />
-            <ProductImageField source="image_5" />
-            <ProductImageField source="image_6" />
+            <ProductImageListField source="image_1" />
+            <ProductImageListField source="image_2" />
+            <ProductImageListField source="image_3" />
+            <ProductImageListField source="image_4" />
+            <ProductImageListField source="image_5" />
+            <ProductImageListField source="image_6" />
         </Datagrid>
     </List>
 );
+
+const ProductImageListField = ({ record, source }) => {
+    if (!record[source]) {
+        return null;
+    }
+    const options = {
+        bucket: "images-prijslijst-info",
+        key: record[source],
+        edits: {
+            resize: {
+                width: 200,
+                height: 200,
+                fit: "contain"
+            }
+        }
+    };
+    console.log(source);
+    const strRequest = JSON.stringify(options);
+    const encRequest = btoa(strRequest);
+
+    return <img width="100" src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
+};
 
 const ProductImageField = ({ record, source }) => {
     if (!record[source]) {
