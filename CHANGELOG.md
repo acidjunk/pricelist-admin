@@ -1,5 +1,9 @@
-0.9.6 (unreleased)
+0.9.9 (unreleased)
 
+-   Inline edit
+-   Upgrade to React-Admin 3.0
+
+0.9.6 
 -   Table support for shop orders
 -   Slightly better views for order management
 -   Toggle availability of Horeca Products and Cannabis Products
