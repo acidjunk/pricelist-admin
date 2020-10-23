@@ -43,8 +43,8 @@ const ProductImageListField = ({ record, source }) => {
         key: record[source],
         edits: {
             resize: {
-                width: 200,
-                height: 200,
+                width: 100,
+                height: 100,
                 fit: "contain"
             }
         }
