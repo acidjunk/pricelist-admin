@@ -24,12 +24,12 @@ export const ProductImageList = props => (
     <List {...props} perPage="100" filters={<ProductImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
-            <TextField source="image_1" />
-            <TextField source="image_2" />
-            <TextField source="image_3" />
-            <TextField source="image_4" />
-            <TextField source="image_5" />
-            <TextField source="image_6" />
+            <ProductImageField source="image_1" />
+            <ProductImageField source="image_2" />
+            <ProductImageField source="image_3" />
+            <ProductImageField source="image_4" />
+            <ProductImageField source="image_5" />
+            <ProductImageField source="image_6" />
         </Datagrid>
     </List>
 );
