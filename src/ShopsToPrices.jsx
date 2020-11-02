@@ -25,7 +25,11 @@ const redirect = (basePath, id, data) => `/shops/${data.shop_id}/show`;
 const priceRenderer = choice =>
     `${choice.internal_product_id} 0.5g:${choice.half} 1g:${choice.one} 2.5g:${choice.two_five} 5g:${choice.five} J:${choice.joint} P:${choice.piece}`;
 
-export const ShopsToPricesEdit = props => (
+export const ShopsToPricesEdit = props => {
+    // TODO: find a way to query the shop_id (maybe 3.0??)
+    // const { shop_id } = parse(props.location.search);
+
+    return (
     <Edit title={<ShopsToPricesTitle />} {...props} undoable={false}>
         <SimpleForm redirect={redirect}>
             <DisabledInput source="id" />
@@ -39,7 +43,15 @@ export const ShopsToPricesEdit = props => (
             >
                 <AutocompleteInput optionText={priceRenderer} translateChoice={false} />
             </ReferenceInput>
-
+            <ReferenceInput
+                source="category_id"
+                reference="categories"
+                perPage={100}
+                label="Product Category"
+                // filter={{ shop_id: shop_id }}
+            >
+                <SelectInput optionText="category_and_shop" />
+            </ReferenceInput>
             <ReferenceInput source="kind_id" reference="kinds" label="Cannabis Product" allowEmpty>
                 <AutocompleteInput optionText="name" translateChoice={false} />
             </ReferenceInput>
@@ -62,7 +74,8 @@ export const ShopsToPricesEdit = props => (
             <BooleanInput source="use_piece" label="Use price for piece?" />
         </SimpleForm>
     </Edit>
-);
+    )
+};
 
 export const ShopsToPricesCreate = props => {
     const { shop_id } = parse(props.location.search);
