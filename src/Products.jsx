@@ -108,7 +108,7 @@ export const ProductEdit = props => (
     <Edit title={<ProductTitle />} {...props} redirect="show">
         <SimpleForm redirect="show">
             <DisabledInput source="id" />
-            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="name" autoFocus fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
@@ -121,7 +121,7 @@ export const ProductEdit = props => (
 export const ProductCreate = props => (
     <Create title="Create a Product" {...props} redirect="show">
         <SimpleForm redirect="show">
-            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="name" autoFocus fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />

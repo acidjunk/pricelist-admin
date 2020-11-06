@@ -86,7 +86,7 @@ export const FlavorEdit = props => (
     <Edit title={<FlavorTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />
         </SimpleForm>
@@ -96,7 +96,7 @@ export const FlavorEdit = props => (
 export const FlavorCreate = props => (
     <Create title="Create a Flavor" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />
         </SimpleForm>

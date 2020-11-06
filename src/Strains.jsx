@@ -71,7 +71,7 @@ export const StrainEdit = props => (
     <Edit title={<StrainTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>
 );
@@ -79,7 +79,7 @@ export const StrainEdit = props => (
 export const StrainCreate = props => (
     <Create title="Create a Strain" {...props} redirect="list">
         <SimpleForm redirect="list">
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Create>
 );

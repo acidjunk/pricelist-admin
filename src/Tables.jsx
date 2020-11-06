@@ -60,7 +60,7 @@ export const TableEdit = props => (
     <Edit title={<TableTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <TextField source="shop_name" />
         </SimpleForm>
     </Edit>
@@ -69,7 +69,7 @@ export const TableEdit = props => (
 export const TableCreate = props => (
     <Create title="Create a Table" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <ReferenceInput source="shop_id" reference="shops" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>

@@ -46,7 +46,7 @@ export const UserEdit = props => (
     <Edit title={<UserTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="username" />
+            <TextInput source="username" autoFocus />
             <TextInput source="email" validate={required()} />
             <TextInput source="first_name" />
             <TextInput source="last_name" />
@@ -57,7 +57,7 @@ export const UserEdit = props => (
 export const UserCreate = props => (
     <Create title="Create a User" {...props}>
         <SimpleForm>
-            <TextInput source="username" validate={required()} />
+            <TextInput source="username" autoFocus validate={required()} />
             <TextInput source="email" />
             <TextInput source="first_name" />
             <TextInput source="last_name" />

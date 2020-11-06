@@ -114,7 +114,7 @@ export const OrderEdit = props => (
     <Edit title={<OrderTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>
 );
@@ -122,7 +122,7 @@ export const OrderEdit = props => (
 export const OrderCreate = props => (
     <Create title="Create a Order" {...props} redirect="list">
         <SimpleForm redirect="list">
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Create>
 );

@@ -230,7 +230,7 @@ export const ShopEdit = props => (
     <Edit title={<ShopTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="description" />
         </SimpleForm>
     </Edit>
@@ -239,7 +239,7 @@ export const ShopEdit = props => (
 export const ShopCreate = props => (
     <Create title="Create a Shop" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="description" />
         </SimpleForm>
     </Create>

@@ -49,7 +49,7 @@ export const CategoryEdit = props => (
     <Edit title={<CategoryTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <BooleanInput source="cannabis" />
             <TextField source="shop_name" />
         </SimpleForm>
@@ -59,7 +59,7 @@ export const CategoryEdit = props => (
 export const CategoryCreate = props => (
     <Create title="Create a Category" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
             <BooleanInput source="cannabis" />
             <ReferenceInput source="shop_id" reference="shops" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />

@@ -228,7 +228,7 @@ export const KindEdit = props => (
     <Edit title={<KindTitle />} {...props} redirect="show">
         <SimpleForm redirect="show">
             <DisabledInput source="id" />
-            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="name" autoFocus fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />
@@ -245,7 +245,7 @@ export const KindEdit = props => (
 export const KindCreate = props => (
     <Create title="Create a Kind" {...props} redirect="show">
         <SimpleForm redirect="show">
-            <TextInput source="name" fullWidth validate={required()} />
+            <TextInput source="name" autoFocus fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />
             <TextInput source="short_description_en" fullWidth />

@@ -74,7 +74,7 @@ export const TagEdit = props => (
     <Edit title={<TagTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>
 );
@@ -82,7 +82,7 @@ export const TagEdit = props => (
 export const TagCreate = props => (
     <Create title="Create a Effect" {...props}>
         <SimpleForm>
-            <TextInput source="name" validate={required()} />
+            <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Create>
 );
