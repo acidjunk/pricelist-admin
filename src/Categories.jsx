@@ -33,6 +33,8 @@ export const CategoryList = props => (
     <List {...props} filters={<CategoryFilter />} perPage="100">
         <Datagrid>
             <TextField source="name" />
+            <TextField source="name_en" />
+            <TextField source="main_category_name" />
             <BooleanField source="cannabis" />
             <TextField source="shop_name" sortable={false} />
             <EditButton basePath="/categories" />
@@ -49,9 +51,13 @@ export const CategoryEdit = props => (
     <Edit title={<CategoryTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextInput source="name" autoFocus validate={required()} />
-            <BooleanInput source="cannabis" />
             <TextField source="shop_name" />
+            <ReferenceInput source="main_category_id" reference="main-categories" perPage={100} validate={required()}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
+            <TextInput source="name" validate={required()} fullWidth />
+            <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <BooleanInput source="cannabis" />
         </SimpleForm>
     </Edit>
 );
@@ -59,11 +65,15 @@ export const CategoryEdit = props => (
 export const CategoryCreate = props => (
     <Create title="Create a Category" {...props}>
         <SimpleForm>
-            <TextInput source="name" autoFocus validate={required()} />
-            <BooleanInput source="cannabis" />
             <ReferenceInput source="shop_id" reference="shops" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
+            <ReferenceInput source="main_category_id" reference="main-categories" perPage={100} validate={required()}>
+                <SelectInput optionText="main_category_and_shop" />
+            </ReferenceInput>
+            <TextInput source="name" validate={required()} fullWidth />
+            <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <BooleanInput source="cannabis" />
         </SimpleForm>
     </Create>
 );

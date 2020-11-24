@@ -20,6 +20,7 @@ import {
 } from "react-admin";
 
 import API_URL from "./Constants";
+
 export const TableIcon = RestaurantMenu;
 
 const TableFilter = props => (
@@ -35,8 +36,14 @@ export const QrImageField = ({ record, source }) => {
     if (!record[source]) {
         return null;
     }
-    const urlPrefix = API_URL.startsWith("https://api.prijslijst.info") ? "https://prijslijst.info" : "http://localhost:3000";
-    return <a href={`${urlPrefix}/shop/${record.shop_id}/${record.id}`}><img width="300" src={`${API_URL}/qr/shop/${record.shop_id}/${record.id}`} /></a>;
+    const urlPrefix = API_URL.startsWith("https://api.prijslijst.info")
+        ? "https://prijslijst.info"
+        : "http://localhost:3000";
+    return (
+        <a href={`${urlPrefix}/shop/${record.shop_id}/${record.id}`}>
+            <img width="300" src={`${API_URL}/qr/shop/${record.shop_id}/${record.id}`} />
+        </a>
+    );
 };
 QrImageField.defaultProps = { addLabel: true };
 

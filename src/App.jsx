@@ -14,6 +14,7 @@ import { KindImageEdit, KindImageIcon, KindImageList } from "./KindsImages";
 import { KindsToFlavorsCreate, KindsToFlavorsEdit } from "./KindsToFlavors";
 import { KindsToStrainsCreate, KindsToStrainsEdit } from "./KindsToStrains";
 import { KindsToTagsCreate, KindsToTagsEdit } from "./KindsToTags";
+import { MainCategoryCreate, MainCategoryEdit, MainCategoryIcon, MainCategoryList } from "./MainCategories";
 import { OrderCreate, OrderEdit, OrderIcon, OrderList, OrderShow } from "./Orders";
 import { PriceCreate, PriceEdit, PriceIcon, PriceList } from "./Prices";
 import { ProductCreate, ProductEdit, ProductIcon, ProductList, ProductShow } from "./Products";
@@ -85,6 +86,13 @@ class App extends Component {
                     edit={PriceEdit}
                     create={PriceCreate}
                     icon={PriceIcon}
+                />
+                <Resource
+                    name="main-categories"
+                    list={MainCategoryList}
+                    edit={MainCategoryEdit}
+                    create={MainCategoryCreate}
+                    icon={MainCategoryIcon}
                 />
                 <Resource
                     name="categories"
