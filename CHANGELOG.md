@@ -3,6 +3,11 @@
 -   Inline edit
 -   Upgrade to React-Admin 3.0
 
+0.9.7
+
+-   Main category support
+-   Autofocus on first input field if possible
+
 0.9.6
 
 -   Table support for shop orders
