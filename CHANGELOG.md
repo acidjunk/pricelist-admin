@@ -3,6 +3,12 @@
 -   Inline edit
 -   Upgrade to React-Admin 3.0
 
+0.9.8
+
+-   Category icon + EN support
+-   MainCategory icon + EN support
+-   Ability to tag a product as "new"
+
 0.9.7
 
 -   Main category support

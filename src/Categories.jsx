@@ -34,6 +34,7 @@ export const CategoryList = props => (
         <Datagrid>
             <TextField source="name" />
             <TextField source="name_en" />
+            <TextField source="icon" />
             <TextField source="main_category_name" />
             <BooleanField source="cannabis" />
             <TextField source="shop_name" sortable={false} />
@@ -57,6 +58,7 @@ export const CategoryEdit = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <TextInput source="icon" label="Icon name" fullWidth />
             <BooleanInput source="cannabis" />
         </SimpleForm>
     </Edit>
@@ -73,6 +75,7 @@ export const CategoryCreate = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <TextInput source="icon" label="Icon name" fullWidth />
             <BooleanInput source="cannabis" />
         </SimpleForm>
     </Create>

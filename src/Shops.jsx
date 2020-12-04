@@ -129,6 +129,7 @@ export const ShopShow = props => (
                             <TextField source="name" />
                         </ReferenceField>
                         <BooleanField source="active" sortable={false} />
+                        <BooleanField source="new" sortable={false} />
                         <ToggleAvailabilityButton source="active" />
                         <NumberField
                             source="half"

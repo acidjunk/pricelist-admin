@@ -34,6 +34,7 @@ export const ShopsToPricesEdit = props => {
             <SimpleForm redirect={redirect}>
                 <DisabledInput source="id" />
                 <BooleanInput source="active" label="Show price to customers?" />
+                <BooleanInput source="new" defaultValue={false} label="Show the product as NEW?" />
                 <ReferenceInput
                     source="price_id"
                     reference="prices"
@@ -83,6 +84,7 @@ export const ShopsToPricesCreate = props => {
         <Create title="Create a ShopsToPrices" {...props}>
             <SimpleForm redirect={redirect} defaultValue={{ shop_id }}>
                 <BooleanInput source="active" defaultValue={true} label="Show price to customers?" />
+                <BooleanInput source="new" defaultValue={false} label="Show the product as NEW?" />
                 <ReferenceInput
                     source="price_id"
                     reference="prices"

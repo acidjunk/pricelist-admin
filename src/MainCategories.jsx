@@ -31,6 +31,8 @@ export const MainCategoryList = props => (
     <List {...props} filters={<MainCategoryFilter />} perPage="100">
         <Datagrid>
             <TextField source="name" />
+            <TextField source="name_en" label="Name (EN)" />
+            <TextField source="icon" />
             <TextField source="shop_name" sortable={false} />
             <EditButton basePath="/main-categories" />
             <ShowButton basePath="/main-categories" />
@@ -48,6 +50,7 @@ export const MainCategoryEdit = props => (
             <DisabledInput source="id" />
             <TextInput source="name" validate={required()} fullWidth autoFocus />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <TextInput source="icon" label="Icon name" fullWidth />
             <TextField source="shop_name" />
         </SimpleForm>
     </Edit>
@@ -58,6 +61,7 @@ export const MainCategoryCreate = props => (
         <SimpleForm>
             <TextInput source="name" validate={required()} fullWidth autoFocus />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
+            <TextInput source="icon" label="Icon name" fullWidth />
             <ReferenceInput source="shop_id" reference="shops" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
