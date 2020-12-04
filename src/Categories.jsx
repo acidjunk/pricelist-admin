@@ -10,6 +10,8 @@ import {
     EditButton,
     Filter,
     List,
+    NumberField,
+    NumberInput,
     ReferenceInput,
     SelectInput,
     ShowButton,
@@ -32,6 +34,7 @@ const CategoryFilter = props => (
 export const CategoryList = props => (
     <List {...props} filters={<CategoryFilter />} perPage="100">
         <Datagrid>
+            <NumberField source="order_number" />
             <TextField source="name" />
             <TextField source="name_en" />
             <TextField source="icon" />
@@ -59,6 +62,7 @@ export const CategoryEdit = props => (
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
             <TextInput source="icon" label="Icon name" fullWidth />
+            <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
         </SimpleForm>
     </Edit>
@@ -76,6 +80,7 @@ export const CategoryCreate = props => (
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
             <TextInput source="icon" label="Icon name" fullWidth />
+            <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
         </SimpleForm>
     </Create>
