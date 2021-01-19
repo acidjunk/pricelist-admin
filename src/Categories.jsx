@@ -20,6 +20,7 @@ import {
     TextInput,
     required
 } from "react-admin";
+import {ColorField, ColorInput} from "react-admin-color-input";
 export const CategoryIcon = ChromeReaderMode;
 
 const CategoryFilter = props => (
@@ -37,9 +38,10 @@ export const CategoryList = props => (
             <NumberField source="order_number" />
             <TextField source="name" />
             <TextField source="name_en" />
-            <TextField source="icon" />
-            <TextField source="main_category_name" />
             <BooleanField source="cannabis" />
+            <TextField source="icon" />
+            <ColorField source="color" />
+            <TextField source="main_category_name" />
             <TextField source="shop_name" sortable={false} />
             <EditButton basePath="/categories" />
             <ShowButton basePath="/categories" />
@@ -62,6 +64,7 @@ export const CategoryEdit = props => (
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
             <TextInput source="icon" label="Icon name" fullWidth />
+            <ColorInput source="color" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
         </SimpleForm>
@@ -80,6 +83,7 @@ export const CategoryCreate = props => (
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
             <TextInput source="icon" label="Icon name" fullWidth />
+            <ColorInput source="color" defaultValue="#376E1A" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
         </SimpleForm>

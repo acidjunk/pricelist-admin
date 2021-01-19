@@ -1,7 +1,11 @@
-0.9.9 (unreleased)
+0.9.10 (unreleased)
 
 -   Inline edit
 -   Upgrade to React-Admin 3.0
+
+0.9.9
+
+-   Assign and edit colors for categories
 
 0.9.8
 
