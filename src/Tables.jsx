@@ -37,7 +37,7 @@ export const QrImageField = ({ record, source }) => {
         return null;
     }
     const urlPrefix = API_URL.startsWith("https://api.prijslijst.info")
-        ? "https://prijslijst.info"
+        ? "https://app.prijslijst.info"
         : "http://localhost:3000";
     return (
         <a href={`${urlPrefix}/shop/${record.shop_id}/${record.id}`}>
