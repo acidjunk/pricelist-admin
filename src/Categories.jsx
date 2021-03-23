@@ -1,6 +1,7 @@
 import { ChromeReaderMode } from "@material-ui/icons";
 import React from "react";
 import {
+    AutocompleteInput,
     BooleanField,
     BooleanInput,
     Create,
@@ -20,8 +21,33 @@ import {
     TextInput,
     required
 } from "react-admin";
-import {ColorField, ColorInput} from "react-admin-color-input";
+import { ColorField, ColorInput } from "react-admin-color-input";
 export const CategoryIcon = ChromeReaderMode;
+
+const iconChoices = [
+    { name: "berry" },
+    { name: "burgers" },
+    { name: "candy" },
+    { name: "cannabis" },
+    { name: "coffee" },
+    { name: "chevron" },
+    { name: "coin" },
+    { name: "deal" },
+    { name: "downloads" },
+    { name: "eat" },
+    { name: "games" },
+    { name: "hotdog" },
+    { name: "love" },
+    { name: "milkshakes" },
+    { name: "mug" },
+    { name: "network" },
+    { name: "smoke" },
+    { name: "smile" },
+    { name: "soda" },
+    { name: "spoon" },
+    { name: "water" },
+    { name: "wine" }
+];
 
 const CategoryFilter = props => (
     <Filter {...props}>
@@ -63,7 +89,12 @@ export const CategoryEdit = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
-            <TextInput source="icon" label="Icon name" fullWidth />
+            <AutocompleteInput
+                source="icon"
+                choices={iconChoices}
+                optionText="name"
+                optionValue="name"
+            />
             <ColorInput source="color" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
@@ -82,7 +113,12 @@ export const CategoryCreate = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
-            <TextInput source="icon" label="Icon name" fullWidth />
+            <AutocompleteInput
+                source="icon"
+                choices={iconChoices}
+                optionText="name"
+                optionValue="name"
+            />
             <ColorInput source="color" defaultValue="#376E1A" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
