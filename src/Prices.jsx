@@ -11,8 +11,8 @@ import {
     NumberField,
     NumberInput,
     SimpleForm,
-    TextInput,
     TextField,
+    TextInput,
     required
 } from "react-admin";
 
@@ -47,7 +47,7 @@ export const PriceEdit = props => (
     <Edit title={<PriceTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <TextField source="internal_product_id" autoFocus validate={required()} />
+            <TextInput source="internal_product_id" autoFocus validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />
@@ -61,7 +61,7 @@ export const PriceEdit = props => (
 export const PriceCreate = props => (
     <Create title="Create a Price" {...props}>
         <SimpleForm>
-            <TextField source="internal_product_id" autoFocus validate={required()} />
+            <TextInput source="internal_product_id" autoFocus validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />

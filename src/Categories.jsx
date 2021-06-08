@@ -89,12 +89,7 @@ export const CategoryEdit = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
-            <AutocompleteInput
-                source="icon"
-                choices={iconChoices}
-                optionText="name"
-                optionValue="name"
-            />
+            <AutocompleteInput source="icon" choices={iconChoices} optionText="name" optionValue="name" />
             <ColorInput source="color" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
@@ -113,12 +108,7 @@ export const CategoryCreate = props => (
             </ReferenceInput>
             <TextInput source="name" validate={required()} fullWidth />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
-            <AutocompleteInput
-                source="icon"
-                choices={iconChoices}
-                optionText="name"
-                optionValue="name"
-            />
+            <AutocompleteInput source="icon" choices={iconChoices} optionText="name" optionValue="name" />
             <ColorInput source="color" defaultValue="#376E1A" />
             <NumberInput source="order_number" defaultValue={0} />
             <BooleanInput source="cannabis" />
