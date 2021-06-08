@@ -12,6 +12,7 @@ import {
     NumberInput,
     SimpleForm,
     TextInput,
+    TextField,
     required
 } from "react-admin";
 
@@ -26,7 +27,7 @@ const PriceFilter = props => (
 export const PriceList = props => (
     <List {...props} perPage="25" sort={{ field: "internal_product_id", order: "ASC" }} filters={<PriceFilter />}>
         <Datagrid>
-            <NumberField source="internal_product_id" />
+            <TextField source="internal_product_id" />
             <NumberField source="half" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
             <NumberField source="one" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
             <NumberField source="two_five" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />
@@ -46,7 +47,7 @@ export const PriceEdit = props => (
     <Edit title={<PriceTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
-            <NumberInput source="internal_product_id" autoFocus validate={required()} />
+            <TextField source="internal_product_id" autoFocus validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />
@@ -60,7 +61,7 @@ export const PriceEdit = props => (
 export const PriceCreate = props => (
     <Create title="Create a Price" {...props}>
         <SimpleForm>
-            <NumberInput source="internal_product_id" autoFocus validate={required()} />
+            <TextField source="internal_product_id" autoFocus validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />
             <NumberInput source="two_five" locales="nl-NL" />

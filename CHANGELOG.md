@@ -1,7 +1,11 @@
-0.9.10 (unreleased)
+1.1.0 (unreleased)
 
 -   Inline edit
 -   Upgrade to React-Admin 3.0
+
+1.0.0
+
+-   Fixed issue in price template
 
 0.9.9
 
