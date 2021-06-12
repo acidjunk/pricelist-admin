@@ -4,6 +4,7 @@ import { Admin, Resource, fetchUtils } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
+import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
 import API_URL from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
 import addUploadFeature from "./dataProvider/decorator";
@@ -100,6 +101,12 @@ class App extends Component {
                     edit={CategoryEdit}
                     create={CategoryCreate}
                     icon={CategoryIcon}
+                />
+                <Resource
+                    name="categories-images"
+                    list={CategoryImageList}
+                    edit={CategoryImageEdit}
+                    icon={CategoryImageIcon}
                 />
                 <Resource
                     name="kinds"
