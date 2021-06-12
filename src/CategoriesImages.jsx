@@ -8,6 +8,9 @@ import {
     ImageField,
     ImageInput,
     List,
+    ReferenceField,
+    ReferenceInput,
+    SelectInput,
     TabbedForm,
     TextField,
     TextInput
@@ -17,6 +20,9 @@ export const CategoryImageIcon = BrokenImage;
 const CategoryImageFilter = props => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
+        <ReferenceInput label="Shop" source="shop_id" reference="shops" allowEmpty alwaysOn>
+            <SelectInput optionText="name" />
+        </ReferenceInput>
     </Filter>
 );
 
@@ -24,6 +30,9 @@ export const CategoryImageList = props => (
     <List {...props} perPage="100" filters={<CategoryImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
+            <ReferenceField source="shop_id" reference="shops" label="Shop" allowEmpty={true}>
+                <TextField source="name" />
+            </ReferenceField>
             <ProductImageListField source="image_1" />
             <ProductImageListField source="image_2" />
         </Datagrid>
@@ -40,7 +49,7 @@ const ProductImageListField = ({ record, source }) => {
         edits: {
             resize: {
                 width: 100,
-                height: 100,
+                height: 60,
                 fit: "contain"
             }
         }
@@ -60,8 +69,8 @@ const ProductImageField = ({ record, source }) => {
         key: record[source],
         edits: {
             resize: {
-                width: 200,
-                height: 200,
+                width: 250,
+                height: 150,
                 fit: "contain"
             }
         }
@@ -69,7 +78,7 @@ const ProductImageField = ({ record, source }) => {
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
-    return <img width="200" src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
+    return <img width="250" src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
 };
 ProductImageField.defaultProps = { addLabel: true };
 
@@ -83,14 +92,14 @@ export const CategoryImageEdit = props => (
             <FormTab label="lister image">
                 <TextField source="image_1" />
                 <ProductImageField source="image_1" />
-                <ImageInput source="image_1" label="Image 1" accept="image/*">
+                <ImageInput source="image_1" label="Image 1: (aspect 5 : 3 or 1920 x 1152)" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
             </FormTab>
             <FormTab label="image 2">
                 <TextField source="image_2" />
                 <ProductImageField source="image_2" />
-                <ImageInput source="image_2" label="Image 2" accept="image/*">
+                <ImageInput source="image_2" label="Image 2: (aspect 5 : 3 or 1920 x 1152)" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
             </FormTab>

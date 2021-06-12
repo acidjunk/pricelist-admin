@@ -6,6 +6,7 @@
 1.0.0
 
 -   Fixed issue in price template
+-   Added category image views
 
 0.9.9
 
