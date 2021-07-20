@@ -12,6 +12,7 @@ import {
     TextField,
     TextInput
 } from "react-admin";
+import DeleteImageButton from "./components/DeleteImageButton";
 export const KindImageIcon = BrokenImage;
 
 const KindImageFilter = props => (
@@ -87,6 +88,7 @@ export const KindImageEdit = props => (
             <FormTab label="lister image">
                 <TextField source="image_1" />
                 <ProductImageField source="image_1" />
+                <DeleteImageButton source="image_1" />
                 <ImageInput source="image_1" label="Image 1" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -94,6 +96,7 @@ export const KindImageEdit = props => (
             <FormTab label="image 2">
                 <TextField source="image_2" />
                 <ProductImageField source="image_2" />
+                <DeleteImageButton source="image_2" />
                 <ImageInput source="image_2" label="Image 2" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -101,6 +104,7 @@ export const KindImageEdit = props => (
             <FormTab label="image 3">
                 <TextField source="image_3" />
                 <ProductImageField source="image_3" />
+                <DeleteImageButton source="image_3" />
                 <ImageInput source="image_3" label="Image 3" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -108,6 +112,7 @@ export const KindImageEdit = props => (
             <FormTab label="image 4">
                 <TextField source="image_4" />
                 <ProductImageField source="image_4" />
+                <DeleteImageButton source="image_4" />
                 <ImageInput source="image_4" label="Image 4" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -115,6 +120,7 @@ export const KindImageEdit = props => (
             <FormTab label="image 5">
                 <TextField source="image_5" />
                 <ProductImageField source="image_5" />
+                <DeleteImageButton source="image_5" />
                 <ImageInput source="image_5" label="Image 5" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -122,6 +128,7 @@ export const KindImageEdit = props => (
             <FormTab label="image 6">
                 <TextField source="image_6" />
                 <ProductImageField source="image_6" />
+                <DeleteImageButton source="image_6" />
                 <ImageInput source="image_6" label="Image 6" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>

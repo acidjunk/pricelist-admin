@@ -7,30 +7,30 @@ import { connect } from "react-redux";
 import { push as pushAction } from "react-router-redux";
 
 import { uploadDataProvider } from "../App";
-import API_URL from "../Constants";
 
-class ToggleAvailabilityButton extends Component {
+class DeleteImageButton extends Component {
     handleClick = () => {
-        const { push, record, showNotification } = this.props;
-        const updatedRecord = { ...record, active: !record.active };
-        uploadDataProvider(UPDATE, "shops-to-prices", { id: record.id, data: updatedRecord })
+        const { push, source, basePath, record, showNotification } = this.props;
+        debugger;
+        const updatedRecord = { image: source };
+        uploadDataProvider(UPDATE, `${basePath.replace("/", "")}/delete`, { id: record.id, data: updatedRecord })
             .then(() => {
-                showNotification("Price row disabled");
+                showNotification("image deleted");
                 window.location.reload();
             })
             .catch(e => {
                 console.error(e);
-                showNotification("Error: price row update failed", "warning");
+                showNotification("Error: image delete failed", "warning");
             });
     };
 
     render() {
         const { record } = this.props;
-        return <Button onClick={this.handleClick}>{record.active ? "STOP" : "START"}</Button>;
+        return <Button onClick={this.handleClick}>delete</Button>;
     }
 }
 
-ToggleAvailabilityButton.propTypes = {
+DeleteImageButton.propTypes = {
     push: PropTypes.func,
     record: PropTypes.object,
     showNotification: PropTypes.func
@@ -39,4 +39,4 @@ ToggleAvailabilityButton.propTypes = {
 export default connect(null, {
     showNotification: showNotificationAction,
     push: pushAction
-})(ToggleAvailabilityButton);
+})(DeleteImageButton);

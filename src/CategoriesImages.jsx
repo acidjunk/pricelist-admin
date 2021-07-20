@@ -15,6 +15,7 @@ import {
     TextField,
     TextInput
 } from "react-admin";
+import DeleteImageButton from "./components/DeleteImageButton";
 export const CategoryImageIcon = BrokenImage;
 
 const CategoryImageFilter = props => (
@@ -92,6 +93,7 @@ export const CategoryImageEdit = props => (
             <FormTab label="lister image">
                 <TextField source="image_1" />
                 <ProductImageField source="image_1" />
+                <DeleteImageButton source="image_1" />
                 <ImageInput source="image_1" label="Image 1: (aspect 5 : 3 or 1920 x 1152)" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
@@ -99,6 +101,7 @@ export const CategoryImageEdit = props => (
             <FormTab label="image 2">
                 <TextField source="image_2" />
                 <ProductImageField source="image_2" />
+                <DeleteImageButton source="image_2" />
                 <ImageInput source="image_2" label="Image 2: (aspect 5 : 3 or 1920 x 1152)" accept="image/*">
                     <ImageField source="src" title="title" />
                 </ImageInput>
