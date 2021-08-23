@@ -4,7 +4,6 @@ import React from "react";
 import {
     AutocompleteInput,
     Create,
-    DisabledInput,
     Edit,
     ReferenceInput,
     SelectInput,
@@ -24,7 +23,7 @@ const redirect = (basePath, id, data) => `/kinds/${data.kind_id}/show`;
 export const KindsToTagsEdit = props => (
     <Edit title={<KindsToTagsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <ReferenceInput
                 source="tag_id"
                 reference="tags"

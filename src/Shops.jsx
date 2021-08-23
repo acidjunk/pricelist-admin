@@ -10,7 +10,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -230,7 +229,7 @@ export const ShopShow = props => (
 export const ShopEdit = props => (
     <Edit title={<ShopTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="description" />
         </SimpleForm>

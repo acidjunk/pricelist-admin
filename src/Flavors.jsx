@@ -5,7 +5,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -85,7 +84,7 @@ const FlavorTitle = ({ record }) => {
 export const FlavorEdit = props => (
     <Edit title={<FlavorTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />

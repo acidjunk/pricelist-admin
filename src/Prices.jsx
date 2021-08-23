@@ -3,7 +3,6 @@ import React from "react";
 import {
     Create,
     Datagrid,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -46,7 +45,7 @@ const PriceTitle = ({ record }) => {
 export const PriceEdit = props => (
     <Edit title={<PriceTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="internal_product_id" autoFocus validate={required()} />
             <NumberInput source="half" locales="nl-NL" />
             <NumberInput source="one" locales="nl-NL" />

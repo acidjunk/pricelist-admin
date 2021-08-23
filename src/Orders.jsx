@@ -5,7 +5,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -113,7 +112,7 @@ const OrderTitle = ({ record }) => {
 export const OrderEdit = props => (
     <Edit title={<OrderTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>

@@ -1,8 +1,11 @@
 import simpleRestProvider from "ra-data-simple-rest";
 import React, { Component } from "react";
-import { Admin, Resource, fetchUtils } from "react-admin";
+import { Admin, Resource, fetchUtils, resolveBrowserLocale } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
+
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
 import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
 import API_URL from "./Constants";
@@ -28,14 +31,29 @@ import { TagCreate, TagEdit, TagIcon, TagList, TagShow } from "./Tags";
 import { adminTheme } from "./Theme";
 import { UserCreate, UserEdit, UserIcon, UserList } from "./Users";
 
-const i18nProvider = locale => {
-    if (locale === "nl") {
-        return import("./i18n/nl").then(messages => messages.default);
-    }
+// const i18nProvider = polyglotI18nProvider(locale => {
+//     if (locale === "nl") {
+//         return import("./i18n/nl").then(messages => messages.default);
+//     }
 
-    // Always fallback on english
-    return englishMessages;
-};
+//     // Always fallback on english
+//     return englishMessages;
+// });
+
+const i18nProvider = {
+    translate: (key, options) => {
+        
+    },
+    changeLocale: locale => Promise,
+    getLocale: () => {
+        // if (locale === "nl") {
+        return import("./i18n/nl").then(messages => messages.default);
+        // }
+
+        // Always fallback on english
+        // return englishMessages;
+    }
+}
 
 const httpClient = (url, options = {}) => {
     if (!options.headers) {

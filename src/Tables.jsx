@@ -5,7 +5,6 @@ import {
     BooleanInput,
     Create,
     Datagrid,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -66,7 +65,7 @@ const TableTitle = ({ record }) => {
 export const TableEdit = props => (
     <Edit title={<TableTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextField source="shop_name" />
         </SimpleForm>

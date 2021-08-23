@@ -6,7 +6,6 @@ import {
     BooleanInput,
     Create,
     Datagrid,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -82,7 +81,7 @@ const CategoryTitle = ({ record }) => {
 export const CategoryEdit = props => (
     <Edit title={<CategoryTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id"/>
             <TextField source="shop_name" />
             <ReferenceInput source="main_category_id" reference="main-categories" perPage={100} validate={required()}>
                 <SelectInput optionText="name" />

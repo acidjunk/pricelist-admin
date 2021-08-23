@@ -5,7 +5,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -70,7 +69,7 @@ const StrainTitle = ({ record }) => {
 export const StrainEdit = props => (
     <Edit title={<StrainTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>

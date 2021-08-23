@@ -4,12 +4,12 @@ import React from "react";
 import {
     AutocompleteInput,
     Create,
-    DisabledInput,
     Edit,
     ReferenceInput,
     SelectInput,
     SimpleForm,
-    required
+    required,
+    TextInput
 } from "react-admin";
 
 export const KindsToStrainsIcon = Link;
@@ -23,7 +23,7 @@ const redirect = (basePath, id, data) => `/kinds/${data.kind_id}/show`;
 export const KindsToStrainsEdit = props => (
     <Edit title={<KindsToStrainsTitle />} {...props}>
         <SimpleForm redirect={redirect}>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <ReferenceInput
                 source="strain_id"
                 reference="strains"

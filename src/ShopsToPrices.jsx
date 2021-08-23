@@ -5,12 +5,12 @@ import {
     AutocompleteInput,
     BooleanInput,
     Create,
-    DisabledInput,
     Edit,
     ReferenceInput,
     SelectInput,
     SimpleForm,
     TextField,
+    TextInput,
     required
 } from "react-admin";
 
@@ -32,7 +32,7 @@ export const ShopsToPricesEdit = props => {
     return (
         <Edit title={<ShopsToPricesTitle />} {...props} undoable={false}>
             <SimpleForm redirect={redirect}>
-                <DisabledInput source="id" />
+                <TextInput disabled source="id" />
                 <BooleanInput source="active" label="Show price to customers?" />
                 <BooleanInput source="new" defaultValue={false} label="Show the product as NEW?" />
                 <ReferenceInput

@@ -3,7 +3,6 @@ import React from "react";
 import {
     Create,
     Datagrid,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -47,7 +46,7 @@ const MainCategoryTitle = ({ record }) => {
 export const MainCategoryEdit = props => (
     <Edit title={<MainCategoryTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" validate={required()} fullWidth autoFocus />
             <TextInput source="name_en" label="Name EN (only needed when different)" fullWidth />
             <TextInput source="icon" label="Icon name" fullWidth />
