@@ -6,7 +6,6 @@ import compose from "recompose/compose";
 import NewKinds from "./NewKinds";
 import NewUsers from "./NewUsers";
 import Shops from "./Shops";
-import Welcome from "./Welcome";
 
 const styles = {
     flex: { display: "flex" },
@@ -33,7 +32,7 @@ class Dashboard extends Component {
     fetchData() {
         this.fetchShops();
         this.fetchKinds();
-        this.fetchUsers();
+        // this.fetchUsers();
     }
 
     async fetchShops() {
@@ -88,11 +87,11 @@ class Dashboard extends Component {
 
     render() {
         const { shops, nbShops, nbNewKinds, newKinds, nbNewUsers, newUsers } = this.state;
+        console.log('state => ', this.state);
         return (
             <div style={styles.flexColumn}>
                 <div style={styles.singleCol}>
                     <Shops nb={nbShops} shops={shops} />
-                    {/*<Welcome />*/}
                 </div>
                 <div style={styles.flex}>
                     <NewKinds nb={nbNewKinds} kinds={newKinds} />
