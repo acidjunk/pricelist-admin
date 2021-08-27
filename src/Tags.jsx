@@ -55,7 +55,7 @@ export const TagShow = props => (
 );
 
 export const TagList = props => (
-    <List {...props} perPage="25" filters={<TagFilter />}>
+    <List {...props} perPage={25} filters={<TagFilter />}>
         <Datagrid>
             <TextField source="name" validate={required()} />
             <ShowButton />

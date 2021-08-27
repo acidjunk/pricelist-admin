@@ -1,13 +1,12 @@
-import Avatar from "@material-ui/core/Avatar";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import CustomerIcon from "@material-ui/icons/Person";
-import React from "react";
 import { translate } from "react-admin";
 import { Link } from "react-router-dom";
 import compose from "recompose/compose";

@@ -24,7 +24,7 @@ const PriceFilter = props => (
 );
 
 export const PriceList = props => (
-    <List {...props} perPage="25" sort={{ field: "internal_product_id", order: "ASC" }} filters={<PriceFilter />}>
+    <List {...props} perPage={25} sort={{ field: "internal_product_id", order: "ASC" }} filters={<PriceFilter />}>
         <Datagrid>
             <TextField source="internal_product_id" />
             <NumberField source="half" locales="nl-NL" options={{ style: "currency", currency: "EUR" }} />

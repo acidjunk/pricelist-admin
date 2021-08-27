@@ -1,6 +1,6 @@
 import simpleRestProvider from "ra-data-simple-rest";
 import React, { Component } from "react";
-import { Admin, Resource, fetchUtils, resolveBrowserLocale } from "react-admin";
+import { Admin, Resource, fetchUtils } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
 
@@ -78,7 +78,7 @@ const httpClient = (url, options = {}) => {
     // Token auth:
     const token = localStorage.getItem('token');
     options.headers.set('Authentication-Token', token);
-    return fetchUtils.fetchJson(url, options);
+    return fetchUtils.fetchJson(url, options).catch((error) => error);
 };
 const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
 
@@ -154,8 +154,7 @@ class App extends Component {
                     list={KindImageList}
                     edit={KindImageEdit}
                     icon={KindImageIcon}
-                />
-                {/*  
+                />  
                 <Resource
                     name="products"
                     list={ProductList}
@@ -215,7 +214,7 @@ class App extends Component {
                     edit={KindsToFlavorsEdit}
                     create={KindsToFlavorsCreate}
                     icon={UserIcon}
-                /> */}
+                />
             </Admin>
         );
     }

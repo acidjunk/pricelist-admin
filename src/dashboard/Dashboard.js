@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GET_LIST, GET_MANY, Responsive, withDataProvider } from "react-admin";
+import { GET_LIST, withDataProvider } from "react-admin";
 import { connect } from "react-redux";
 import compose from "recompose/compose";
 
@@ -87,7 +87,6 @@ class Dashboard extends Component {
 
     render() {
         const { shops, nbShops, nbNewKinds, newKinds, nbNewUsers, newUsers } = this.state;
-        console.log('state => ', this.state);
         return (
             <div style={styles.flexColumn}>
                 <div style={styles.singleCol}>

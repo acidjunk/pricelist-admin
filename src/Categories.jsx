@@ -58,7 +58,7 @@ const CategoryFilter = props => (
 );
 
 export const CategoryList = props => (
-    <List {...props} filters={<CategoryFilter />} perPage="100">
+    <List {...props} filters={<CategoryFilter />} perPage={100}>
         <Datagrid>
             <NumberField source="order_number" />
             <TextField source="name" />

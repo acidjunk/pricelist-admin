@@ -22,7 +22,7 @@ const ProductImageFilter = props => (
 );
 
 export const ProductImageList = props => (
-    <List {...props} perPage="100" filters={<ProductImageFilter />}>
+    <List {...props} perPage={100} filters={<ProductImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
             <ProductImageListField source="image_1" />
@@ -78,9 +78,9 @@ const ProductImageField = ({ record, source }) => {
 };
 ProductImageField.defaultProps = { addLabel: true };
 
-const ProductImageTitle = ({ record }) => {
-    return <span>Image {record ? `"${record.name}"` : ""}</span>;
-};
+// const ProductImageTitle = ({ record }) => {
+//     return <span>Image {record ? `"${record.name}"` : ""}</span>;
+// };
 
 export const ProductImageEdit = props => (
     <Edit {...props} undoable={false} redirect="edit">

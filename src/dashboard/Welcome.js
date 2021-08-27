@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import CodeIcon from "@material-ui/icons/Code";
 import HomeIcon from "@material-ui/icons/Home";
@@ -23,7 +23,7 @@ const Welcome = ({ classes, translate }) => (
     <Card>
         <CardMedia image={mediaUrl} className={classes.media} />
         <CardContent>
-            <Typography variant="headline" component="h2">
+            <Typography variant="h2" component="h2">
                 {translate("pos.dashboard.welcome.title")}
             </Typography>
             <Typography component="p">{translate("pos.dashboard.welcome.subtitle")}</Typography>

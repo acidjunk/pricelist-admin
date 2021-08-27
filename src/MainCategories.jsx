@@ -27,7 +27,7 @@ const MainCategoryFilter = props => (
 );
 
 export const MainCategoryList = props => (
-    <List {...props} filters={<MainCategoryFilter />} perPage="100">
+    <List {...props} filters={<MainCategoryFilter />} perPage={100}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="name_en" label="Name (EN)" />

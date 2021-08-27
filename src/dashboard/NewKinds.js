@@ -1,12 +1,10 @@
-import Avatar from "@material-ui/core/Avatar";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
 import { translate } from "react-admin";
 import ReactMarkdown from "react-markdown/with-html";
 import { Link } from "react-router-dom";

@@ -10,7 +10,7 @@ import { uploadDataProvider } from "../App";
 
 class DeleteImageButton extends Component {
     handleClick = () => {
-        const { push, source, basePath, record, showNotification } = this.props;
+        const { source, basePath, record, showNotification } = this.props;
         debugger;
         const updatedRecord = { image: source };
         uploadDataProvider(UPDATE, `${basePath.replace("/", "")}/delete`, { id: record.id, data: updatedRecord })
@@ -25,7 +25,6 @@ class DeleteImageButton extends Component {
     };
 
     render() {
-        const { record } = this.props;
         return <Button onClick={this.handleClick}>delete</Button>;
     }
 }
