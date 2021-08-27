@@ -51,7 +51,7 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
             <Typography className={classes.title} color="textSecondary">
                 {translate("pos.dashboard.modified_kinds")}
             </Typography>
-            <Typography variant="headline" component="h2" className={classes.value}>
+            <Typography variant="h2" component="h2" className={classes.value}>
                 {nb}
             </Typography>
             <Divider />
@@ -63,33 +63,12 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
                             {/*src={`${record.avatar}?size=32x32`}*/}
                             {/*className={classes.avatar}*/}
                             {/*/>*/}
-                            <ListItemText
-                                primary={`${record.name}`}
-                                secondary={
-                                    <React.Fragment>
-                                        <b>NL</b>
-                                        <Typography
-                                            component="div"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            {record.description_nl && <ReactMarkdown source={record.description_nl} />}
-                                        </Typography>
-
-                                        <b>EN</b>
-                                        <Typography
-                                            component="div"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            {record.description_en && <ReactMarkdown source={record.description_en} />}
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                className={classes.listItemText}
-                            />
+                            <div className={classes.listItemText}>
+                                <b>NL</b> <span>{record.name}</span>
+                                {record.description_nl && <ReactMarkdown source={record.description_nl} />}
+                                <b>EN</b> <span>{record.name}</span>
+                                {record.description_en && <ReactMarkdown source={record.description_en} />}
+                            </div>
                         </ListItem>
                         <Divider />
                     </React.Fragment>

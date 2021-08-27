@@ -47,7 +47,7 @@ const NewUsers = ({ users = [], nb, translate, classes }) => (
             <Typography className={classes.title} color="textSecondary">
                 {translate("pos.dashboard.users")}
             </Typography>
-            <Typography variant="headline" component="h2" className={classes.value}>
+            <Typography variant="h2" component="h2" className={classes.value}>
                 {nb}
             </Typography>
             <Divider />
