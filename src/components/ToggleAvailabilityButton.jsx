@@ -7,11 +7,10 @@ import { connect } from "react-redux";
 import { push as pushAction } from "react-router-redux";
 
 import { uploadDataProvider } from "../App";
-import API_URL from "../Constants";
 
 class ToggleAvailabilityButton extends Component {
     handleClick = () => {
-        const { push, record, showNotification } = this.props;
+        const { record, showNotification } = this.props;
         const updatedRecord = { ...record, active: !record.active };
         uploadDataProvider(UPDATE, "shops-to-prices", { id: record.id, data: updatedRecord })
             .then(() => {

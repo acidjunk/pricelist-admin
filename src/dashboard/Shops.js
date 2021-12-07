@@ -1,22 +1,11 @@
-import { makeStyles } from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
-import Card from "@material-ui/core/Card";
-import Divider from "@material-ui/core/Divider";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import InfoIcon from "@material-ui/icons/Info";
-import CustomerIcon from "@material-ui/icons/PersonAdd";
 import React from "react";
+import Card from "@material-ui/core/Card";
+import ImageList from "@material-ui/core/ImageList";
+import ImageListItem from "@material-ui/core/ImageListItem";
+import ImageListItemBar from "@material-ui/core/ImageListItemBar";
+import { withStyles } from "@material-ui/styles";
+import Typography from "@material-ui/core/Typography";
 import { translate } from "react-admin";
-import { Link } from "react-router-dom";
 import compose from "recompose/compose";
 
 import { ShopIcon } from "../Shops";
@@ -58,14 +47,14 @@ const Shops = ({ shops = [], nb, translate, classes }) => (
             <Typography className={classes.title} color="textSecondary">
                 {translate("pos.dashboard.shops")}
             </Typography>
-            <Typography variant="headline" component="h2" className={classes.value}>
+            <Typography variant="h2" component="h2" className={classes.value}>
                 {nb}
             </Typography>
 
             <div className={classes.root}>
-                <GridList cols={3} className={classes.gridList}>
+                <ImageList cols={3} className={classes.gridList}>
                     {shops.map(shop => (
-                        <GridListTile
+                        <ImageListItem
                             key={shop.id}
                             style={{ cursor: "grab" }}
                             onClick={() => (document.location.href = `/#/shops/${shop.id}/show`)}
@@ -74,13 +63,13 @@ const Shops = ({ shops = [], nb, translate, classes }) => (
                                 src={`https://www.prijslijst.info/static/uploaded/shops/${shop.id}.png`}
                                 alt={shop.name}
                             />
-                            <GridListTileBar
+                            <ImageListItemBar
                                 title={shop.name}
                                 subtitle={<span>description: {shop.description}</span>}
                             />
-                        </GridListTile>
+                        </ImageListItem>
                     ))}
-                </GridList>
+                </ImageList>
             </div>
         </Card>
     </div>

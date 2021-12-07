@@ -22,6 +22,9 @@ export default {
             customers: "Customers"
         }
     },
+    navigation: {
+        skip_nav: "OLEMALE",
+    },
     resources: {
         customers: {
             name: "Customer |||| Customers",

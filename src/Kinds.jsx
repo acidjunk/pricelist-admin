@@ -1,7 +1,4 @@
 import CardActions from "@material-ui/core/CardActions";
-import MaterialList from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Typography from "@material-ui/core/Typography";
 import { Add, SmokingRooms } from "@material-ui/icons";
 import MarkdownInput from "ra-input-markdown";
 import React from "react";
@@ -15,7 +12,6 @@ import {
     Datagrid,
     DateField,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -227,7 +223,7 @@ export const KindShow = props => (
 export const KindEdit = props => (
     <Edit title={<KindTitle />} {...props} redirect="show">
         <SimpleForm redirect="show">
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus fullWidth validate={required()} />
             <TextInput source="short_description_nl" fullWidth />
             <MarkdownInput source="description_nl" />

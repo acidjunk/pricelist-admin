@@ -1,11 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { RestaurantMenu } from "@material-ui/icons";
 import React from "react";
 import {
-    BooleanField,
-    BooleanInput,
     Create,
     Datagrid,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -48,7 +46,7 @@ export const QrImageField = ({ record, source }) => {
 QrImageField.defaultProps = { addLabel: true };
 
 export const TableList = props => (
-    <List {...props} filters={<TableFilter />} perPage="100">
+    <List {...props} filters={<TableFilter />} perPage={100}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="shop_name" sortable={false} />
@@ -66,7 +64,7 @@ const TableTitle = ({ record }) => {
 export const TableEdit = props => (
     <Edit title={<TableTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextField source="shop_name" />
         </SimpleForm>

@@ -3,13 +3,16 @@ import React, { Component } from "react";
 import { Admin, Resource, fetchUtils } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
+
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
 import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
 import API_URL from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
 import addUploadFeature from "./dataProvider/decorator";
 import { FlavorCreate, FlavorEdit, FlavorIcon, FlavorList, FlavorShow } from "./Flavors";
-import englishMessages from "./i18n/en";
+// import englishMessages from "./i18n/en";
 import { KindCreate, KindEdit, KindIcon, KindList, KindShow } from "./Kinds";
 import { KindImageEdit, KindImageIcon, KindImageList } from "./KindsImages";
 import { KindsToFlavorsCreate, KindsToFlavorsEdit } from "./KindsToFlavors";
@@ -27,17 +30,45 @@ import { TableCreate, TableEdit, TableIcon, TableList } from "./Tables";
 import { TagCreate, TagEdit, TagIcon, TagList, TagShow } from "./Tags";
 import { adminTheme } from "./Theme";
 import { UserCreate, UserEdit, UserIcon, UserList } from "./Users";
+import englishMessages from './i18n/en';
 
-const i18nProvider = locale => {
-    if (locale === "nl") {
-        return import("./i18n/nl").then(messages => messages.default);
+// const i18nProvider = polyglotI18nProvider(locale => {
+//     if (locale === "nl") {
+//         return import("./i18n/nl").then(messages => messages.default);
+//     }
+
+//     // Always fallback on english
+//     return englishMessages;
+// });
+
+const translations = {
+    en: import("./i18n/en").then(messages => messages.default),
+    nl: import("./i18n/nl").then(messages => messages.default)
+}
+
+// const i18nProvider = polyglotI18nProvider(locale => translations[locale]);
+const i18nProvider = polyglotI18nProvider(locale => {
+    if (locale === 'nl') {
+        return translations[locale];
     }
-
     // Always fallback on english
     return englishMessages;
-};
+}, 'en');
+
+// const i18nProvider = {import("./i18n/nl").then(messages => messages.default)
+//     translate: key => lodashGet(messages, key),
+//     changeLocale: newLocale => {
+//         messages = (newLocale === 'fr') ? frenchMessages : englishMessages;
+//         locale = newLocale;
+//         return Promise.resolve();
+//     },
+//     getLocale: () => locale
+// }
+
+console.log("API_URL => ", API_URL);
 
 const httpClient = (url, options = {}) => {
+    console.log("WHAT IS GOING ON +> ", url);
     if (!options.headers) {
         options.headers = new Headers({ Accept: "application/json" });
     }
@@ -45,9 +76,9 @@ const httpClient = (url, options = {}) => {
     options.credentials = "include";
 
     // Token auth:
-    // const token = localStorage.getItem('token');
-    // options.headers.set('Authentication-Token', token);
-    return fetchUtils.fetchJson(url, options);
+    const token = localStorage.getItem('token');
+    options.headers.set('Authentication-Token', token);
+    return fetchUtils.fetchJson(url, options).catch((error) => error);
 };
 const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
 
@@ -123,7 +154,7 @@ class App extends Component {
                     list={KindImageList}
                     edit={KindImageEdit}
                     icon={KindImageIcon}
-                />
+                />  
                 <Resource
                     name="products"
                     list={ProductList}

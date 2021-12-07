@@ -1,16 +1,13 @@
+/* eslint-disable jsx-a11y/alt-text */
 import CardActions from "@material-ui/core/CardActions";
 import { Add, StoreMallDirectory } from "@material-ui/icons";
-import { parse } from "query-string";
 import React from "react";
 import {
-    ArrayField,
-    AutocompleteInput,
     BooleanField,
     Button,
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -21,9 +18,7 @@ import {
     NumberField,
     Pagination,
     ReferenceField,
-    ReferenceInput,
     ReferenceManyField,
-    SelectInput,
     Show,
     ShowButton,
     SimpleForm,
@@ -47,7 +42,7 @@ const ShopFilter = props => (
 );
 
 export const ShopList = props => (
-    <List {...props} filters={<ShopFilter />}>
+    <List {...props} perPage={25} filters={<ShopFilter />}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="description" />
@@ -230,7 +225,7 @@ export const ShopShow = props => (
 export const ShopEdit = props => (
     <Edit title={<ShopTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="description" />
         </SimpleForm>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { BrokenImage } from "@material-ui/icons";
 import React from "react";
 import {
@@ -28,7 +29,7 @@ const CategoryImageFilter = props => (
 );
 
 export const CategoryImageList = props => (
-    <List {...props} perPage="100" filters={<CategoryImageFilter />}>
+    <List {...props} perPage={100} filters={<CategoryImageFilter />}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
             <ReferenceField source="shop_id" reference="shops" label="Shop" allowEmpty={true}>
@@ -83,9 +84,9 @@ const ProductImageField = ({ record, source }) => {
 };
 ProductImageField.defaultProps = { addLabel: true };
 
-const CategoryImageTitle = ({ record }) => {
-    return <span>Image {record ? `"${record.name}"` : ""}</span>;
-};
+// const CategoryImageTitle = ({ record }) => {
+//     return <span>Image {record ? `"${record.name}"` : ""}</span>;
+// };
 
 export const CategoryImageEdit = props => (
     <Edit {...props} undoable={false} redirect="edit">

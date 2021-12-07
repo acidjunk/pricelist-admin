@@ -1,12 +1,10 @@
-import Avatar from "@material-ui/core/Avatar";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
 import { translate } from "react-admin";
 import ReactMarkdown from "react-markdown/with-html";
 import { Link } from "react-router-dom";
@@ -51,7 +49,7 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
             <Typography className={classes.title} color="textSecondary">
                 {translate("pos.dashboard.modified_kinds")}
             </Typography>
-            <Typography variant="headline" component="h2" className={classes.value}>
+            <Typography variant="h2" component="h2" className={classes.value}>
                 {nb}
             </Typography>
             <Divider />
@@ -63,33 +61,12 @@ const NewKinds = ({ kinds = [], nb, translate, classes }) => (
                             {/*src={`${record.avatar}?size=32x32`}*/}
                             {/*className={classes.avatar}*/}
                             {/*/>*/}
-                            <ListItemText
-                                primary={`${record.name}`}
-                                secondary={
-                                    <React.Fragment>
-                                        <b>NL</b>
-                                        <Typography
-                                            component="div"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            {record.description_nl && <ReactMarkdown source={record.description_nl} />}
-                                        </Typography>
-
-                                        <b>EN</b>
-                                        <Typography
-                                            component="div"
-                                            variant="body2"
-                                            className={classes.inline}
-                                            color="textPrimary"
-                                        >
-                                            {record.description_en && <ReactMarkdown source={record.description_en} />}
-                                        </Typography>
-                                    </React.Fragment>
-                                }
-                                className={classes.listItemText}
-                            />
+                            <div className={classes.listItemText}>
+                                <b>NL</b> <span>{record.name}</span>
+                                {record.description_nl && <ReactMarkdown source={record.description_nl} />}
+                                <b>EN</b> <span>{record.name}</span>
+                                {record.description_en && <ReactMarkdown source={record.description_en} />}
+                            </div>
                         </ListItem>
                         <Divider />
                     </React.Fragment>

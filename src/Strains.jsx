@@ -1,20 +1,14 @@
-import Typography from "@material-ui/core/Typography";
-import { CallSplit } from "@material-ui/icons";
 import React from "react";
+import { CallSplit } from "@material-ui/icons";
 import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
     List,
-    Pagination,
-    ReferenceField,
-    ReferenceManyField,
     Show,
-    ShowButton,
     SimpleForm,
     Tab,
     TabbedShowLayout,
@@ -22,7 +16,6 @@ import {
     TextInput,
     required
 } from "react-admin";
-import { ColorField, ColorInput } from "react-admin-color-input";
 export const StrainIcon = CallSplit;
 
 const StrainFilter = props => (
@@ -31,7 +24,7 @@ const StrainFilter = props => (
     </Filter>
 );
 
-const StrainPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+// const StrainPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
 
 export const StrainShow = props => (
     <Show title={<StrainTitle />} {...props}>
@@ -54,7 +47,7 @@ export const StrainShow = props => (
 );
 
 export const StrainList = props => (
-    <List {...props} perPage="100" filters={<StrainFilter />}>
+    <List {...props} perPage={100} filters={<StrainFilter />}>
         <Datagrid>
             <TextField source="name" />
             <EditButton />
@@ -70,7 +63,7 @@ const StrainTitle = ({ record }) => {
 export const StrainEdit = props => (
     <Edit title={<StrainTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>

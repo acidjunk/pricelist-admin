@@ -1,23 +1,17 @@
-import Typography from "@material-ui/core/Typography";
+
 import { Toc } from "@material-ui/icons";
 import React from "react";
 import {
     Create,
     Datagrid,
-    DeleteButton,
-    DisabledInput,
     Edit,
-    EditButton,
     Filter,
     List,
     NumberField,
-    Pagination,
     ReferenceField,
     ReferenceInput,
-    ReferenceManyField,
     SelectInput,
     Show,
-    ShowButton,
     SimpleForm,
     Tab,
     TabbedShowLayout,
@@ -25,7 +19,6 @@ import {
     TextInput,
     required
 } from "react-admin";
-import { ColorField, ColorInput } from "react-admin-color-input";
 export const OrderIcon = Toc;
 
 export const OrderDetailField = ({ record, source }) => {
@@ -60,7 +53,7 @@ const OrderFilter = props => (
     </Filter>
 );
 
-const OrderPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
+// const OrderPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...props} />;
 
 export const OrderShow = props => (
     <Show title={<OrderTitle />} {...props}>
@@ -83,7 +76,7 @@ export const OrderShow = props => (
 );
 
 export const OrderList = props => (
-    <List {...props} perPage="100" sort={{ field: "created_at", order: "DESC" }} filters={<OrderFilter />}>
+    <List {...props} perPage={100} sort={{ field: "created_at", order: "DESC" }} filters={<OrderFilter />}>
         <Datagrid>
             <TextField source="customer_order_id" />
             <ReferenceField source="shop_id" reference="shops" label="Shop">
@@ -113,7 +106,7 @@ const OrderTitle = ({ record }) => {
 export const OrderEdit = props => (
     <Edit title={<OrderTitle />} {...props} redirect="list">
         <SimpleForm redirect="list">
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>

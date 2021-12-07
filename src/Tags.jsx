@@ -4,7 +4,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -56,7 +55,7 @@ export const TagShow = props => (
 );
 
 export const TagList = props => (
-    <List {...props} perPage="25" filters={<TagFilter />}>
+    <List {...props} perPage={25} filters={<TagFilter />}>
         <Datagrid>
             <TextField source="name" validate={required()} />
             <ShowButton />
@@ -73,7 +72,7 @@ const TagTitle = ({ record }) => {
 export const TagEdit = props => (
     <Edit title={<TagTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
         </SimpleForm>
     </Edit>

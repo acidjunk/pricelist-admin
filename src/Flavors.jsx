@@ -5,7 +5,6 @@ import {
     Create,
     Datagrid,
     DeleteButton,
-    DisabledInput,
     Edit,
     EditButton,
     Filter,
@@ -35,8 +34,8 @@ const FlavorPagination = props => <Pagination rowsPerPageOptions={[10, 20]} {...
 
 const FlavorListSidePanel = () => (
     <div style={{ width: 200, margin: "1em" }}>
-        <Typography variant="title">Using icons?</Typography>
-        <Typography variant="body1">Flavors will need a matching image. Not all flavors have an image yet.</Typography>
+        <Typography component="h2" variant="subtitle1">Using icons?</Typography>
+        <Typography component="h4" variant="body1">Flavors will need a matching image. Not all flavors have an image yet.</Typography>
     </div>
 );
 
@@ -66,7 +65,7 @@ export const FlavorShow = props => (
 );
 
 export const FlavorList = props => (
-    <List aside={<FlavorListSidePanel />} {...props} perPage="100" filters={<FlavorFilter />}>
+    <List aside={<FlavorListSidePanel />} {...props} perPage={100} filters={<FlavorFilter />}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="icon" />
@@ -85,7 +84,7 @@ const FlavorTitle = ({ record }) => {
 export const FlavorEdit = props => (
     <Edit title={<FlavorTitle />} {...props}>
         <SimpleForm>
-            <DisabledInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" autoFocus validate={required()} />
             <TextInput source="icon" />
             <ColorInput source="color" />
