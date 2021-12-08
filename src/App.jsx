@@ -1,4 +1,3 @@
-import simpleRestProvider from "ra-data-simple-rest";
 import React, { Component } from "react";
 import { Admin, Resource, fetchUtils } from "react-admin";
 
@@ -7,6 +6,7 @@ import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Cate
 import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
 import API_URL from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
+import simpleRestProvider from "./dataProvider/dataProvider";
 import addUploadFeature from "./dataProvider/decorator";
 import { FlavorCreate, FlavorEdit, FlavorIcon, FlavorList, FlavorShow } from "./Flavors";
 import englishMessages from "./i18n/en";
@@ -42,11 +42,11 @@ const httpClient = (url, options = {}) => {
         options.headers = new Headers({ Accept: "application/json" });
     }
     // Cookie auth
-    options.credentials = "include";
+    // options.credentials = "include";
 
     // Token auth:
-    // const token = localStorage.getItem('token');
-    // options.headers.set('Authentication-Token', token);
+    const token = localStorage.getItem("token");
+    options.headers.set("Authorization", `Bearer ${token}`);
     return fetchUtils.fetchJson(url, options);
 };
 const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
