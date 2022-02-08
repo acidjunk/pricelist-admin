@@ -12,7 +12,9 @@ import {
     TextField,
     TextInput
 } from "react-admin";
+
 import DeleteImageButton from "./components/DeleteImageButton";
+
 export const KindImageIcon = BrokenImage;
 
 const KindImageFilter = props => (

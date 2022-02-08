@@ -15,7 +15,9 @@ import {
     TextField,
     TextInput
 } from "react-admin";
+
 import DeleteImageButton from "./components/DeleteImageButton";
+
 export const CategoryImageIcon = BrokenImage;
 
 const CategoryImageFilter = props => (
@@ -49,8 +51,8 @@ const ProductImageListField = ({ record, source }) => {
         key: record[source],
         edits: {
             resize: {
-                width: 100,
-                height: 60,
+                width: 192,
+                height: 33,
                 fit: "contain"
             }
         }
@@ -58,7 +60,7 @@ const ProductImageListField = ({ record, source }) => {
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
-    return <img width="100" src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
+    return <img width={192} src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
 };
 
 const ProductImageField = ({ record, source }) => {
@@ -70,8 +72,8 @@ const ProductImageField = ({ record, source }) => {
         key: record[source],
         edits: {
             resize: {
-                width: 250,
-                height: 150,
+                width: 576,
+                height: 99,
                 fit: "contain"
             }
         }
