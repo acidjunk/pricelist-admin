@@ -69,7 +69,13 @@ const ProductImageField = ({ record, source }) => {
             resize: {
                 width: 200,
                 height: 200,
-                fit: "contain"
+                fit: "contain",
+                background: {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                    alpha: 1
+                }
             }
         }
     };

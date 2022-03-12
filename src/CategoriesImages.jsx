@@ -53,7 +53,13 @@ const ProductImageListField = ({ record, source }) => {
             resize: {
                 width: 192,
                 height: 33,
-                fit: "contain"
+                fit: "contain",
+                background: {
+                    r: 255,
+                    g: 255,
+                    b: 255,
+                    alpha: 1
+                }
             }
         }
     };
