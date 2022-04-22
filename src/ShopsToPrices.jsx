@@ -38,7 +38,7 @@ export const ShopsToPricesEdit = props => {
                 <ReferenceInput
                     source="price_id"
                     reference="prices"
-                    perPage={100}
+                    perPage={1000}
                     sort={{ field: "internal_product_id" }}
                     validate={required()}
                 >
@@ -47,7 +47,7 @@ export const ShopsToPricesEdit = props => {
                 <ReferenceInput
                     source="category_id"
                     reference="categories"
-                    perPage={100}
+                    perPage={1000}
                     label="Product Category"
                     // filter={{ shop_id: shop_id }}
                 >
@@ -88,7 +88,7 @@ export const ShopsToPricesCreate = props => {
                 <ReferenceInput
                     source="price_id"
                     reference="prices"
-                    perPage={100}
+                    perPage={1000}
                     sort={{ field: "internal_product_id" }}
                     validate={required()}
                 >
@@ -97,17 +97,23 @@ export const ShopsToPricesCreate = props => {
                 <ReferenceInput
                     source="category_id"
                     reference="categories"
-                    perPage={100}
+                    perPage={1000}
                     label="Product Category"
                     filter={{ shop_id: shop_id }}
                 >
                     <SelectInput optionText="category_and_shop" />
                 </ReferenceInput>
-                <ReferenceInput source="kind_id" reference="kinds" label="Cannabis Product" allowEmpty>
+                <ReferenceInput source="kind_id" perPage={1000} reference="kinds" label="Cannabis Product" allowEmpty>
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
 
-                <ReferenceInput source="product_id" reference="products" label="Horeca Product" allowEmpty>
+                <ReferenceInput
+                    source="product_id"
+                    perPage={1000}
+                    reference="products"
+                    label="Horeca Product"
+                    allowEmpty
+                >
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
 

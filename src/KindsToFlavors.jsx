@@ -27,7 +27,7 @@ export const KindsToFlavorsEdit = props => (
             <ReferenceInput
                 source="flavor_id"
                 reference="flavors"
-                perPage={50}
+                perPage={1000}
                 sort={{ field: "name" }}
                 validate={required()}
             >
@@ -46,13 +46,13 @@ export const KindsToFlavorsCreate = props => {
                 <ReferenceInput
                     source="kind_id"
                     reference="kinds"
-                    perPage={50}
+                    perPage={1000}
                     sort={{ field: "name" }}
                     validate={required()}
                 >
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="flavor_id" reference="flavors" sort={{ field: "name" }} validate={required()}>
+                <ReferenceInput source="flavor_id" reference="flavors" sort={{ field: "name" }} perPage={1000} validate={required()}>
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
             </SimpleForm>

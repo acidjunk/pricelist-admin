@@ -28,7 +28,7 @@ export const KindsToTagsEdit = props => (
             <ReferenceInput
                 source="tag_id"
                 reference="tags"
-                perPage={50}
+                perPage={1000}
                 validate={required()}
                 sort={{ field: "name" }}
             >
@@ -48,7 +48,7 @@ export const KindsToTagsCreate = props => {
                 <ReferenceInput
                     source="kind_id"
                     reference="kinds"
-                    perPage={50}
+                    perPage={1000}
                     validate={required()}
                     sort={{ field: "name" }}
                 >

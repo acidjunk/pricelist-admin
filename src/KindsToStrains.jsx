@@ -27,7 +27,7 @@ export const KindsToStrainsEdit = props => (
             <ReferenceInput
                 source="strain_id"
                 reference="strains"
-                perPage={50}
+                perPage={1000}
                 sort={{ field: "name" }}
                 validate={required()}
             >
@@ -46,7 +46,7 @@ export const KindsToStrainsCreate = props => {
                 <ReferenceInput
                     source="kind_id"
                     reference="kinds"
-                    perPage={50}
+                    perPage={1000}
                     sort={{ field: "name" }}
                     validate={required()}
                 >
@@ -55,7 +55,7 @@ export const KindsToStrainsCreate = props => {
                 <ReferenceInput
                     source="strain_id"
                     reference="strains"
-                    perPage={50}
+                    perPage={1000}
                     sort={{ field: "name" }}
                     validate={required()}
                 >
