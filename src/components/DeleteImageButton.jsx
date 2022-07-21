@@ -11,7 +11,6 @@ import { uploadDataProvider } from "../App";
 class DeleteImageButton extends Component {
     handleClick = () => {
         const { push, source, basePath, record, showNotification } = this.props;
-        debugger;
         const updatedRecord = { image: source };
         uploadDataProvider(UPDATE, `${basePath.replace("/", "")}/delete`, { id: record.id, data: updatedRecord })
             .then(() => {

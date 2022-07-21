@@ -104,7 +104,7 @@ export const CategoryImageEdit = props => (
                 <ProductImageField source="image_1" />
                 <DeleteImageButton source="image_1" />
                 <ImageInput source="image_1" label="Image 1: (aspect 5 / 2.2 or 1920 x 326)" accept="image/*">
-                    <ImageField source="src" title="title" />
+                    <ImageField source="src" src="image_1" title="title" />
                 </ImageInput>
             </FormTab>
             <FormTab label="image 2">
@@ -112,7 +112,7 @@ export const CategoryImageEdit = props => (
                 <ProductImageField source="image_2" />
                 <DeleteImageButton source="image_2" />
                 <ImageInput source="image_2" label="Image 2: (aspect 5 / 2.2 or 1920 x 326)" accept="image/*">
-                    <ImageField source="src" title="title" />
+                    <ImageField source="src" src="image_2" title="title" />
                 </ImageInput>
             </FormTab>
         </TabbedForm>
