@@ -18,6 +18,7 @@ import {
     TextInput,
     required
 } from "react-admin";
+import QRCode from "react-qr-code";
 
 import API_URL from "./Constants";
 
@@ -36,12 +37,12 @@ export const QrImageField = ({ record, source }) => {
     if (!record[source]) {
         return null;
     }
-    const urlPrefix = API_URL.startsWith("https://api.prijslijst.info")
-        ? "https://app.prijslijst.info"
-        : "http://localhost:3000";
+    const url = `https://app.prijslijst.info/shop/${record.shop_id}/${record.id}`;
     return (
-        <a href={`${urlPrefix}/shop/${record.shop_id}/${record.id}`}>
-            <img width="300" src={`${API_URL}/qr/shop/${record.shop_id}/${record.id}`} />
+        <a href={url}>
+            <div style={{ background: "white", padding: "30px" }}>
+                <QRCode value={url} />
+            </div>
         </a>
     );
 };

@@ -52,7 +52,13 @@ export const KindsToFlavorsCreate = props => {
                 >
                     <SelectInput optionText="name" />
                 </ReferenceInput>
-                <ReferenceInput source="flavor_id" reference="flavors" sort={{ field: "name" }} perPage={1000} validate={required()}>
+                <ReferenceInput
+                    source="flavor_id"
+                    reference="flavors"
+                    sort={{ field: "name" }}
+                    perPage={1000}
+                    validate={required()}
+                >
                     <AutocompleteInput optionText="name" translateChoice={false} />
                 </ReferenceInput>
             </SimpleForm>

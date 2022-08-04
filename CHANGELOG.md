@@ -3,7 +3,13 @@
 -   Inline edit
 -   Upgrade to React-Admin 3.0
 
-1.0.0
+    1.0.4
+
+-   Image delete
+-   New QR code
+-   Increased all auto complete fields to 1000
+
+    1.0.0
 
 -   Fixed issue in price template
 -   Added category image views
