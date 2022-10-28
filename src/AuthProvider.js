@@ -1,6 +1,6 @@
 import { AUTH_ERROR, AUTH_LOGIN, AUTH_LOGOUT } from "react-admin";
 
-import API_URL from "./Constants";
+import { API_URL } from "./Constants";
 
 export default (type, params) => {
     // Uncomment for debugging

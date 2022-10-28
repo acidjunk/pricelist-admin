@@ -17,6 +17,7 @@ import {
 } from "react-admin";
 
 import DeleteImageButton from "./components/DeleteImageButton";
+import { IMAGE_URL } from "./Constants";
 
 export const CategoryImageIcon = BrokenImage;
 
@@ -66,7 +67,7 @@ const ProductImageListField = ({ record, source }) => {
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
-    return <img width={192} src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
+    return <img width={192} src={`${IMAGE_URL}/${encRequest}`} />;
 };
 
 const ProductImageField = ({ record, source }) => {

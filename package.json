@@ -8,12 +8,12 @@
     "ra-data-simple-rest": "^2.9.6",
     "ra-input-markdown": "^1.1.5",
     "ra-input-rich-text": "^2.9.3",
-    "react": "^16.9.0",
+    "react": "^16.13.1",
     "react-admin": "^2.9.6",
     "react-admin-color-input": "^1.0.8",
-    "react-dom": "^16.9.0",
+    "react-dom": "^16.13.1",
     "react-qr-code": "^2.0.7",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.4.4"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",
@@ -26,9 +26,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "backup-constants": "cp src/Constants.js src/Constants.js.backup",
+    "restore-constants": "cp src/Constants.js.backup src/Constants.js",
     "deploy-github": "gh-pages -d build",
-    "deploy": "yarn build && aws s3 sync build/ s3://admin.prijslijst.info --delete && aws cloudfront create-invalidation --distribution-id E1FGEHDQURI1BB --paths '/*'",
-    "deploy-staging": "yarn build && aws s3 sync build/ s3://admin.staging.prijslijst.info --delete && aws cloudfront create-invalidation --distribution-id EA1479SLRMW9X --paths '/*'",
+    "deploy": "yarn backup-constants && cp src/Constantsproduction.js src/Constants.js && yarn build && aws s3 sync build/ s3://admin.prijslijst.info --delete && yarn restore-constants && aws cloudfront create-invalidation --distribution-id E1FGEHDQURI1BB --paths '/*'",
+    "deploy-preproduction": "yarn backup-constants && cp src/ConstantsPreproduction.js src/Constants.js && aws s3 sync build/ s3://admin.prijslijst.info --delete && yarn restore-constants  && aws cloudfront create-invalidation --distribution-id E1FGEHDQURI1BB --paths '/*'",
+    "deploy-staging": "yarn backup-constants && cp src/ConstantsStaging.js src/Constants.js && yarn build && aws s3 sync build/ s3://admin.staging.prijslijst.info --delete && yarn restore-constants && aws cloudfront create-invalidation --distribution-id EA1479SLRMW9X --paths '/*'",
     "prettier": "prettier -c '{**/*.{js,jsx,scss,md},public/**/*.html}'",
     "prettier-fix": "prettier --write '{**/*.{js,jsx,scss,md},public/**/*.html}'"
   },

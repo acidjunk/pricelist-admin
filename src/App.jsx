@@ -4,7 +4,7 @@ import { Admin, Resource, fetchUtils } from "react-admin";
 import AuthProvider from "./AuthProvider";
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
 import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
-import API_URL from "./Constants";
+import { API_URL, IMAGE_BUCKET } from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
 import simpleRestProvider from "./dataProvider/dataProvider";
 import addUploadFeature from "./dataProvider/decorator";
@@ -49,6 +49,9 @@ const httpClient = (url, options = {}) => {
     options.headers.set("Authorization", `Bearer ${token}`);
     return fetchUtils.fetchJson(url, options);
 };
+console.log("API_URL:", API_URL);
+console.log("IMAGE_BUCKET:", IMAGE_BUCKET);
+
 const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
 
 export const uploadDataProvider = addUploadFeature(dataProvider);
