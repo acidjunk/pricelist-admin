@@ -1,12 +1,12 @@
-import simpleRestProvider from "ra-data-simple-rest";
 import React, { Component } from "react";
 import { Admin, Resource, fetchUtils } from "react-admin";
 
 import AuthProvider from "./AuthProvider";
 import { CategoryCreate, CategoryEdit, CategoryIcon, CategoryList } from "./Categories";
 import { CategoryImageEdit, CategoryImageIcon, CategoryImageList } from "./CategoriesImages";
-import API_URL from "./Constants";
+import { API_URL, IMAGE_BUCKET } from "./Constants";
 import Dashboard from "./dashboard/Dashboard";
+import simpleRestProvider from "./dataProvider/dataProvider";
 import addUploadFeature from "./dataProvider/decorator";
 import { FlavorCreate, FlavorEdit, FlavorIcon, FlavorList, FlavorShow } from "./Flavors";
 import englishMessages from "./i18n/en";
@@ -42,13 +42,16 @@ const httpClient = (url, options = {}) => {
         options.headers = new Headers({ Accept: "application/json" });
     }
     // Cookie auth
-    options.credentials = "include";
+    // options.credentials = "include";
 
     // Token auth:
-    // const token = localStorage.getItem('token');
-    // options.headers.set('Authentication-Token', token);
+    const token = localStorage.getItem("token");
+    options.headers.set("Authorization", `Bearer ${token}`);
     return fetchUtils.fetchJson(url, options);
 };
+console.log("API_URL:", API_URL);
+console.log("IMAGE_BUCKET:", IMAGE_BUCKET);
+
 const dataProvider = simpleRestProvider(`${API_URL}/v1`, httpClient);
 
 export const uploadDataProvider = addUploadFeature(dataProvider);

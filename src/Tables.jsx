@@ -1,8 +1,6 @@
 import { RestaurantMenu } from "@material-ui/icons";
 import React from "react";
 import {
-    BooleanField,
-    BooleanInput,
     Create,
     Datagrid,
     DisabledInput,
@@ -19,8 +17,6 @@ import {
     required
 } from "react-admin";
 import QRCode from "react-qr-code";
-
-import API_URL from "./Constants";
 
 export const TableIcon = RestaurantMenu;
 

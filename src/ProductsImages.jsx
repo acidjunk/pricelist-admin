@@ -14,6 +14,7 @@ import {
 } from "react-admin";
 
 import DeleteImageButton from "./components/DeleteImageButton";
+import { IMAGE_BUCKET } from "./Constants";
 
 export const ProductImageIcon = Image;
 
@@ -63,7 +64,7 @@ const ProductImageField = ({ record, source }) => {
         return null;
     }
     const options = {
-        bucket: "images-prijslijst-info",
+        bucket: IMAGE_BUCKET,
         key: record[source],
         edits: {
             resize: {
