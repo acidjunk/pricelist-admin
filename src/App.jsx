@@ -120,13 +120,13 @@ class App extends Component {
                     show={KindShow}
                     icon={KindIcon}
                 />
-                <Resource
-                    name="kinds-images"
-                    options={{ label: "Cannabis-images" }}
-                    list={KindImageList}
-                    edit={KindImageEdit}
-                    icon={KindImageIcon}
-                />
+                {/*<Resource*/}
+                {/*    name="kinds-images"*/}
+                {/*    options={{ label: "Cannabis-images" }}*/}
+                {/*    list={KindImageList}*/}
+                {/*    edit={KindImageEdit}*/}
+                {/*    icon={KindImageIcon}*/}
+                {/*/>*/}
                 <Resource
                     name="products"
                     list={ProductList}
@@ -135,12 +135,12 @@ class App extends Component {
                     show={ProductShow}
                     icon={ProductIcon}
                 />
-                <Resource
-                    name="products-images"
-                    list={ProductImageList}
-                    edit={ProductImageEdit}
-                    icon={ProductImageIcon}
-                />
+                {/*<Resource*/}
+                {/*    name="products-images"*/}
+                {/*    list={ProductImageList}*/}
+                {/*    edit={ProductImageEdit}*/}
+                {/*    icon={ProductImageIcon}*/}
+                {/*/>*/}
                 <Resource
                     name="strains"
                     show={StrainShow}
