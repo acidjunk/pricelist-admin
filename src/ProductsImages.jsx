@@ -56,7 +56,12 @@ const ProductImageListField = ({ record, source }) => {
     const strRequest = JSON.stringify(options);
     const encRequest = btoa(strRequest);
 
-    return <img width="100" src={`https://images-georgi-prijslijst-info.s3.eu-central-1.amazonaws.com/${record[source]}`} />;
+    return (
+        <img
+            width="100"
+            src={`https://images-georgi-prijslijst-info.s3.eu-central-1.amazonaws.com/${record[source]}`}
+        />
+    );
     // return <img alt="" width="100" src={`https://d3sticxdmgvhkp.cloudfront.net/${encRequest}`} />;
 };
 
