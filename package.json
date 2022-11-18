@@ -30,7 +30,6 @@
     "restore-constants": "cp src/Constants.js.backup src/Constants.js",
     "deploy-github": "gh-pages -d build",
     "deploy": "yarn backup-constants && cp src/ConstantsProduction.js src/Constants.js && yarn build && aws s3 sync build/ s3://admin.prijslijst.info --delete && yarn restore-constants && aws cloudfront create-invalidation --distribution-id E1FGEHDQURI1BB --paths '/*'",
-    "deploy-preproduction": "yarn backup-constants && cp src/ConstantsPreproduction.js src/Constants.js && aws s3 sync build/ s3://admin.prijslijst.info --delete && yarn restore-constants  && aws cloudfront create-invalidation --distribution-id E1FGEHDQURI1BB --paths '/*'",
     "deploy-staging": "yarn backup-constants && cp src/ConstantsStaging.js src/Constants.js && yarn build && aws s3 sync build/ s3://admin.staging.prijslijst.info --delete && yarn restore-constants && aws cloudfront create-invalidation --distribution-id EA1479SLRMW9X --paths '/*'",
     "prettier": "prettier -c '{**/*.{js,jsx,scss,md},public/**/*.html}'",
     "prettier-fix": "prettier --write '{**/*.{js,jsx,scss,md},public/**/*.html}'"
