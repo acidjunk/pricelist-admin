@@ -25,6 +25,19 @@ import {
  * CREATE       => POST http://my.api.url/posts
  * DELETE       => DELETE http://my.api.url/posts/123
  */
+
+
+function convertFilter(filter) {
+    return Object.entries(filter).map((entry) => (entry[0] === "q" ? entry[1] : `${entry[0]}:${entry[1]}`));
+}
+
+function getManyFilter(filter) {
+    console.log(filter)
+    return filter.join(",")
+    // debugger;
+}
+
+
 export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
     /**
      * @param {String} type One of the constants appearing at the top if this file, e.g. 'UPDATE'
@@ -47,7 +60,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                     sort: `${field}:${order}`,
                     skip: (page - 1) * perPage,
                     limit: perPage,
-                    filter: filter
+                    filter: convertFilter(params.filter),
                 };
                 url = `${apiUrl}/${resource}/?${stringify(query)}`;
                 break;
@@ -57,7 +70,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                 break;
             case GET_MANY: {
                 const query = {
-                    filter: JSON.stringify({ id: params.ids })
+                    filter: getManyFilter(params.ids)
                 };
                 url = `${apiUrl}/${resource}/?${stringify(query)}`;
                 break;
