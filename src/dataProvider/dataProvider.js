@@ -26,17 +26,15 @@ import {
  * DELETE       => DELETE http://my.api.url/posts/123
  */
 
-
 function convertFilter(filter) {
-    return Object.entries(filter).map((entry) => (entry[0] === "q" ? entry[1] : `${entry[0]}:${entry[1]}`));
+    return Object.entries(filter).map(entry => (entry[0] === "q" ? entry[1] : `${entry[0]}:${entry[1]}`));
 }
 
 function getManyFilter(filter) {
-    console.log(filter)
-    return filter.join(",")
+    console.log(filter);
+    return filter.join(",");
     // debugger;
 }
-
 
 export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
     /**
@@ -60,7 +58,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                     sort: `${field}:${order}`,
                     skip: (page - 1) * perPage,
                     limit: perPage,
-                    filter: convertFilter(params.filter),
+                    filter: convertFilter(params.filter)
                 };
                 url = `${apiUrl}/${resource}/?${stringify(query)}`;
                 break;
